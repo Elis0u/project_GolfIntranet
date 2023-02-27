@@ -1,0 +1,22 @@
+{
+  "name": "intranet-golf-app",
+  "version": "1.0.0",
+  "description": "App intranet project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elis0u/project_GolfIntranet.git"
+  },
+  "author": "Elis0u",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elis0u/project_GolfIntranet/issues"
+  },
+  "homepage": "https://github.com/Elis0u/project_GolfIntranet#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
