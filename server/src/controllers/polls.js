@@ -73,7 +73,7 @@ export const update = async (req,res) => {
 export const remove = async (req,res) => {
     try {
         const query = "DELETE FROM poll WHERE id = ?";
-        const result = await Query.remove(query, req.body.id);
+        const [ result ] = await Query.remove(query, req.body.id);
         
         if(result.affectedRows){
             const msg = "Poll removed";
