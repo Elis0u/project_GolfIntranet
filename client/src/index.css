@@ -1,0 +1,19 @@
+:root {
+  --primaryBlue : #0B2545;
+  --secondaryBlue : #134074;
+  --threadBlue : #8DA9C4;
+  --white: #EEF4ED;
+}
+
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding:0;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
