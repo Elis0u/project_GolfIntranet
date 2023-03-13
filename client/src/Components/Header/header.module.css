@@ -1,0 +1,192 @@
+/* ====================================================== */
+/* ================= HEADER MOBIL First ================= */
+/* ====================================================== */
+
+nav {
+  height: 100vh;
+  min-height: 900px;
+  width: 320px;
+  background: var(--primaryBlue);
+  color: var(--white);
+  position: relative;
+  z-index: 1;
+  transition: all .2s ease-in;
+  left: -320px;
+  padding-top: 2rem;
+}
+
+.menuActive {
+  left: 0;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.burger {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  top: 3rem;
+  right: 1rem;
+  transform: translate(-50%, -50%);
+  background: #f1f1f1;
+  cursor: pointer;
+  z-index: 20;
+  border: none;
+}
+
+.ligne {
+  width: 50%;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+  background: #000;
+}
+
+.ligne::after,
+.ligne::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #000;
+  border-radius: 2px;
+  position: absolute;
+  transition: transform .2s ease-in-out;
+}
+
+.ligne::after {
+  top: -8px;
+}
+
+.ligne::before {
+  top: 8px;
+}
+
+.activeBurger .ligne::before {
+  transform: translateY(-8px) rotate(-45deg)
+}
+
+.activeBurger .ligne::after {
+  transform: translateY(8px) rotate(45deg)
+}
+
+.activeBurger .ligne {
+  background: transparent;
+}
+
+.navHeader {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 4rem 0 2rem 0;
+  gap: 1.2rem;
+}
+
+.navHeader h1 {
+  font-size: 3.2rem;
+}
+
+.navHeader span {
+  font-size: 1.6rem;
+}
+
+.navProfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.navProfil img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navProfil span {
+  margin: 1rem 0;
+  font-size: 2.4rem;
+}
+
+.navActions a {
+  color: var(--white);
+  font-weight: 600;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+
+.navList {
+  font-size: 2.2rem;
+  margin: 6rem 0;
+  padding-left: 3.4rem;
+  list-style: none;
+}
+
+.navList li {
+  margin: 1.2rem 0;
+  font-weight: 500;
+  transition: all .2s ease-in-out;
+}
+
+.navList li a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.navFooter {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+}
+
+.navFooter a {
+  color: var(--threadBlue);
+  text-decoration: none;
+}
+
+.navList a.active {
+  color: var(--threadBlue);
+  border-bottom: 1px solid var(--threadBlue);
+}
+
+
+/* @media screen and (min-width: 768px) {
+
+} */
+
+/* ====================================================== */
+/* =================== HEADER DESKTOP =================== */
+/* ====================================================== */
+
+@media screen and (min-width:1024px) {
+  nav {
+    left: 0;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .navList li:hover {
+    transform: translateX(1.6rem);
+  }
+
+  .navActions a:hover {
+    color: var(--threadBlue);
+  }
+}
