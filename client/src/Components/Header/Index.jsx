@@ -34,7 +34,7 @@ function Header() {
 
             <nav className={anim ? style.menuActive : ""}>
                 <div className={style.navHeader}>
-                    <h1>Equipe de femme</h1>
+                    <h1>Equipe femme</h1>
                     <span>Golf de Granville</span>
                 </div>
                 <div className={style.navProfil}>
