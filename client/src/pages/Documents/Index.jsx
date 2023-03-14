@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import style from "./document.module.css";
 import { getDatas } from '../../services/api.js';
 
 function Documents() {
@@ -22,8 +23,19 @@ function Documents() {
 
   console.log( "All doc -> " , documents);
 
+  function getCategory(category) {
+    switch (category) {
+      case 'Règlement':
+        return style['rules'];
+      case 'mental':
+        return style['mental'];
+      default:
+        return '';
+    }
+  }
+
     return (
-		<main>		
+		<main className={style.container}>		
 			
             <h2>Documents</h2>
 
@@ -33,10 +45,9 @@ function Documents() {
                         return (
                             <article key={d.id}>
                                 <h3>{d.title}</h3>
-                                <p>{d.content}</p>
-                                <p><time datetime={d.createdAt}>{new Date(d.createdAt).toLocaleDateString()} à {new Date(d.createdAt).toLocaleTimeString()}</time></p>
-                                <p>{d.firstName} {d.lastName}</p>
-                                <p>{d.label}</p>
+                                <p>{d.content.slice(0, 200)} ...</p>
+                                <p>Ecrit par {d.firstName} {d.lastName} le <time datetime={d.createdAt}>{new Date(d.createdAt).toLocaleDateString()} à {new Date(d.createdAt).toLocaleTimeString()}</time>.</p>
+                                <p className={getCategory(d.label)}>{d.label}</p>
                             </article>
                         )
                     })
