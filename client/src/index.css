@@ -17,3 +17,37 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  background-color: var(--threadBlue);
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2.6rem;
+  padding: .5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+section {
+  padding: 1rem;
+}
+
+/* TODO Check for mobil first */
+#root {
+  display: flex;
+}
+
+main {
+  width: 100%;
+  padding: 2rem;
+}
