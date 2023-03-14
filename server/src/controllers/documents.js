@@ -20,7 +20,7 @@ export const add_document = async (req,res) => {
 // Read
 export const all = async (req, res) => {
     try {
-        const query = "SELECT document.id, title, content, createdAt, updatedAt, category_id, user_id FROM document";
+        const query = "SELECT document.id, title, content, createdAt, updatedAt, category_id, label, user_id, firstName, lastName FROM document JOIN categorydocument ON category_id = categorydocument.id JOIN user ON user_id = user.id";
         const [documents] = await Query.find(query);
         if(documents.length){
             const msg = "Recovery of all documents";
