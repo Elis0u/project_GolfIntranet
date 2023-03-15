@@ -57,7 +57,7 @@ function Header() {
                         <NavLink to="/event" className={(navItem) => navItem.isActive ? style.active : ""}>< IoCalendarOutline /> Evenement</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/document" className={(navItem) => navItem.isActive ? style.active : ""}>< IoFolderOpenOutline /> Documents</NavLink>
+                        <NavLink to="/documents" className={(navItem) => navItem.isActive ? style.active : ""}>< IoFolderOpenOutline /> Documents</NavLink>
                     </li>
                     <li>
                         <NavLink to="/poll" className={(navItem) => navItem.isActive ? style.active : ""}>< IoBarChartOutline /> Sondage</NavLink>
