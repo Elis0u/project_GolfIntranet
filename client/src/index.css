@@ -1,9 +1,10 @@
 :root {
   --primaryBlue : #0B2545;
   --secondaryBlue : #134074;
-  --threadBlue : #8DA9C4;
+  --threadBlue : #CEB992;
   --white: #EEF4ED;
 }
+/* #DDCA7D  */
 
 
 *, ::before, ::after {
@@ -26,12 +27,12 @@ h1 {
 }
 
 h2 {
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   padding: .5rem;
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 2.4rem;
 }
 
 p {
@@ -51,3 +52,4 @@ main {
   width: 100%;
   padding: 2rem;
 }
+
