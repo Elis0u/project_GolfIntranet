@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-import {checkToken, signup, signin} from '../../controllers/users.js';
+import {checkToken, all, signup, signin} from '../../controllers/users.js';
 import { auth } from '../../middlewares/auth.js';
 
 
 const router = Router();
 
-// router.get("/", all);
+router.get("/", all);
 router.get("/checkToken", auth, checkToken);
 // router.get("/:id", one);
 
