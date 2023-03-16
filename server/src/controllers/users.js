@@ -25,6 +25,22 @@ const checkToken = async (req, res) => {
     }
 }
 
+export const all = async (req, res) => {
+    try {
+        const query = "SELECT user.id, firstName, lastName, birthDate, phone, handicap, avatarName, avatarAlt FROM user";
+        const [documents] = await Query.find(query);
+        if(documents.length){
+            const msg = "Recovery of all documents";
+            res.status(200).json(success(msg, documents));
+        } else {
+            const msg = "No yet document in database";
+            res.status(200).json(success(msg));
+        }
+    } catch (err) {
+        throw Error(err);
+    }
+}
+
 // const one = async (req, res) => {
 //     try {
 //         const query = "SELECT email, isAdmin FROM user WHERE id = ?";
