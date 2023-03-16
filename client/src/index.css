@@ -1,10 +1,10 @@
 :root {
   --primaryBlue : #0B2545;
   --secondaryBlue : #134074;
-  --threadBlue : #CEB992;
+  --threadBlue : #9FC490;
   --white: #EEF4ED;
 }
-/* #DDCA7D  */
+/* #DDCA7D  #CEB992  #9FC490*/
 
 
 *, ::before, ::after {
@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  background-color: var(--threadBlue);
+  background-color: var(--white);
 }
 
 h1 {
@@ -51,5 +51,6 @@ section {
 main {
   width: 100%;
   padding: 2rem;
+  margin-left: 320px;
 }
 
