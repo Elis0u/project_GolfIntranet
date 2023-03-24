@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home/Index";
 import Documents from "../pages/Documents/Index";
 import Team from "../pages/Team/Index";
+import Calendar from "../pages/Events/Index";
 
 
 function Router() {
@@ -10,6 +11,7 @@ function Router() {
             <Route path="/" element={<Home />} />
             <Route path="/documents" element={<Documents />} />
             <Route path="/team" element={<Team />} />
+            <Route path="/event" element={<Calendar />} />
             {/* 
             <Route path="/tea/:id" element={<SingleTea />} />
             <Route path="/about" element={<About />} />
