@@ -69,12 +69,8 @@ const signup = async (req, res) => {
             const data = { 
                 email : req.body.email,
                 password : hashedPWD,
-                firstName : req.body.firstName,
-                lastName : req.body.lastName,
-                birthDate : req.body.birthDate,
-                handicap : req.body.handicap
             }
-            const query = "INSERT INTO user (email, password, firstName, lastName, birthDate, handicap, isConfirmed, favoriteEvent_id, isAdmin) VALUES (?,?,?,?,?,?,0,1,0)";
+            const query = "INSERT INTO user (email, password, isConfirmed, isAdmin) VALUES (?,?,0,0)";
             const result = await Query.write(query, data);
             
             const msg = "User created";
@@ -90,7 +86,7 @@ const signup = async (req, res) => {
 const signin = async (req, res) => {
     try {
         const {email, password} = req.body;
-        const query1 = "SELECT id, email, password, isAdmin FROM user WHERE email = ?";
+        const query1 = "SELECT id, email, password, lastName, firstName, avatarName, isAdmin FROM user WHERE email = ?";
         const [user] = await Query.findByValue(query1, email);
 
         if(!user || (user.email !== req.body.email)){
@@ -103,10 +99,16 @@ const signin = async (req, res) => {
         if(isSame){
             // TODO test expiresIn : src -> https://github.com/vercel/ms
             const TOKEN = jwt.sign({id: user.id}, TOKEN_SECRET, {expiresIn : '60000'} );
-            const { email } = user;
+            const { email, lastName, firstName, avatarName } = user;
             console.log(TOKEN);
             const msg = "connection successful"
-            res.status(200).json(success(msg, {TOKEN, email}));
+            res.status(200).json(success(msg, {
+                TOKEN,
+                email,
+                lastName: lastName,
+                firstName: firstName,
+                avatarName: avatarName
+            }));
         } else {
             const msg = "identification problem";
             res.status(401).json(error(msg));
