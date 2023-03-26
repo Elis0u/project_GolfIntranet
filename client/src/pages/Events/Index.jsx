@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import "moment/locale/fr";
 import { getDatas } from "../../services/api.js";
-import style from "./event.module.css";
+import style from "./calendar.module.css";
 
 function Calendar() {
   const [events, setEvents] = useState([]);
