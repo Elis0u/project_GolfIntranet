@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { IoHomeOutline, IoPeopleOutline, IoCalendarOutline, IoFolderOpenOutline, IoBarChartOutline, IoHammerOutline } from "react-icons/io5";
@@ -10,14 +10,14 @@ import React from "react";
 
 function Header() {
     const dispatch = useDispatch();
-    const { user } = useSelector(state => state);
+    const user = useSelector(state => state.user);
     console.log("index header console log -> ", user)
 
     const navigate = useNavigate();
 
     const handleSignOut = () => {
         dispatch(signOut());
-        navigate("/login");
+        navigate("/entry");
     }
 
     const [anim, setAnim] = useState(false);
@@ -38,12 +38,11 @@ function Header() {
                     <span>Golf de Granville</span>
                 </div>
                 <div className={style.navProfil}>
-                    {/* TODO Put dynamic img and span */}
-                    <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
-                    <span>Elisa Dadure</span>
+                    <img src={`/img/avatar_user/${user.infos && user.infos.avatarName ? user.infos.avatarName : "default.jpg"}`} alt="" />
+                    <span>{user.infos ? `${user.infos.lastName} ${user.infos.firstName}` : ""}</span>
                     <div className={style.navActions}>
                         <NavLink to="/user">Mon compte</NavLink>
-                        <NavLink to="/user">Déconnexion</NavLink>
+                        <button onClick={handleSignOut}>Déconnexion</button>
                     </div>
                 </div>
                 <ul className={style.navList}>
@@ -71,32 +70,6 @@ function Header() {
                     <p>Développé par <a href="https://github.com/Elis0u">Elis0u</a></p>
                 </div>
             </nav>
-
-            {/* <Link to={"/cart"} className={style.banCart}>
-                <FontAwesomeIcon icon={faCartShopping} className={style.cartIcon} />
-                <span>{cart.totalAmount}€</span>
-            </Link>
-
-            <Link to="/">
-                <h1>
-                    <img src={logo} alt="Vers la page d'accueil" />
-                </h1>
-            </Link>
-
-            <nav>
-                <NavLink to="/tea">thés</NavLink>
-                <NavLink to="/about">notre histoire</NavLink>
-
-                { !user.isLogged ? 
-                    <NavLink to="/entry" state={{type: "se connecter"}}>Connexion</NavLink>
-                    :
-                    <>
-                    <NavLink to="/dashboard" >Compte</NavLink>
-                    <button className={style.CTA_signOut} onClick={handleSignOut}>Déconnexion</button>
-                    </>
-                    
-                }
-            </nav> */}
 
         </header>
     );
