@@ -13,11 +13,15 @@ function App() {
   useEffect(() => {
     async function checkAuth() {
       const TOKEN = localStorage.getItem("auth");
+      const user = localStorage.getItem("user");
       if (TOKEN) {
         const res = await getUserAuth("/user/checkToken", TOKEN);
         if (res.status === 200) {
           dispatch(signIn(res.data.email));
         }
+      }
+      if (user) {
+        dispatch(signIn(JSON.parse(user)));
       }
     }
     checkAuth();
