@@ -35,7 +35,7 @@ function Team() {
                             return (
                                 <article key={u.id}>
                                     <div className={style.cardHeader}>
-                                        <figure class={style.avatar}>
+                                        <figure className={style.avatar}>
                                             <img src={`/img/avatar_user/${u.avatarName ? u.avatarName : "default.jpg"}`} alt={u.avatarAlt ? u.avatarAlt : 'avatar par defaut'} />
                                         </figure>
                                     </div>
