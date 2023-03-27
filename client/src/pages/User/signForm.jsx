@@ -36,6 +36,12 @@ function SignForm() {
         try{
             const res = await signin(inputs); // envoyer des inputs "sains/nettoyés"
             localStorage.setItem("auth", res.data.result.TOKEN);
+            localStorage.setItem("user", JSON.stringify({
+                email: res.data.result.email,
+                lastName: res.data.result.lastName,
+                firstName: res.data.result.firstName,
+                avatarName: res.data.result.avatarName
+              }));
             dispatch(signIn({
                 email: res.data.result.email,
                 lastName: res.data.result.lastName,
