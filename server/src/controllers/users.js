@@ -82,7 +82,6 @@ const signup = async (req, res) => {
     }
 }
 
-// TODO RESTE CO LORS DU REFRESH
 const signin = async (req, res) => {
     try {
         const {email, password} = req.body;
@@ -97,8 +96,7 @@ const signin = async (req, res) => {
         const isSame = await compare(password, user.password);        
 
         if(isSame){
-            // TODO test expiresIn : src -> https://github.com/vercel/ms
-            const TOKEN = jwt.sign({id: user.id}, TOKEN_SECRET, {expiresIn : '60000'} );
+            const TOKEN = jwt.sign({id: user.id}, TOKEN_SECRET, {expiresIn : '1h'} );
             const { email, lastName, firstName, avatarName } = user;
             console.log(TOKEN);
             const msg = "connection successful"
