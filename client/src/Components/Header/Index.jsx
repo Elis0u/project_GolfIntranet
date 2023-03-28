@@ -17,6 +17,8 @@ function Header() {
 
     const handleSignOut = () => {
         dispatch(signOut());
+        localStorage.removeItem("auth");
+        localStorage.removeItem("user")
         navigate("/entry");
     }
 
