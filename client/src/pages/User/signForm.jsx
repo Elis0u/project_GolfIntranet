@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import {signup, signin} from "../../services/api.js"
+import { signup, signin } from "../../services/api.js"
 import { useDispatch } from "react-redux";
 import { signIn } from "../../store/slices/user";
+import style from "./signForm.module.css";
 
 function SignForm() {
     const { state } = useLocation();
@@ -13,10 +14,13 @@ function SignForm() {
 
     const [msg, setMsg] = useState(null);
 
-    const [ inputs, setInputs ] = useState(
-        { email: "", password: "" }
-    );
-    const { email, password } = inputs;
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+    });
+    const { email, password, firstName, lastName } = inputs;
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -27,13 +31,13 @@ function SignForm() {
         e.preventDefault();
 
         type === "se connecter" ?
-            handleSignIn() 
+            handleSignIn()
             :
             handleSignUp();
     };
 
     const handleSignIn = async () => {
-        try{
+        try {
             const res = await signin(inputs); // envoyer des inputs "sains/nettoyés"
             localStorage.setItem("auth", res.data.result.TOKEN);
             localStorage.setItem("user", JSON.stringify({
@@ -41,7 +45,7 @@ function SignForm() {
                 lastName: res.data.result.lastName,
                 firstName: res.data.result.firstName,
                 avatarName: res.data.result.avatarName
-              }));
+            }));
             dispatch(signIn({
                 email: res.data.result.email,
                 lastName: res.data.result.lastName,
@@ -50,7 +54,7 @@ function SignForm() {
             }));
             navigate("/");
 
-        } catch(err){
+        } catch (err) {
             setMsg("problème d'identifiant");
         }
     };
@@ -59,54 +63,116 @@ function SignForm() {
         try {
             const res = await signup(inputs);
             if (res.status === 201) {
-                setInputs({ email: "", password: "" });
+                setInputs({ email: "", password: "", firstName: "", lastName: "" });
                 navigate("/entry", { state: { type: "se connecter" } });
             }
         } catch (err) {
-            console.error(err); // Vous pouvez remplacer cette ligne par un message d'erreur plus convivial pour les utilisateurs.
+            console.error(err);
             setMsg("Erreur lors de l'inscription. Veuillez réessayer.");
         }
     };
 
+    const handleFocus = (e) => {
+        const label = e.target.previousElementSibling;
+        label.classList.add(style.active);
+    };
+
+    const handleBlur = (e) => {
+        const label = e.target.previousElementSibling;
+        if (e.target.value === "") {
+            label.classList.remove(style.active);
+        }
+    };
+
     return (
-        <main>
-            
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email">email :</label>
-                <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    value={email}
-                    onChange={handleInputChange}
-                />
+        <>
+            <form className={style.signForm} onSubmit={handleSubmit}>
 
-                <label htmlFor="password">password :</label>
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    value={password}
-                    onChange={handleInputChange}
-                />
+                <div className={style.inputGroup}>
+                    <label htmlFor="email" className={style.signForm_label}>
+                        Email
+                    </label>
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        value={email}
+                        onChange={handleInputChange}
+                        className={style.signForm_input}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                        required
+                    />
+                </div>
 
-                <input type="submit" value={type} />
+                <div className={style.inputGroup}>
+                    <label htmlFor="password" className={style.signForm_label}>
+                        Password
+                    </label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        value={password}
+                        onChange={handleInputChange}
+                        className={style.signForm_input}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                        required
+                    />
+                </div>
+
+                {type === "s'enregistrer" && (
+                    <>
+                        <div className={style.inputGroup}>
+                            <label htmlFor="lastName" className={style.signForm_label}>Nom</label>
+                            <input
+                                type="text"
+                                name="lastName"
+                                id="lastName"
+                                value={lastName}
+                                className={style.signForm_input}
+                                onFocus={handleFocus}
+                                onBlur={handleBlur}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </div>
+
+                        <div className={style.inputGroup}>
+                            <label htmlFor="firstName" className={style.signForm_label}>Prénom</label>
+                            <input
+                                type="text"
+                                name="firstName"
+                                id="firstName"
+                                value={firstName}
+                                className={style.signForm_input}
+                                onFocus={handleFocus}
+                                onBlur={handleBlur}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </div>
+                    </>
+                )}
+
+                <input type="submit" value={type} className={style.submitButton} />
             </form>
 
             {msg && <p>{msg}</p>}
 
             {type === "se connecter" && (
                 <p>
-                    Pas de compte ? En créer un{" "}
+                    Vous n'avez pas de compte ? {" "}
                     <Link
                         to={"/entry"}
-                        state={{ type:"s'enregistrer" }}
+                        state={{ type: "s'enregistrer" }}
                     >
-                        👉 ici 👈
+                        Inscrivez-vous
                     </Link>
                 </p>
             )}
-        </main>
+        </>
     );
 }
 

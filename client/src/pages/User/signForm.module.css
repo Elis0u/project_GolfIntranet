@@ -1,0 +1,125 @@
+.entryContainer {
+  display: flex;
+  height: 100vh;
+  margin-left: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.signFormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+.figureContainer {
+  flex: 1;
+  position: relative;
+}
+
+.entryContainer figure {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.entryContainer figure::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.entryContainer figure img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.signForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.signForm .signForm_input {
+  width: 100%;
+  min-width: 320px;
+  padding: 1rem 0;
+  font-size: 1.6rem;
+  color: var(--primaryBlue);
+  margin-bottom: 3rem;
+  border: none;
+  border-bottom: .2rem solid var(--primaryBlue);
+  outline: none;
+  background: transparent;
+}
+
+.signForm .inputGroup {
+  position: relative;
+}
+
+.signForm .signForm_label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--primaryBlue);
+  pointer-events: none;
+  transition: .5s;
+}
+
+.signForm_label.active {
+  top: -2rem;
+  left: 0;
+  color: var(--threadBlue);
+  font-size: 1.4rem;
+}
+
+.signForm .submitButton {
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--threadBlue); 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  outline: none;
+}
+
+.signForm .submitButton:hover {
+  background-color: var(--secondaryBlue);
+}
+
+.signForm .submitButton:active {
+  transform: scale(0.98);
+}
+
+.signForm .submitButton:focus {
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3); 
+}
+
+.signFormContainer p {
+  margin-top: 1.5rem;
+}
+
+.signFormContainer a {
+  color: var(--threadBlue);
+  font-weight: bold;
+  text-decoration: none;
+}
