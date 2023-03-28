@@ -23,6 +23,8 @@ function HOCAuth({ child, auth }) {
         }
         if (res.code || !TOKEN) {
           dispatch(signOut());
+          localStorage.removeItem("auth");
+          localStorage.removeItem("user")
           navigate("/entry");
         }
       }
