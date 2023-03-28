@@ -69,8 +69,10 @@ const signup = async (req, res) => {
             const data = { 
                 email : req.body.email,
                 password : hashedPWD,
+                firstName : req.body.firstName,
+                lastName : req.body.lastName
             }
-            const query = "INSERT INTO user (email, password, isConfirmed, isAdmin) VALUES (?,?,0,0)";
+            const query = "INSERT INTO user (email, password, firstName, lastName, isConfirmed, isAdmin) VALUES (?,?,?,?,0,0)";
             const result = await Query.write(query, data);
             
             const msg = "User created";
@@ -96,7 +98,7 @@ const signin = async (req, res) => {
         const isSame = await compare(password, user.password);        
 
         if(isSame){
-            const TOKEN = jwt.sign({id: user.id}, TOKEN_SECRET, {expiresIn : '1h'} );
+            const TOKEN = jwt.sign({id: user.id}, TOKEN_SECRET, {expiresIn : '60000'} );
             const { email, lastName, firstName, avatarName } = user;
             console.log(TOKEN);
             const msg = "connection successful"
