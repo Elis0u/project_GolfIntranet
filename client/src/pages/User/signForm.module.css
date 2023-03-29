@@ -106,14 +106,6 @@
   background-color: var(--secondaryBlue);
 }
 
-.signForm .submitButton:active {
-  transform: scale(0.98);
-}
-
-.signForm .submitButton:focus {
-  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3); 
-}
-
 .signFormContainer p {
   margin-top: 1.5rem;
 }
@@ -122,4 +114,32 @@
   color: var(--threadBlue);
   font-weight: bold;
   text-decoration: none;
+}
+
+.termsAccepted {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.termsAccepted input[type="checkbox"] {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0;
+}
+
+.termsAccepted label {
+  display: inline;
+  margin: 0;
+  font-weight: 400;
+}
+
+.termsAccepted a:hover {
+  transition: all 0.3s ease;
+}
+
+.termsAccepted a:hover {
+  color: var(--secondaryBlue);
 }
