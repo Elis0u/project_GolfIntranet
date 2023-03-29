@@ -70,9 +70,12 @@ const signup = async (req, res) => {
                 email : req.body.email,
                 password : hashedPWD,
                 firstName : req.body.firstName,
-                lastName : req.body.lastName
+                lastName : req.body.lastName,
+                birthDate : req.body.birthDate,
+                phone : req.body.phone,
+                handicap : req.body.handicap,
             }
-            const query = "INSERT INTO user (email, password, firstName, lastName, isConfirmed, isAdmin) VALUES (?,?,?,?,0,0)";
+            const query = "INSERT INTO user (email, password, firstName, lastName, birthDate, phone, handicap, isConfirmed, isAdmin) VALUES (?,?,?,?,?,?,?,0,0)";
             const result = await Query.write(query, data);
             
             const msg = "User created";
