@@ -28,12 +28,12 @@ const checkToken = async (req, res) => {
 export const all = async (req, res) => {
     try {
         const query = "SELECT user.id, firstName, lastName, birthDate, phone, handicap, avatarName, avatarAlt FROM user";
-        const [documents] = await Query.find(query);
-        if(documents.length){
-            const msg = "Recovery of all documents";
-            res.status(200).json(success(msg, documents));
+        const [users] = await Query.find(query);
+        if(users.length){
+            const msg = "Recovery of all users";
+            res.status(200).json(success(msg, users));
         } else {
-            const msg = "No yet document in database";
+            const msg = "No yet user in database";
             res.status(200).json(success(msg));
         }
     } catch (err) {
@@ -101,8 +101,8 @@ const signin = async (req, res) => {
         const isSame = await compare(password, user.password);        
 
         if(isSame){
-            const TOKEN = jwt.sign({id: user.id}, TOKEN_SECRET, {expiresIn : '60000'} );
-            const { email, lastName, firstName, avatarName } = user;
+            const TOKEN = jwt.sign({id: user.id}, TOKEN_SECRET, {expiresIn : '1h'} );
+            const { email, lastName, firstName, avatarName, isAdmin } = user;
             console.log(TOKEN);
             const msg = "connection successful"
             res.status(200).json(success(msg, {
@@ -110,7 +110,8 @@ const signin = async (req, res) => {
                 email,
                 lastName: lastName,
                 firstName: firstName,
-                avatarName: avatarName
+                avatarName: avatarName,
+                isAdmin: isAdmin,
             }));
         } else {
             const msg = "identification problem";
