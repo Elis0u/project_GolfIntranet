@@ -16,6 +16,14 @@ async function getDatas(url){
     }
 }
 
+async function deleteData(url, id) {
+    try {
+      return await axios.delete(url, { data: { id } });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
 async function signup (datas) {
     try {
         return await axios.post("/user/signup", datas);
@@ -32,4 +40,4 @@ async function signin (datas) {
     }
 }
 
-export {getUserAuth, getDatas, signup, signin};
+export {getUserAuth, getDatas, signup, signin, deleteData};
