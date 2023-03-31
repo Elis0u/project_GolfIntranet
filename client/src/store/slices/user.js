@@ -8,6 +8,7 @@ const userSlice = createSlice({
             lastName: null,
             firstName: null,
             avatarName: null,
+            isAdmin: false,
         },
         isLogged: false,
     },
