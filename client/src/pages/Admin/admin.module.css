@@ -1,0 +1,153 @@
+.adminContainer h2 {
+    width: 20rem;
+    border-bottom: .4rem solid var(--primaryBlue);
+    color: var(--primaryBlue);
+}
+
+.adminContainer {
+  overflow: hidden;
+  font-size: 1.4rem;
+}
+
+.tableWrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 85vh;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    padding: 1rem;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table thead {
+    background-color: var(--secondaryBlue);
+    color: #ffffff;
+  }
+  
+  .table thead tr {
+    border-bottom: 2px solid #ffffff;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }
+
+  .adminNav {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 1rem;
+    padding: 0;
+  }
+  
+  .adminNav li {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .adminNav li:hover {
+    background-color: var(--threadBlue);
+  }
+  
+  .adminNav li.activeNavItem {
+    background-color: var(--threadBlue);
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .btnAction {
+    background: none;
+    border: none;
+    padding: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .btnAction:hover {
+    cursor: pointer;
+  }
+
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 4px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modalContent h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .modalContent p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .modalActions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .modalActions button {
+    background-color: #ccc;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .modalActions button:hover {
+    background-color: #bbb;
+  }
+  
+  .deleteButton {
+    background-color: #f44336;
+    color: #fff;
+  }
+  
+  .deleteButton:hover {
+    background-color: #e53935;
+  }
