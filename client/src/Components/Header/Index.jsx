@@ -11,7 +11,7 @@ import React from "react";
 function Header() {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);
-    console.log("index header console log -> ", user)
+    console.log("index header console log -> ", user.infos)
 
     const navigate = useNavigate();
 
@@ -28,13 +28,13 @@ function Header() {
     };
 
     return (
-        <header>
+        <header className={style.leftHeader}>
 
             <button className={`${style.burger} ${anim ? style.activeBurger : ""}`} onClick={ToggleClass}>
                 <div className={style.ligne}></div>
             </button>
 
-            <nav className={anim ? style.menuActive : ""}>
+            <nav className={` ${anim ? style.menuActive : ""}`}>
                 <div className={style.navHeader}>
                     <h1>Equipe femme</h1>
                     <span>Golf de Granville</span>
@@ -44,7 +44,7 @@ function Header() {
                     <span>{user.infos ? `${user.infos.lastName} ${user.infos.firstName}` : ""}</span>
                     <div className={style.navActions}>
                         <NavLink to="/user">Mon compte</NavLink>
-                        <button onClick={handleSignOut}>Déconnexion</button>
+                        <button className={style.btnSignout} onClick={handleSignOut}>Déconnexion</button>
                     </div>
                 </div>
                 <ul className={style.navList}>
@@ -63,9 +63,13 @@ function Header() {
                     <li>
                         <NavLink to="/poll" className={(navItem) => navItem.isActive ? style.active : ""}>< IoBarChartOutline /> Sondage</NavLink>
                     </li>
+                    {user.infos?.isAdmin ? (
                     <li>
                         <NavLink to="/admin" className={(navItem) => navItem.isActive ? style.active : ""}>< IoHammerOutline /> Admin</NavLink>
                     </li>
+                    )
+                    :
+                    "" }
                 </ul>
 
                 <div className={style.navFooter}>

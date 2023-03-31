@@ -2,9 +2,7 @@
 /* ================= HEADER MOBIL First ================= */
 /* ====================================================== */
 
-
-
-nav {
+.leftHeader nav {
   height: 100vh;
   width: 320px;
   background: var(--primaryBlue);
@@ -17,12 +15,12 @@ nav {
   display: none;
 }
 
-.menuActive {
+.leftHeader .menuActive {
   left: 0;
   display: block;
 }
 
-.burger {
+.leftHeader .burger {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -36,7 +34,7 @@ nav {
   border: none;
 }
 
-.ligne {
+.leftHeader .ligne {
   width: 50%;
   height: 2px;
   position: absolute;
@@ -47,8 +45,8 @@ nav {
   background: #000;
 }
 
-.ligne::after,
-.ligne::before {
+.leftHeader .ligne::after,
+.leftHeader .ligne::before {
   content: "";
   display: block;
   width: 100%;
@@ -59,27 +57,27 @@ nav {
   transition: transform .2s ease-in-out;
 }
 
-.ligne::after {
+.leftHeader .ligne::after {
   top: -8px;
 }
 
-.ligne::before {
+.leftHeader .ligne::before {
   top: 8px;
 }
 
-.activeBurger .ligne::before {
+.leftHeader .activeBurger .ligne::before {
   transform: translateY(-8px) rotate(-45deg)
 }
 
-.activeBurger .ligne::after {
+.leftHeader .activeBurger .ligne::after {
   transform: translateY(8px) rotate(45deg)
 }
 
-.activeBurger .ligne {
+.leftHeader .activeBurger .ligne {
   background: transparent;
 }
 
-.navHeader {
+.leftHeader .navHeader {
   width: 100%;
   height: 80px;
   display: flex;
@@ -90,30 +88,30 @@ nav {
   gap: 1.2rem;
 }
 
-.navHeader span {
+.leftHeader .navHeader span {
   font-size: 1.6rem;
 }
 
-.navProfil {
+.leftHeader .navProfil {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-header .navProfil img {
+.leftHeader .navProfil img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.navProfil span {
+.leftHeader .navProfil span {
   margin: 1rem 0;
   font-size: 2.4rem;
 }
 
-.navActions a {
+.leftHeader .navActions a {
   color: var(--white);
   font-weight: 600;
   margin: 0 1rem;
@@ -121,25 +119,25 @@ header .navProfil img {
   font-size: 1.6rem;
 }
 
-.navList {
+.leftHeader .navList {
   font-size: 2.2rem;
   margin: 6rem 0;
   padding-left: 3.4rem;
   list-style: none;
 }
 
-.navList li {
+.leftHeader .navList li {
   margin: 1.2rem 0;
   font-weight: 500;
   transition: all .2s ease-in-out;
 }
 
-.navList li a {
+.leftHeader .navList li a {
   text-decoration: none;
   color: var(--white);
 }
 
-.navFooter {
+.leftHeader .navFooter {
   position: absolute;
   bottom: 1rem;
   left: 50%;
@@ -147,14 +145,26 @@ header .navProfil img {
   font-size: 1.4rem;
 }
 
-.navFooter a {
+.leftHeader .navFooter a {
   color: var(--threadBlue);
   text-decoration: none;
 }
 
-.navList a.active {
+.leftHeader .navList a.active {
   color: var(--threadBlue);
   border-bottom: 1px solid var(--threadBlue);
+}
+
+.leftHeader .btnSignout {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.6rem;
+}
+
+.leftHeader .btnSignout:hover {
+  color: var(--threadBlue);
+  cursor: pointer;
 }
 
 
@@ -167,20 +177,20 @@ header .navProfil img {
 /* ====================================================== */
 
 @media screen and (min-width:1024px) {
-  nav {
+  .leftHeader nav {
     left: 0;
     display: block;
   }
 
-  .burger {
+  .leftHeader .burger {
     display: none;
   }
 
-  .navList li:hover {
+  .leftHeader .navList li:hover {
     transform: translateX(1.6rem);
   }
 
-  .navActions a:hover {
+  .leftHeader .navActions a:hover {
     color: var(--threadBlue);
   }
 }
