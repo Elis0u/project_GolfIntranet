@@ -5,6 +5,7 @@ import { signup, signin } from "../../services/api.js"
 import { useDispatch } from "react-redux";
 import { signIn } from "../../store/slices/user";
 import style from "./signForm.module.css";
+import { IoGolfOutline } from "react-icons/io5";
 
 function SignForm() {
     const { state } = useLocation();
@@ -49,13 +50,15 @@ function SignForm() {
                 email: res.data.result.email,
                 lastName: res.data.result.lastName,
                 firstName: res.data.result.firstName,
-                avatarName: res.data.result.avatarName
+                avatarName: res.data.result.avatarName,
+                isAdmin: res.data.result.isAdmin
             }));
             dispatch(signIn({
                 email: res.data.result.email,
                 lastName: res.data.result.lastName,
                 firstName: res.data.result.firstName,
-                avatarName: res.data.result.avatarName
+                avatarName: res.data.result.avatarName,
+                isAdmin: res.data.result.isAdmin
             }));
             navigate("/");
 
@@ -99,9 +102,9 @@ function SignForm() {
     return (
         <>
             {type === "se connecter" ? (
-                <h2>Connexion</h2>
+                <h2><IoGolfOutline /> Connexion</h2>
             ) : (
-                <h2>Inscription</h2>
+                <h2><IoGolfOutline /> Inscription</h2>
             )}
 
             <form className={style.signForm} onSubmit={handleSubmit}>
