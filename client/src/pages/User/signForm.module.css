@@ -6,6 +6,10 @@
   overflow: hidden;
 }
 
+.entryContainer h2 {
+  margin-bottom: 2rem;
+}
+
 .signFormContainer {
   display: flex;
   justify-content: center;
