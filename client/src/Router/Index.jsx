@@ -4,6 +4,7 @@ import Documents from "../pages/Documents/Index";
 import Team from "../pages/Team/Index";
 import Calendar from "../pages/Events/Index";
 import Entry from "../pages/User/Index";
+import Admin from "../pages/Admin/Index";
 import HOCAuth from "../helpers/HOC/Auth";
 
 function Router() {
@@ -14,12 +15,7 @@ function Router() {
             <Route path="/team" element={<HOCAuth child={Team} auth />} />
             <Route path="/event" element={<HOCAuth child={Calendar} auth />} />
             <Route path="/entry" element={<Entry />} />
-            {/* 
-            <Route path="/tea/:id" element={<SingleTea />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/entry" element={<Entry />} />
-            <Route path="/dashboard" element={<HOC child={Dashboard} auth={true}/>} /> */}
-            
+            <Route path="/admin" element={<Admin />} />         
         </Routes>
     );
 }
