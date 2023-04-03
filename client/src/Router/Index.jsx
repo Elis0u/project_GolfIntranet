@@ -15,7 +15,7 @@ function Router() {
             <Route path="/team" element={<HOCAuth child={Team} auth />} />
             <Route path="/event" element={<HOCAuth child={Calendar} auth />} />
             <Route path="/entry" element={<Entry />} />
-            <Route path="/admin" element={<Admin />} />         
+            <Route path="/admin" element={<HOCAuth child={Admin} auth />} />         
         </Routes>
     );
 }
