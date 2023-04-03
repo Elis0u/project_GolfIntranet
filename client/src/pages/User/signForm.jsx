@@ -47,6 +47,7 @@ function SignForm() {
             const res = await signin(inputs);
             localStorage.setItem("auth", res.data.result.TOKEN);
             localStorage.setItem("user", JSON.stringify({
+                id: res.data.result.id,
                 email: res.data.result.email,
                 lastName: res.data.result.lastName,
                 firstName: res.data.result.firstName,
@@ -54,6 +55,7 @@ function SignForm() {
                 isAdmin: res.data.result.isAdmin
             }));
             dispatch(signIn({
+                id: res.data.result.id,
                 email: res.data.result.email,
                 lastName: res.data.result.lastName,
                 firstName: res.data.result.firstName,
