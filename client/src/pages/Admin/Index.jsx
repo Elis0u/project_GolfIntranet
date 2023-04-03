@@ -3,15 +3,20 @@ import style from "./admin.module.css";
 import DataTable from './Components/DataTable';
 import { getDatas, deleteData } from '../../services/api.js';
 import Modal from 'react-modal';
+import DynamicForm from './Components/Form';
 
-Modal.setAppElement('#root'); // Remplacez '#root' par l'ID de l'élément racine de votre application
+Modal.setAppElement('#root');
 
 function Admin() {
   const [data, setData] = useState(null);
   const [columns, setColumns] = useState(null);
   const [activeNavItem, setActiveNavItem] = useState({ name: 'Documents', url: '/documents' });
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [viewModalIsOpen, setViewModalIsOpen] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
+  const [formModalIsOpen, setFormModalIsOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [initialData, setInitialData] = useState(null);
 
   const navigationItems = [
     { name: 'Documents', url: '/documents' },
@@ -26,7 +31,6 @@ function Admin() {
       const response = await getDatas(activeNavItem.url);
       setData(response.data.result);
 
-      // Créer les colonnes à partir du premier objet du tableau
       if (response.data.result.length > 0) {
         const firstObject = response.data.result[0];
         const newColumns = Object.keys(firstObject).map((key) => ({ key, header: key.toUpperCase() }));
@@ -46,11 +50,13 @@ function Admin() {
   };
 
   const handleView = (data) => {
-    console.log('View:', data);
+    openViewModal(data);
   };
 
   const handleUpdate = (data) => {
-    console.log('Update:', data);
+    setInitialData(data);
+    setIsEditMode(true);
+    openFormModal();
   };
 
   const openModal = (data) => {
@@ -63,6 +69,26 @@ function Admin() {
     setModalIsOpen(false);
   };
 
+  const openViewModal = (data) => {
+    setSelectedData(data);
+    setViewModalIsOpen(true);
+  };
+
+  const closeViewModal = () => {
+    setSelectedData(null);
+    setViewModalIsOpen(false);
+  };
+
+  const openFormModal = () => {
+    setFormModalIsOpen(true);
+  };
+
+  const closeFormModal = () => {
+    setIsEditMode(false);
+    setInitialData(null);
+    setFormModalIsOpen(false);
+  };
+
   const handleDelete = async () => {
     try {
       await deleteData(activeNavItem.url, selectedData.id);
@@ -71,6 +97,11 @@ function Admin() {
     } catch (error) {
       console.error('Error deleting data:', error);
     }
+  };
+
+  const handleFormSubmitSuccess = () => {
+    fetchData();
+    closeFormModal();
   };
 
   return (
@@ -85,6 +116,7 @@ function Admin() {
           ))}
         </ul>
       </nav>
+      <button onClick={openFormModal} className={style.addButton}>Ajouter un élément</button>
       {columns && data && <DataTable
         columns={columns}
         data={data}
@@ -92,6 +124,7 @@ function Admin() {
         onUpdate={handleUpdate}
         onDelete={openModal}
       />}
+      {/* MODAL REMOVE ELEMENT */}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -104,6 +137,43 @@ function Admin() {
         <div className={style.modalActions}>
           <button onClick={closeModal}>Annuler</button>
           <button onClick={handleDelete} className={style.deleteButton}>Supprimer</button>
+        </div>
+      </Modal>
+      {/* MODAL VIEW ELEMENT */}
+      <Modal
+        isOpen={viewModalIsOpen}
+        onRequestClose={closeViewModal}
+        contentLabel="Visualisation de l'élément"
+        className={style.modalContentView}
+        overlayClassName={style.modalOverlay}
+      >
+
+        {selectedData && (
+          <section>
+            <h2>Détail de l'élément</h2>
+            {Object.entries(selectedData).map(([key, value], index) => (
+              <>
+                <p key={index}>
+                  <strong>{key}:</strong> {value}
+                </p>
+              </>
+
+            ))}
+          </section>
+        )}
+        <button onClick={closeViewModal}>Fermer</button>
+      </Modal>
+      {/* MODAL UPDATE ELEMENT */}
+      <Modal
+        isOpen={formModalIsOpen}
+        onRequestClose={closeFormModal}
+        contentLabel="Ajouter un élément"
+        className={style.modalContentForm}
+        overlayClassName={style.modalOverlay}
+      >
+        <DynamicForm activeNavItem={activeNavItem} isEditMode={isEditMode} initialData={initialData} onSubmitSuccess={handleFormSubmitSuccess} />
+        <div className={style.modalActions}>
+          <button onClick={closeFormModal}>Annuler</button>
         </div>
       </Modal>
     </main>
