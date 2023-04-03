@@ -54,18 +54,18 @@ export const one = async (req, res) => {
 
 // Update
 export const update = async (req, res) => {
-    try {
-      const query = "UPDATE document SET title = ?, content = ?, updatedAt = NOW(), category_id = ? WHERE id = ?";
-      const [result] = await Query.write(query, [req.body.title, req.body.content, req.body.categoryId, req.body.id]);
-  
-      if (result.affectedRows) {
-        const msg = "Document updated";
-        res.json(success(msg));
-      } else throw Error("Document couldn't be updated, probably syntax error in object");
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  };
+  try {
+    const query = "UPDATE document SET title = ?, content = ?, updatedAt = NOW(), category_id = ? WHERE id = ?";
+    const [result] = await Query.write(query, [req.body.title, req.body.content, req.body.categoryId, req.body.id]);
+
+    if (result.affectedRows) {
+      const msg = "Document updated";
+      res.json(success(msg));
+    } else throw Error("Document couldn't be updated, probably syntax error in object");
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 // Delete
 export const remove = async (req,res) => {
