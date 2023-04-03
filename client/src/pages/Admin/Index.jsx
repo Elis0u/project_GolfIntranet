@@ -157,7 +157,6 @@ function Admin() {
                   <strong>{key}:</strong> {value}
                 </p>
               </>
-
             ))}
           </section>
         )}
