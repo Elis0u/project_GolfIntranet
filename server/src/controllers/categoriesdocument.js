@@ -2,18 +2,22 @@ import { success } from "../helpers/index.js";
 import Query from "../model/query.js";
 
 // Create
-export const add = async (req,res) => {
+export const add = async (req, res) => {
     try {
         const query = "INSERT INTO categorydocument (label) VALUES (?)";
-        const result = await Query.write(query, req.body);
+        const [result] = await Query.write(query, req.body);
         
         if(result.affectedRows){
             const msg = "Document category added";
             res.json(success(msg, result));
-        } else throw Error("Document category couldn't be added, probably syntax error in object");
+        } else {
+            const msg = "Document category couldn't be added, probably syntax error in object";
+            res.status(400).json({ error: msg });
+        }
 
     } catch (err) {
-        throw Error(err);
+        console.error(err);
+        res.status(500).json({ error: 'An error occurred while processing your request.' });
     }
 }
 

@@ -5,7 +5,7 @@ import Query from "../model/query.js";
 export const add = async (req,res) => {
     try {
         const query = "INSERT INTO categoryevent (label) VALUES (?)";
-        const result = await Query.write(query, req.body);
+        const [result] = await Query.write(query, req.body);
         
         if(result.affectedRows){
             const msg = "Event category added";
