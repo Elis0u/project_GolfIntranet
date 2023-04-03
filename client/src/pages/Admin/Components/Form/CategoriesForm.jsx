@@ -6,10 +6,10 @@ function CategoriesForm({ isEditMode = false, initialData, onSubmitSuccess, url 
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const [inputs, setInputs] = useState({
-    title: isEditMode && initialData ? initialData.title : '',
+    label: isEditMode && initialData ? initialData.label : '',
   });
 
-  const { title } = inputs;
+  const { label } = inputs;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +32,7 @@ function CategoriesForm({ isEditMode = false, initialData, onSubmitSuccess, url 
   
     try {
       const formData = {
-        title,
+        label,
       };
   
       if (isEditMode && initialData) {
@@ -62,12 +62,12 @@ function CategoriesForm({ isEditMode = false, initialData, onSubmitSuccess, url 
       )}
       <form className={style.addForm} onSubmit={handleSubmit}>
         <div className={style.inputGroup}>
-          <label htmlFor="title" className={style.addForm_label}>Title</label>
+          <label htmlFor="label" className={style.addForm_label}>Label</label>
           <input
             type="text"
-            name="title"
-            id="title"
-            value={title}
+            name="label"
+            id="label"
+            value={label}
             className={style.addForm_input}
             onChange={handleInputChange}
             onFocus={handleFocus}
