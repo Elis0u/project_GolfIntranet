@@ -1,0 +1,72 @@
+.addForm .addForm_label.active {
+    top: -2rem;
+    left: 0;
+    color: var(--threadBlue);
+    font-size: 1.4rem;
+  }
+  
+  .addForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .addForm .addForm_input {
+    width: 100%;
+    min-width: 320px;
+    padding: 1rem 0;
+    font-size: 1.6rem;
+    color: var(--primaryBlue);
+    margin-bottom: 3rem;
+    border: none;
+    border-bottom: .2rem solid var(--primaryBlue);
+    outline: none;
+    background: transparent;
+  }
+  
+  .addForm .inputGroup {
+    position: relative;
+  }
+  
+  .addForm .addForm_label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--primaryBlue);
+    pointer-events: none;
+    transition: .5s;
+  }
+  
+  .addForm .submitButton {
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: var(--threadBlue); 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    outline: none;
+  }
+  
+  .addForm .submitButton:hover {
+    background-color: var(--secondaryBlue);
+  }
+
+  .addForm .hiddenOption {
+    display: none;
+  }
+
+  .successMessage {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.6rem;
+    color: #ffffff;
+    background-color: #4caf50;
+    border-radius: .4rem;
+  }
