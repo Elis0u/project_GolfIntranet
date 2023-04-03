@@ -4,7 +4,7 @@ async function getUserAuth(url, TOKEN){
     try{
         return await axios.get(url, {headers: {"x-access-token" : TOKEN}});
     } catch(error) {
-        return error
+        throw new Error(error)
     }
 }
 
@@ -14,6 +14,23 @@ async function getDatas(url){
     } catch(error) {
         throw new Error(error)
     }
+}
+
+async function addData(url, data) {
+  try {
+    return await axios.post(url, data);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+async function editData(url, elementData) {
+  try {
+    const response = await axios.put(url, elementData);
+    return response;
+  } catch (error) {
+    throw new Error(`Error editing element: ${error}`);
+  }
 }
 
 async function deleteData(url, id) {
@@ -40,4 +57,6 @@ async function signin (datas) {
     }
 }
 
-export {getUserAuth, getDatas, signup, signin, deleteData};
+
+
+export {getUserAuth, getDatas, signup, signin, deleteData, addData, editData};
