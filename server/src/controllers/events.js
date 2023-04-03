@@ -55,7 +55,7 @@ export const one = async (req, res) => {
 export const update = async (req,res) => {
     try {
         const query = "UPDATE event SET title = ?, location = ?, startEvent = ?, endEvent = ?, category_id = ? WHERE id = ?";
-        const [result] = await Query.write(query, req.body);
+        const [result] = await Query.write(query, [req.body.title, req.body.location, req.body.startEvent, req.body.endEvent, req.body.categoryId, req.body.id]);
 
         if(result.affectedRows){
             const msg = "Event updated";
