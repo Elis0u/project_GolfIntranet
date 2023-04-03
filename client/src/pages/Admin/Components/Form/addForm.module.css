@@ -70,3 +70,7 @@
     background-color: #4caf50;
     border-radius: .4rem;
   }
+
+  .addForm .dateTime {
+    top: -2rem;
+  }
