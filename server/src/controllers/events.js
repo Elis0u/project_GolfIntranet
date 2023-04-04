@@ -20,7 +20,7 @@ export const add_event = async (req,res) => {
 // Read
 export const all = async (req, res) => {
     try {
-        const query = "SELECT event.id, title, location, startEvent, endEvent, createdAt, category_id, user_id FROM event";
+        const query = "SELECT event.id, title, location, startEvent, endEvent, createdAt, category_id, label, user_id FROM event JOIN categoryevent ON category_id = categoryevent.id";
         const [events] = await Query.find(query);
         if(events.length){
             const msg = "Recovery of all events";
