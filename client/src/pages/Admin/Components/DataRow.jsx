@@ -14,10 +14,10 @@ const formatDate = (dateString) => {
   return `${formattedDate} ${formattedTime}`;
 };
 
-const DataRow = ({ data, onView, onUpdate, onDelete }) => (
+const DataRow = ({ data, onView, onUpdate, onDelete, onToggleIsConfirmed }) => (
   <tr>
     {Object.entries(data)
-      .filter(([key]) => key !== 'user_id' && key !== 'category_id') // Filtrez user_id et category_id
+      .filter(([key]) => key !== 'user_id' && key !== 'category_id')
       .map(([key, value], index) => {
         let displayValue;
 
@@ -30,7 +30,18 @@ const DataRow = ({ data, onView, onUpdate, onDelete }) => (
         } else {
           displayValue = value;
         }
-        return <td key={index}>{displayValue}</td>;
+
+        if (key === 'isConfirmed') {
+          return (
+            <td key={index}>
+              <button onClick={onToggleIsConfirmed}>
+                {value === 0 ? "Non confirmé" : "Confirmé"}
+              </button>
+            </td>
+          );
+        } else {
+          return <td key={index}>{displayValue}</td>;
+        }
       })}
     <td className={style.btnsActions}>
       <button className={style.btnAction} onClick={onView}><IoEyeOutline /></button>
