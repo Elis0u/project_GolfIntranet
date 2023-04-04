@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { addData, editData, getDatas } from '../../../../services/api.js';
 import style from "./addForm.module.css";
 import DateTime from 'react-datetime';
+import moment from 'moment';
 import 'react-datetime/css/react-datetime.css';
 
 function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
@@ -51,10 +52,12 @@ function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
     };
 
     const handleDateTimeChange = (type, momentObj) => {
+        const localOffset = moment().utcOffset();
+        const offsetMomentObj = momentObj.utcOffset(localOffset);
         if (type === 'start') {
-            setStartDateTime(momentObj);
+            setStartDateTime(offsetMomentObj);
         } else if (type === 'end') {
-            setEndDateTime(momentObj);
+            setEndDateTime(offsetMomentObj);
         }
     };
 
@@ -65,8 +68,8 @@ function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
             const formData = {
                 title,
                 location,
-                startEvent: startDateTime && startDateTime.toISOString ? startDateTime.toISOString() : '',
-                endEvent: endDateTime && endDateTime.toISOString ? endDateTime.toISOString() : '',
+                startEvent: startDateTime ? startDateTime.format('YYYY-MM-DDTHH:mm:ssZ') : '',
+                endEvent: endDateTime ? endDateTime.format('YYYY-MM-DDTHH:mm:ssZ') : '',
                 categoryId,
                 userId,
             };
