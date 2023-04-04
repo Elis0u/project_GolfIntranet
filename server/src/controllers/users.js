@@ -27,7 +27,7 @@ const checkToken = async (req, res) => {
 
 export const all = async (req, res) => {
     try {
-        const query = "SELECT user.id, firstName, lastName, birthDate, phone, handicap, avatarName, avatarAlt FROM user";
+        const query = "SELECT user.id, firstName, lastName, birthDate, phone, handicap, avatarName, avatarAlt, isConfirmed, isAdmin FROM user";
         const [users] = await Query.find(query);
         if(users.length){
             const msg = "Recovery of all users";
@@ -36,6 +36,22 @@ export const all = async (req, res) => {
             const msg = "No yet user in database";
             res.status(200).json(success(msg));
         }
+    } catch (err) {
+        throw Error(err);
+    }
+}
+
+export const update_isConfirmed = async (req,res) => {
+    try {
+        const query = "UPDATE user SET isConfirmed = ? WHERE id = ?";
+        const [result] = await Query.write(query, [req.body.isConfirmed, req.body.id]);
+
+        if(result.affectedRows){
+            const msg = "User confirme updated";
+            res.json(success(msg));
+
+        } else throw Error("User confirme couldn't be updated, probably syntax error in object");
+        
     } catch (err) {
         throw Error(err);
     }
