@@ -49,6 +49,11 @@ function Admin() {
     setActiveNavItem(navItem);
   };
 
+  const handleDataUpdated = (updatedData) => {
+    const newData = data.map((row) => (row.id === updatedData.id ? updatedData : row));
+    setData(newData);
+  };
+
   const handleView = (data) => {
     openViewModal(data);
   };
@@ -123,6 +128,7 @@ function Admin() {
         onView={handleView}
         onUpdate={handleUpdate}
         onDelete={openModal}
+        onDataUpdated={handleDataUpdated}
       />}
       {/* MODAL REMOVE ELEMENT */}
       <Modal
