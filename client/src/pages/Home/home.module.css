@@ -50,3 +50,13 @@
     grid-row: 4;
 }
 
+.activitiesList {
+    list-style-type: none;
+    font-size: 1.6rem;
+}
+
+.activityItem {
+    margin: 1rem;
+    border-bottom : 1px solid white;
+}
+
