@@ -26,6 +26,27 @@ const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated })
     }
   };
 
+  const handleToggleIsAdmin = async (row) => {
+    console.log("clique sur isAdmin");
+  
+    const updatedRow = {
+      ...row,
+      isAdmin: row.isAdmin === 0 ? 1 : 0, // Inversez la valeur de isAdmin
+    };
+  
+    try {
+      // Mettez à jour la donnée avec la nouvelle valeur de isAdmin
+      await editData("/user/update_isAdmin", updatedRow);
+  
+      // Rechargez les données ou mettez à jour l'état pour refléter les modifications
+      if (onDataUpdated) {
+        onDataUpdated(updatedRow);
+      }
+    } catch (error) {
+      console.error("Error updating isAdmin:", error);
+    }
+  };
+
   return (
     <div className={style.tableWrapper}>
       <table className={style.table}>
@@ -47,7 +68,8 @@ const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated })
               onView={() => onView(row)}
               onUpdate={() => onUpdate(row)}
               onDelete={() => onDelete(row)}
-              onToggleIsConfirmed={() => handleToggleIsConfirmed(row)} // Ajoutez cette ligne
+              onToggleIsConfirmed={() => handleToggleIsConfirmed(row)}
+              onToggleIsAdmin={() => handleToggleIsAdmin(row)}
             />
           ))}
         </tbody>

@@ -14,7 +14,7 @@ const formatDate = (dateString) => {
   return `${formattedDate} ${formattedTime}`;
 };
 
-const DataRow = ({ data, onView, onUpdate, onDelete, onToggleIsConfirmed }) => (
+const DataRow = ({ data, onView, onUpdate, onDelete, onToggleIsConfirmed, onToggleIsAdmin }) => (
   <tr>
     {Object.entries(data)
       .filter(([key]) => key !== 'user_id' && key !== 'category_id')
@@ -36,6 +36,14 @@ const DataRow = ({ data, onView, onUpdate, onDelete, onToggleIsConfirmed }) => (
             <td key={index}>
               <button onClick={onToggleIsConfirmed}>
                 {value === 0 ? "Non confirmé" : "Confirmé"}
+              </button>
+            </td>
+          );
+        } else if (key === 'isAdmin') {
+          return (
+            <td key={index}>
+              <button onClick={() => onToggleIsAdmin(data.id, value)}>
+                {value === 0 ? "Non-admin" : "Admin"}
               </button>
             </td>
           );
