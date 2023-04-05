@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { IoLocationOutline } from "react-icons/io5";
 
-const Weather = ({ city }) => {
+function Weather({ city }){
   const [weatherData, setWeatherData] = useState(null);
-  const apiKey = 'be7041f0a0d10cef4c77674fa2869461';
+  const apiKey = 'API';
 
   const translations = {
     'Clouds': 'Nuages',
@@ -15,7 +15,7 @@ const Weather = ({ city }) => {
     'Thunderstorm' : 'Orage'
   };
 
-  const weatherMain = translations[weatherData.weather[0].main] || weatherData.weather[0].main;
+
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -29,7 +29,7 @@ const Weather = ({ city }) => {
 
     fetchWeather();
   }, [city]);
-
+  
   return (
     <div>
       {weatherData ? (
@@ -39,7 +39,7 @@ const Weather = ({ city }) => {
           <p>Humidité : {weatherData.main.humidity} %</p>
           <p>Vent : {weatherData.wind.speed}m/s</p>
           <p>
-            {weatherMain} - {weatherData.weather[0].description}
+            {translations[weatherData.weather[0].main] || weatherData.weather[0].main} - {weatherData.weather[0].description}
           </p>
         </>
       ) : (
