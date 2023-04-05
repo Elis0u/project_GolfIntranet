@@ -12,9 +12,12 @@
     border-radius: 1.4rem;
 }
 
-.ctnEvent h2, .ctnPoll h2 {
+/* .ctnEvent h2, .ctnPoll h2 {
     border-bottom: .4rem solid var(--primaryBlue);
+} */
 
+.whiteTitle {
+    color: var(--white);
 }
 
 .ctnWeather {
