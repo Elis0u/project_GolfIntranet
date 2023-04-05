@@ -1,5 +1,6 @@
 import { AiOutlinePushpin } from "react-icons/ai";
 import style from "./home.module.css";
+import Weather from './Components/Weather';
 
 function Home() {
 
@@ -7,15 +8,16 @@ function Home() {
 		<main className={style.wrapper}>		
 			
       <section className={style.ctnWeather}>
-        <h2>Météo</h2>
+        <h2 className={style.whiteTitle}>Météo</h2>
+        <Weather city="Bréville-sur-Mer" />
       </section>
 
       <section className={style.ctnPin}>
-        <h2>< AiOutlinePushpin /> Prochain entraînement</h2>
+        <h2 className={style.whiteTitle}>< AiOutlinePushpin /> Prochain entraînement</h2>
       </section>
 
       <section className={style.ctnNews}>
-        <h2>Dernieres actus</h2>
+        <h2 className={style.whiteTitle}>Dernieres actus</h2>
       </section>
 
       <section className={style.ctnEvent}>
@@ -23,7 +25,7 @@ function Home() {
       </section>
 
       <section className={style.ctnChat}>
-        <h2>CHAT</h2>
+        <h2 className={style.whiteTitle}>CHAT</h2>
       </section>
 
       <section className={style.ctnPoll}>
