@@ -57,6 +57,23 @@ export const update_isConfirmed = async (req,res) => {
     }
 }
 
+export const update_isAdmin = async (req,res) => {
+    try {
+        const query = "UPDATE user SET isAdmin = ? WHERE id = ?";
+        const [result] = await Query.write(query, [req.body.isAdmin, req.body.id]);
+
+        if(result.affectedRows){
+            const msg = "User admin updated";
+            res.json(success(msg));
+
+        } else throw Error("User admin couldn't be updated, probably syntax error in object");
+        
+    } catch (err) {
+        throw Error(err);
+    }
+}
+
+
 // const one = async (req, res) => {
 //     try {
 //         const query = "SELECT email, isAdmin FROM user WHERE id = ?";
