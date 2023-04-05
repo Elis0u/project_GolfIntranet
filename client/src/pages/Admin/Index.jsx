@@ -158,11 +158,9 @@ function Admin() {
           <section>
             <h2>Détail de l'élément</h2>
             {Object.entries(selectedData).map(([key, value], index) => (
-              <>
                 <p key={index}>
                   <strong>{key}:</strong> {value}
                 </p>
-              </>
             ))}
           </section>
         )}
