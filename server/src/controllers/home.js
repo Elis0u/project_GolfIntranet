@@ -16,3 +16,35 @@ export const lastActivities = async (req, res) => {
         throw Error(err);
     }
 }
+
+export const nextEvent = async(req, res) => {
+    try {
+        const query = "SELECT event.id, title, location, startEvent, endEvent FROM event WHERE category_id = 1 AND endEvent >= CURRENT_DATE ORDER BY endEvent ASC LIMIT 1";
+        const [nextEvent] = await Query.find(query);
+        if(nextEvent.length){
+            const msg = "Recovery next event where category is training";
+            res.status(200).json(success(msg, nextEvent));
+        }else {
+            const msg = "No yet event";
+            res.status(200).json(success(msg))
+        }
+    } catch(err) {
+        throw Error(err)
+    }
+}
+
+export const fourEvents = async(req, res) => {
+    try {
+        const query = "SELECT event.id, title, location, startEvent, endEvent, label FROM event JOIN categoryevent ON category_id = categoryevent.id ORDER BY createdAt DESC LIMIT 4";
+        const [nextEvent] = await Query.find(query);
+        if(nextEvent.length){
+            const msg = "Recovery five event ";
+            res.status(200).json(success(msg, nextEvent));
+        }else {
+            const msg = "No yet event";
+            res.status(200).json(success(msg))
+        }
+    } catch(err) {
+        throw Error(err)
+    }
+}
