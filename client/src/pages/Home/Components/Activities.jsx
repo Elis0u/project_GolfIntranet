@@ -31,14 +31,12 @@ function Activities() {
     };
 
     return (
-        <>
-          {activities ? (
-            <ul className={style.activitiesList}>
-              {activities.map((a) => renderActivity(a))}
-            </ul>
-          ) : null}
-        </>
-      );
+        <ul className={style.activitiesList}>
+            {activities ? (
+                 activities.map((a) => renderActivity(a)) 
+            ) : null}
+        </ul>
+    );
 }
 
 export default Activities;
