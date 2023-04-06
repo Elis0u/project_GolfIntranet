@@ -9,7 +9,6 @@ function Activities() {
         async function fetchData() {
             try {
                 const activities = await getDatas('/home/lastActivities');
-                console.log('activité : ', activities.data.result);
                 setActivities(activities.data.result);
             } catch (error) { }
         }
