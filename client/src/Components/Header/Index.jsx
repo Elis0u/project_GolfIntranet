@@ -2,7 +2,7 @@ import { useState } from "react";
 import {  NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { IoHomeOutline, IoPeopleOutline, IoCalendarOutline, IoFolderOpenOutline, IoBarChartOutline, IoHammerOutline } from "react-icons/io5";
+import { IoHomeOutline, IoPeopleOutline, IoCalendarOutline, IoFolderOpenOutline, IoHammerOutline } from "react-icons/io5";
 // import logo from "../../assets/img/autres/logo.png";
 import style from "./header.module.css";
 import { signOut } from "../../store/slices/user";
@@ -59,9 +59,6 @@ function Header() {
                     </li>
                     <li>
                         <NavLink to="/documents" className={(navItem) => navItem.isActive ? style.active : ""}>< IoFolderOpenOutline /> Documents</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/poll" className={(navItem) => navItem.isActive ? style.active : ""}>< IoBarChartOutline /> Sondage</NavLink>
                     </li>
                     {user.infos?.isAdmin ? (
                     <li>
