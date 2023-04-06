@@ -38,16 +38,9 @@
 .ctnEvent {
     grid-column: 1/3;
     grid-row: 2/5;
-}
-
-.ctnChat {
-    grid-column: 3/5;
-    grid-row: 2/4;
-}
-
-.ctnPoll {
-    grid-column: 3/5;
-    grid-row: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .activitiesList {
@@ -60,3 +53,15 @@
     border-bottom : 1px solid white;
 }
 
+.events {
+    color: var(--secondaryBlue);
+    border: .1rem solid var(--secondaryBlue);
+    border-radius: 1.4rem;
+    padding: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px .5rem 1.5rem;
+}
+
+.location {
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
