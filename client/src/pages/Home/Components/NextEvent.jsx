@@ -12,7 +12,6 @@ function NextEvent() {
         async function fetchData() {
             try {
                 const nextEvent = await getDatas('/home/nextEvent');
-                console.log('next event : ', nextEvent.data.result);
                 setNextEvent(nextEvent.data.result);
             } catch (error) {
                 throw Error(error)
@@ -37,11 +36,11 @@ function NextEvent() {
         <>
             {nextEvent ? (
                 nextEvent.map((e) =>
-                    <>
+                    <React.Fragment  key={e.id}>
                         <p><IoGolfOutline /> {e.title}</p>
                         <p><IoLocationOutline /> {e.location}</p>
                         <p><AiOutlineClockCircle /> {formatDateAndTime(e.startEvent, e.endEvent)}</p>
-                    </>
+                    </React.Fragment>
                 )
             ) : <p>Aucun evenement à venir</p>}
         </>

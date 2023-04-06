@@ -35,7 +35,7 @@ function Event() {
         <>
             {events ? (
                 events.map((e) =>
-                    <article className={style.events}>
+                    <article key={e.id} className={style.events}>
                         <h3><IoGolfOutline /> {e.title} ({e.label})</h3>
                         <p className={style.location}><IoLocationOutline /> {e.location} - {formatDateAndTime(e.startEvent, e.endEvent)}</p>
                     </article>
