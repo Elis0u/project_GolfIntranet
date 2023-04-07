@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { IoHomeOutline, IoPeopleOutline, IoCalendarOutline, IoFolderOpenOutline, IoHammerOutline } from "react-icons/io5";
@@ -35,10 +35,12 @@ function Header() {
             </button>
 
             <nav className={` ${anim ? style.menuActive : ""}`}>
+
                 <div className={style.navHeader}>
                     <h1>Equipe femme</h1>
                     <span>Golf de Granville</span>
                 </div>
+
                 <div className={style.navProfil}>
                     <img src={`/img/avatar_user/${user.infos && user.infos.avatarName ? user.infos.avatarName : "default.jpg"}`} alt="" />
                     <span>{user.infos ? `${user.infos.lastName} ${user.infos.firstName}` : ""}</span>
@@ -47,6 +49,7 @@ function Header() {
                         <button className={style.btnSignout} onClick={handleSignOut}>Déconnexion</button>
                     </div>
                 </div>
+                
                 <ul className={style.navList}>
                     <li>
                         <NavLink to="/" className={(navItem) => navItem.isActive ? style.active : ""}>< IoHomeOutline /> Accueil</NavLink>
@@ -61,17 +64,17 @@ function Header() {
                         <NavLink to="/documents" className={(navItem) => navItem.isActive ? style.active : ""}>< IoFolderOpenOutline /> Documents</NavLink>
                     </li>
                     {user.infos?.isAdmin ? (
-                    <li>
-                        <NavLink to="/admin" className={(navItem) => navItem.isActive ? style.active : ""}>< IoHammerOutline /> Admin</NavLink>
-                    </li>
+                        <li>
+                            <NavLink to="/admin" className={(navItem) => navItem.isActive ? style.active : ""}>< IoHammerOutline /> Admin</NavLink>
+                        </li>
                     )
-                    :
-                    "" }
+                        :
+                        ""}
                 </ul>
 
-                <div className={style.navFooter}>
-                    <p>Développé par <a href="https://github.com/Elis0u">Elis0u</a></p>
-                </div>
+
+                <p className={style.navFooter}>Développé par <a href="https://github.com/Elis0u">Elis0u</a></p>
+
             </nav>
 
         </header>
