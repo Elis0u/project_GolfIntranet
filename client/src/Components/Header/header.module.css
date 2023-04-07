@@ -3,7 +3,8 @@
 /* ====================================================== */
 
 .leftHeader nav {
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
   width: 320px;
   background: var(--primaryBlue);
   color: var(--white);
@@ -13,6 +14,7 @@
   left: -320px;
   padding-top: 2rem;
   display: none;
+  overflow-y: auto;
 }
 
 .leftHeader .menuActive {
@@ -84,7 +86,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 4rem 0 2rem 0;
+  margin: 2rem 0 2rem 0;
   gap: 1.2rem;
 }
 
