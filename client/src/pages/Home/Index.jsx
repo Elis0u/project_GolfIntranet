@@ -21,7 +21,7 @@ function Home() {
       </section>
 
       <section className={style.ctnNews}>
-        <h2 className={style.whiteTitle}>Dernieres actus</h2>
+        <h2 className={style.whiteTitle}>Dernieres actualités</h2>
         <Activities />
       </section>
 
@@ -29,14 +29,6 @@ function Home() {
         <h2>Prochains évènements</h2>
         <Event />
       </section>
-
-      {/* <section className={style.ctnChat}>
-        <h2 className={style.whiteTitle}>CHAT</h2>
-      </section>
-
-      <section className={style.ctnPoll}>
-        <h2>Sondages</h2>
-      </section> */}
 	
 		</main>
     )
