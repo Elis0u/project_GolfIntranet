@@ -121,7 +121,11 @@ function Admin() {
           ))}
         </ul>
       </nav>
-      <button onClick={openFormModal} className={style.addButton}>Ajouter un élément</button>
+      {activeNavItem.name !== 'Utilisateurs' && (
+        <button onClick={openFormModal} className={style.addButton}>
+          Ajouter un élément
+        </button>
+      )}
       {columns && data && <DataTable
         columns={columns}
         data={data}
@@ -158,9 +162,9 @@ function Admin() {
           <section>
             <h2>Détail de l'élément</h2>
             {Object.entries(selectedData).map(([key, value], index) => (
-                <p key={index}>
-                  <strong>{key}:</strong> {value}
-                </p>
+              <p key={index}>
+                <strong>{key}:</strong> {value}
+              </p>
             ))}
           </section>
         )}
