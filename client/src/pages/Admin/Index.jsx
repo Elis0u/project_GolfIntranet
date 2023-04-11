@@ -4,6 +4,9 @@ import DataTable from './Components/DataTable';
 import { getDatas, deleteData } from '../../services/api.js';
 import Modal from 'react-modal';
 import DynamicForm from './Components/Form';
+import DeleteModal from './Components/Modal/DeleteModal';
+import ViewModal from './Components/Modal/ViewModal';
+import FormModal from './Components/Modal/FormModal';
 
 Modal.setAppElement('#root');
 
@@ -134,55 +137,24 @@ function Admin() {
         onDelete={openModal}
         onDataUpdated={handleDataUpdated}
       />}
-      {/* MODAL REMOVE ELEMENT */}
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Suppression de l'élément"
-        className={style.modalContent}
-        overlayClassName={style.modalOverlay}
-      >
-        <h2>Confirmation de la suppression</h2>
-        <p>Êtes-vous sûr de vouloir supprimer cet élément ? Cette action est irréversible.</p>
-        <div className={style.modalActions}>
-          <button onClick={closeModal}>Annuler</button>
-          <button onClick={handleDelete} className={style.deleteButton}>Supprimer</button>
-        </div>
-      </Modal>
-      {/* MODAL VIEW ELEMENT */}
-      <Modal
-        isOpen={viewModalIsOpen}
-        onRequestClose={closeViewModal}
-        contentLabel="Visualisation de l'élément"
-        className={style.modalContentView}
-        overlayClassName={style.modalOverlay}
-      >
-
-        {selectedData && (
-          <section>
-            <h2>Détail de l'élément</h2>
-            {Object.entries(selectedData).map(([key, value], index) => (
-              <p key={index}>
-                <strong>{key}:</strong> {value}
-              </p>
-            ))}
-          </section>
-        )}
-        <button onClick={closeViewModal}>Fermer</button>
-      </Modal>
-      {/* MODAL UPDATE ELEMENT */}
-      <Modal
-        isOpen={formModalIsOpen}
-        onRequestClose={closeFormModal}
-        contentLabel="Ajouter un élément"
-        className={style.modalContentForm}
-        overlayClassName={style.modalOverlay}
-      >
-        <DynamicForm activeNavItem={activeNavItem} isEditMode={isEditMode} initialData={initialData} onSubmitSuccess={handleFormSubmitSuccess} />
-        <div className={style.modalActions}>
-          <button onClick={closeFormModal}>Annuler</button>
-        </div>
-      </Modal>
+      <DeleteModal
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        handleDelete={handleDelete}
+      />
+      <ViewModal
+        viewModalIsOpen={viewModalIsOpen}
+        closeViewModal={closeViewModal}
+        selectedData={selectedData}
+      />
+      <FormModal
+        formModalIsOpen={formModalIsOpen}
+        closeFormModal={closeFormModal}
+        activeNavItem={activeNavItem}
+        isEditMode={isEditMode}
+        initialData={initialData}
+        handleFormSubmitSuccess={handleFormSubmitSuccess}
+      />
     </main>
   );
 }
