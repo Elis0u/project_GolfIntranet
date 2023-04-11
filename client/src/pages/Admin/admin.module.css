@@ -58,7 +58,6 @@
   cursor: pointer;
   padding: 0.5rem 1rem;
   font-size: 1.4rem;
-  background-color: #f1f1f1;
   border-radius: 4px;
   margin-right: 0.5rem;
   margin-top: 1rem;
@@ -101,24 +100,38 @@
   z-index: 1000;
 }
 
-.modalContent {
-  background-color: #fff;
-  padding: 24px;
-  border-radius: 4px;
-  width: 400px;
+.modalContentDelete, .modalContentView, .modalContentForm {
+  background-color: var(--white);
+  padding: 2.4rem;
+  border-radius: .4rem;
   max-width: 90%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.modalContent h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
+.modalContentDelete {
+  width: 400px;
 }
 
-.modalContent p {
-  font-size: 16px;
-  margin-bottom: 24px;
+.modalContentView, .modalContentForm {
+  width: 800px;
+  font-size: 1.6rem;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.elementContent {
+  display: flex;
+  padding: .4rem;
+  margin-left: 2rem;
+  font-size: 1.6rem;
+}
+
+.elementContent dd {
+  margin-left: .6rem;
+}
+
+.modalContentDelete p {
+  margin: 2.4rem 0;
 }
 
 .modalActions {
@@ -127,15 +140,15 @@
 }
 
 .modalActions button{
-  font-size: 16px;
-  padding: 8px 16px;
-  margin-left: 8px;
+  font-size: 1.6rem;
+  padding: .8rem 1.6rem;
+  margin-left: .8rem;
   border: 2px solid var(--secondaryBlue);
   background-color: var(--secondaryBlue);
-  color: #ffffff;
-  border-radius: 4px;
+  color: #fff;
+  border-radius: 1.4rem;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .modalActions button:hover {
@@ -143,15 +156,13 @@
   border-color: var(--threadBlue);
 }
 
-.modalActions button.cancel {
-  background-color: #ffffff;
-  color: var(--secondaryBlue);
+.modalActions .deleteButton:hover {
+  background-color: red;
+  border-color: red;
 }
 
-.modalActions button.cancel:hover {
-  background-color: #f1f1f1;
-}
 
+/* ADD button */
 .addButton {
   border: none;
   padding: 1rem;
