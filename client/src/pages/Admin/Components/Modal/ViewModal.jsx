@@ -20,8 +20,10 @@ function ViewModal({ viewModalIsOpen, closeViewModal, selectedData }) {
                         <dl key={index} className={style.elementContent}>
 
                             <dt><strong>{key}:</strong></dt>
-                            <dd>{value}</dd>
-
+                            {key === "createdAt" || key === "updatedAt" || key === "startEvent" || key === "endEvent" || key === "birthDate" ? 
+                                <dd>{new Date(value).toLocaleDateString()} - {new Date(value).toLocaleTimeString()}</dd> 
+                                : <dd>{value}</dd>
+                            }
                         </dl>
                     ))}
                 </>
