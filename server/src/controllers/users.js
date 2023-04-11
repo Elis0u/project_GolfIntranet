@@ -134,7 +134,7 @@ const signin = async (req, res) => {
         const isSame = await compare(password, user.password);        
 
         if(isSame){
-            const TOKEN = jwt.sign({id: user.id}, TOKEN_SECRET, {expiresIn : '1h'} );
+            const TOKEN = jwt.sign({id: user.id}, TOKEN_SECRET, {expiresIn : '3h'} );
             const { id, email, lastName, firstName, avatarName, isAdmin } = user;
             console.log(user);
             const msg = "connection successful"
