@@ -16,6 +16,10 @@
     gap: 1rem;
 }
 
+.container article:hover {
+    cursor: pointer;
+}
+
 .publish {
     font-style: italic;
 }
@@ -85,3 +89,55 @@
 .paginationDisabled {
     display: none;
 }
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .modalContent h3 {
+    color: var(--primaryBlue);
+    margin-bottom: 1rem;
+  }
+  
+  .modalContent p {
+    color: var(--darkGrey);
+    margin-bottom: 1rem;
+  }
+  
+  .modalContent button {
+    cursor: pointer;
+    background-color: var(--primaryBlue);
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    align-self: flex-end;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modalContent button:hover {
+    background-color: var(--secondaryBlue);
+  }
