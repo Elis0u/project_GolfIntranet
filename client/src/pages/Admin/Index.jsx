@@ -3,7 +3,6 @@ import style from "./admin.module.css";
 import DataTable from './Components/DataTable';
 import { getDatas, deleteData } from '../../services/api.js';
 import Modal from 'react-modal';
-import DynamicForm from './Components/Form';
 import DeleteModal from './Components/Modal/DeleteModal';
 import ViewModal from './Components/Modal/ViewModal';
 import FormModal from './Components/Modal/FormModal';
