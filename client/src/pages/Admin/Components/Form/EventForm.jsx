@@ -92,16 +92,20 @@ function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
         }
     };
 
+    const isActive = (field) => {
+        return isEditMode && inputs[field] !== "";
+      };    
+
     return (
         <>
             {isEditMode ? (
-                <h3>Edit de l'event'</h3>
+                <h3>Edit de l'event</h3>
             ) : (
                 <h3>Ajout d'un event</h3>
             )}
             <form className={style.addForm} onSubmit={handleSubmit}>
                 <div className={style.inputGroup}>
-                    <label htmlFor="title" className={style.addForm_label}>Title</label>
+                    <label htmlFor="title" className={`${style.addForm_label} ${isActive("title") ? style.active : ""}`}>Title</label>
                     <input
                         type="text"
                         name="title"
@@ -115,7 +119,7 @@ function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
                     />
                 </div>
                 <div className={style.inputGroup}>
-                    <label htmlFor="location" className={style.addForm_label}>Localisation</label>
+                    <label htmlFor="location" className={`${style.addForm_label} ${isActive("location") ? style.active : ""}`}>Localisation</label>
                     <input
                         type="text"
                         name="location"
@@ -152,7 +156,7 @@ function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
                     />
                 </div>
                 <div className={style.inputGroup}>
-                    <label htmlFor="categoryId" className={style.addForm_label}>Catégorie</label>
+                    <label htmlFor="categoryId" className={`${style.addForm_label} ${isActive("categoryId") ? style.active : ""}`}>Catégorie</label>
                     <select
                         name="categoryId"
                         id="categoryId"
