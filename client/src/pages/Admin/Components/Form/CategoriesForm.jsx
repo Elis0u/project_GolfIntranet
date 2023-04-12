@@ -53,6 +53,11 @@ function CategoriesForm({ isEditMode = false, initialData, onSubmitSuccess, url 
     }
   };
 
+  const isActive = (field) => {
+    return isEditMode && inputs[field] !== "";
+  };
+
+
   return (
     <>
       {isEditMode ? (
@@ -62,7 +67,7 @@ function CategoriesForm({ isEditMode = false, initialData, onSubmitSuccess, url 
       )}
       <form className={style.addForm} onSubmit={handleSubmit}>
         <div className={style.inputGroup}>
-          <label htmlFor="label" className={style.addForm_label}>Label</label>
+          <label htmlFor="label" className={`${style.addForm_label} ${isActive("label") ? style.active : ""}`}>Label</label>
           <input
             type="text"
             name="label"
