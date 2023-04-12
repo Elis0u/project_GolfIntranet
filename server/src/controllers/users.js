@@ -7,7 +7,6 @@ const { TOKEN_SECRET } = process.env;
 const saltRounds = 10;
 
 export const checkToken = async (req, res) => {
-    console.log(req.params)
     try {
         const query = "SELECT email, isAdmin FROM user WHERE id = ?";
         const [user] = await Query.findByValue(query, req.params.id);

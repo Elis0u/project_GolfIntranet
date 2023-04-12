@@ -37,8 +37,6 @@ function Documents() {
     setPageNumber(selected);
   };
 
-  console.log("All doc -> ", documents);
-
   function getCategory(category) {
     switch (category) {
       case 'Règlement':

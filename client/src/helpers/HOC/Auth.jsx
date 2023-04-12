@@ -18,7 +18,6 @@ function HOCAuth({ child, auth }) {
         let res = null;
         if (TOKEN) {
           res = await getUserAuth("/user/checkToken", TOKEN);
-          console.log(res);
           if (res.status === 200) setIsAuthorized(true);
         }
         if (res.code || !TOKEN) {

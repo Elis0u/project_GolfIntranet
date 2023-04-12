@@ -77,11 +77,8 @@ function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
             if (isEditMode && initialData) {
                 formData.id = initialData.id;
                 await editData("/events", formData);
-                console.log('event modifiée avec succès');
             } else {
-                console.log(formData);
                 await addData("/events", formData);
-                console.log('event ajoutée avec succès');
             }
 
             setSubmitSuccess(true);

@@ -6,7 +6,6 @@ import { editData } from "../../../services/api.js";
 const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated }) => {
 
   const handleToggleIsConfirmed = async (row) => {
-    console.log("clique sur isConfirmed");
   
     const updatedRow = {
       ...row,
@@ -27,7 +26,6 @@ const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated })
   };
 
   const handleToggleIsAdmin = async (row) => {
-    console.log("clique sur isAdmin");
   
     const updatedRow = {
       ...row,

@@ -11,7 +11,6 @@ import React from "react";
 function Header() {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);
-    console.log("index header console log -> ", user.infos)
 
     const navigate = useNavigate();
 

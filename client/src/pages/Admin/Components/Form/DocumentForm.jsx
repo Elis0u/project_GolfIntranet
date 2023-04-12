@@ -58,10 +58,8 @@ function DocumentForm({ isEditMode = false, initialData, onSubmitSuccess }) {
       if (isEditMode && initialData) {
         formData.id = initialData.id;
         await editData("/documents", formData);
-        console.log('Document modifié avec succès');
       } else {
         await addData("/documents", formData);
-        console.log('Document ajouté avec succès');
       }
   
       setSubmitSuccess(true);

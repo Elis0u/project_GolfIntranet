@@ -38,11 +38,8 @@ function CategoriesForm({ isEditMode = false, initialData, onSubmitSuccess, url 
       if (isEditMode && initialData) {
         formData.id = initialData.id;
         await editData(url, formData);
-        console.log('Catégorie modifiée avec succès');
       } else {
-        console.log(formData);
         await addData(url, formData);
-        console.log('Catégorie ajoutée avec succès');
       }
   
       setSubmitSuccess(true);

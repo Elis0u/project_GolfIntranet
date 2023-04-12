@@ -22,8 +22,6 @@ function Team() {
         fetchData();
     }, []);
 
-    console.log("All users -> ", users);
-
     return (
         <main className={style.container}>
 
