@@ -156,4 +156,20 @@ const signin = async (req, res) => {
     }
 }
 
+export const remove_user = async (req,res) => {
+    try {
+        const query = "DELETE FROM user WHERE id = ?";
+        const [ result ] = await Query.remove(query, req.body.id);
+        
+        if(result.affectedRows){
+            const msg = "User removed";
+            res.json(success(msg));
+
+        } else throw Error("User couldn't be removed, probably syntax error in object");
+
+    } catch (err) {
+        throw Error(err);
+    }
+}
+
 export {checkToken, signup, signin};
