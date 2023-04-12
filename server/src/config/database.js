@@ -8,6 +8,8 @@ const pool = mysql.createPool({
     password: DB_PWD,
 });
 
-pool.getConnection().then(res => console.log(`Connected to database : ${res.config.database}`)).catch(err => console.log('ERROR', err));
+pool.getConnection()
+    .then(() => {}) 
+    .catch(() => {});
 
 export default pool;

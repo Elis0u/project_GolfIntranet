@@ -39,7 +39,6 @@ function Admin() {
         setColumns(newColumns);
       }
     } catch (err) {
-      console.error('Error fetching data:', err);
     }
   }, [activeNavItem]);
 
@@ -102,7 +101,6 @@ function Admin() {
       fetchData();
       closeModal();
     } catch (error) {
-      console.error('Error deleting data:', error);
     }
   };
 

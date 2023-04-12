@@ -66,7 +66,6 @@ function DocumentForm({ isEditMode = false, initialData, onSubmitSuccess }) {
       onSubmitSuccess();
   
     } catch (error) {
-      console.error('Erreur lors de l\'ajout du document:', error);
     }
   };
 

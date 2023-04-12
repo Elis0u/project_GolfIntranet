@@ -9,19 +9,15 @@ const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated })
   
     const updatedRow = {
       ...row,
-      isConfirmed: row.isConfirmed === 0 ? 1 : 0, // Inversez la valeur de isConfirmed
+      isConfirmed: row.isConfirmed === 0 ? 1 : 0,
     };
   
     try {
-      // Mettez à jour la donnée avec la nouvelle valeur de isConfirmed
       await editData("/user/update_isConfirmed", updatedRow);
-  
-      // Rechargez les données ou mettez à jour l'état pour refléter les modifications
       if (onDataUpdated) {
         onDataUpdated(updatedRow);
       }
     } catch (error) {
-      console.error("Error updating isConfirmed:", error);
     }
   };
 
@@ -29,19 +25,16 @@ const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated })
   
     const updatedRow = {
       ...row,
-      isAdmin: row.isAdmin === 0 ? 1 : 0, // Inversez la valeur de isAdmin
+      isAdmin: row.isAdmin === 0 ? 1 : 0,
     };
   
     try {
-      // Mettez à jour la donnée avec la nouvelle valeur de isAdmin
       await editData("/user/update_isAdmin", updatedRow);
   
-      // Rechargez les données ou mettez à jour l'état pour refléter les modifications
       if (onDataUpdated) {
         onDataUpdated(updatedRow);
       }
     } catch (error) {
-      console.error("Error updating isAdmin:", error);
     }
   };
 
@@ -51,7 +44,7 @@ const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated })
         <thead>
           <tr>
             {columns
-              .filter((column) => column.key !== 'user_id' && column.key !== 'category_id') // Filtrez user_id et category_id
+              .filter((column) => column.key !== 'user_id' && column.key !== 'category_id') 
               .map((column, index) => (
                 <th key={index}>{column.header}</th>
               ))}

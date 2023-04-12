@@ -46,7 +46,6 @@ function CategoriesForm({ isEditMode = false, initialData, onSubmitSuccess, url 
       onSubmitSuccess();
   
     } catch (error) {
-      console.error('Erreur lors de l\'ajout de la categorie:', error);
     }
   };
 

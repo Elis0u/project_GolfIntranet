@@ -85,7 +85,6 @@ function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
             onSubmitSuccess();
 
         } catch (error) {
-            console.error('Erreur lors de l\'ajout de l\'event', error);
         }
     };
 
