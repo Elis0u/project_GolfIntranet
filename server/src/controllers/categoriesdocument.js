@@ -16,7 +16,7 @@ export const add = async (req, res) => {
         }
 
     } catch (err) {
-        res.status(500).json({ error: 'An error occurred while processing your request.' });
+        res.status(500).json({ err: 'An error occurred while processing your request.' });
     }
 }
 
@@ -34,7 +34,7 @@ export const all = async (req, res) => {
             res.status(200).json(success(msg));
         }
     } catch (err) {
-        res.status(500).json({ error: 'An error occurred while processing your request.' });
+        res.status(500).json({ err: 'An error occurred while processing your request.' });
     }
 }
 
@@ -51,7 +51,7 @@ export const one = async (req, res) => {
             res.status(200).json(success(msg, category));
         }
     } catch (err) {
-        res.status(500).json({ error: 'An error occurred while processing your request.' });
+        res.status(500).json({ err: 'An error occurred while processing your request.' });
     }
 }
 
@@ -70,7 +70,7 @@ export const update = async (req, res) => {
         }
 
     } catch (err) {
-        res.status(500).json({ error: 'An error occurred while processing your request.' });
+        res.status(500).json({ err: 'An error occurred while processing your request.' });
     }
 }
 
@@ -89,6 +89,6 @@ export const remove = async (req, res) => {
         }
 
     } catch (err) {
-        res.status(500).json({ error: 'An error occurred while processing your request.' });
+        res.status(500).json({ err: 'An error occurred while processing your request.' });
     }
 }
