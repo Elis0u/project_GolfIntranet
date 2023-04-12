@@ -66,7 +66,7 @@ export const update = async (req, res) => {
             res.status(200).json(success(msg));
 
         } else {
-            const msg = "Document category couldn't be updated, probably syntax error in object";
+            const msg = "Event category couldn't be updated, probably syntax error in object";
             res.status(400).json({ error: msg });
         }
 
@@ -86,7 +86,7 @@ export const remove = async (req, res) => {
             res.status(200).json(success(msg));
 
         } else {
-            const msg = "Document category couldn't be removed, probably syntax error in object";
+            const msg = "Event category couldn't be removed, probably syntax error in object";
             res.status(400).json({ error: msg });
         }
 
