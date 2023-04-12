@@ -72,6 +72,11 @@ function DocumentForm({ isEditMode = false, initialData, onSubmitSuccess }) {
     }
   };
 
+  const isActive = (field) => {
+    return isEditMode && inputs[field] !== "";
+  };
+
+
   return (
     <>
       {isEditMode ? (
@@ -81,7 +86,7 @@ function DocumentForm({ isEditMode = false, initialData, onSubmitSuccess }) {
       )}
       <form className={style.addForm} onSubmit={handleSubmit}>
         <div className={style.inputGroup}>
-          <label htmlFor="title" className={style.addForm_label}>Titre</label>
+          <label htmlFor="title"  className={`${style.addForm_label} ${isActive("title") ? style.active : ""}`}>Titre</label>
           <input
             type="text"
             name="title"
@@ -95,7 +100,7 @@ function DocumentForm({ isEditMode = false, initialData, onSubmitSuccess }) {
           />
         </div>
         <div className={style.inputGroup}>
-          <label htmlFor="content" className={style.addForm_label}>Contenu</label>
+          <label htmlFor="content" className={`${style.addForm_label} ${isActive("content") ? style.active : ""}`}>Contenu</label>
           <textarea
             name="content"
             id="content"
@@ -108,7 +113,7 @@ function DocumentForm({ isEditMode = false, initialData, onSubmitSuccess }) {
           ></textarea>
         </div>
         <div className={style.inputGroup}>
-          <label htmlFor="categoryId" className={style.addForm_label}>Catégorie</label>
+          <label htmlFor="categoryId" className={`${style.addForm_label} ${isActive("categoryId") ? style.active : ""}`}>Catégorie</label>
           <select
             name="categoryId"
             id="categoryId"
