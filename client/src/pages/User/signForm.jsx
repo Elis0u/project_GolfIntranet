@@ -45,6 +45,10 @@ function SignForm() {
     const handleSignIn = async () => {
         try {
             const res = await signin(inputs);
+            if (res.data.error === "not_confirmed") {
+                setMsg("Votre compte n'est pas encore confirmé");
+                return;
+            }
             localStorage.setItem("auth", res.data.result.TOKEN);
             localStorage.setItem("user", JSON.stringify({
                 id: res.data.result.id,
@@ -78,7 +82,6 @@ function SignForm() {
                 setMsg("Votre compte à bien été crée, la validation peut prendre jusqu'à 24h");
             }
         } catch (err) {
-            console.error(err);
             setMsg("Erreur lors de l'inscription. Veuillez réessayer.");
         }
     };
