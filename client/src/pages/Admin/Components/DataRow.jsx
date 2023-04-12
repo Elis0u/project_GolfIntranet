@@ -5,13 +5,15 @@ import style from "../admin.module.css";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
-  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-  const timeOptions = { hour: '2-digit', minute: '2-digit' };
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  };
 
-  const formattedDate = date.toLocaleDateString('fr-FR', dateOptions);
-  const formattedTime = date.toLocaleTimeString('fr-FR', timeOptions);
-
-  return `${formattedDate} ${formattedTime}`;
+  return date.toLocaleString('fr-FR', options);
 };
 
 const DataRow = ({ data, onView, onUpdate, onDelete, onToggleIsConfirmed, onToggleIsAdmin }) => (
@@ -34,7 +36,10 @@ const DataRow = ({ data, onView, onUpdate, onDelete, onToggleIsConfirmed, onTogg
         if (key === 'isConfirmed') {
           return (
             <td key={index}>
-              <button onClick={onToggleIsConfirmed}>
+              <button
+                onClick={onToggleIsConfirmed}
+                className={value === 0 ? `${style.notConfirmed}` : `${style.confirmed}`}
+              >
                 {value === 0 ? "Non confirmé" : "Confirmé"}
               </button>
             </td>
@@ -42,7 +47,10 @@ const DataRow = ({ data, onView, onUpdate, onDelete, onToggleIsConfirmed, onTogg
         } else if (key === 'isAdmin') {
           return (
             <td key={index}>
-              <button onClick={() => onToggleIsAdmin(data.id, value)}>
+              <button
+                onClick={() => onToggleIsAdmin(data.id, value)}
+                className={value === 0 ? `${style.notConfirmed}` : `${style.confirmed}`}
+              >
                 {value === 0 ? "Non-admin" : "Admin"}
               </button>
             </td>
