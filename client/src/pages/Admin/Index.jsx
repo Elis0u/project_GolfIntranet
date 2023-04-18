@@ -22,9 +22,9 @@ function Admin() {
 
   const navigationItems = [
     { name: 'Documents', url: '/documents' },
-    { name: 'Catégories Documents', url: '/categoriesdocument' },
+    { name: 'Catégories Documents', url: '/categoriesDocument' },
     { name: 'Evènements', url: '/events' },
-    { name: 'Catégories Evènements', url: '/categoriesevent' },
+    { name: 'Catégories Evènements', url: '/categoriesEvent' },
     { name: 'Utilisateurs', url: '/user' },
   ];
 

@@ -33,22 +33,25 @@ function Header() {
                 <div className={style.ligne}></div>
             </button>
 
-            <nav className={` ${anim ? style.menuActive : ""}`}>
+            <nav className={`${style.navGeneral} ${anim ? style.menuActive : ""}`}>
 
                 <div className={style.navHeader}>
                     <h1>Equipe femme</h1>
                     <span>Golf de Granville</span>
                 </div>
 
-                <section className={style.navProfil}>
-                    <img src={`/img/avatar_user/${user.infos && user.infos.avatarName ? user.infos.avatarName : "default.jpg"}`} alt="avatar de profil" />
-                    <span>{user.infos ? `${user.infos.lastName} ${user.infos.firstName}` : ""}</span>
-                    <div className={style.navActions}>
+                <div className={style.navProfil}>
+                    <figure>
+                        <img src={`/img/avatar_user/${user.infos && user.infos.avatarName ? user.infos.avatarName : "default.jpg"}`} alt="avatar de profil" />
+                        <figcaption>{user.infos ? `${user.infos.lastName} ${user.infos.firstName}` : ""}</figcaption>
+                    </figure>
+
+                    <nav className={style.navActions}>
                         <NavLink to="/user">Mon compte</NavLink>
                         <button className={style.btnSignout} onClick={handleSignOut}>Déconnexion</button>
-                    </div>
-                </section>
-                
+                    </nav>
+                </div>
+
                 <ul className={style.navList}>
                     <li>
                         <NavLink to="/" className={(navItem) => navItem.isActive ? style.active : ""}>< IoHomeOutline /> Accueil</NavLink>

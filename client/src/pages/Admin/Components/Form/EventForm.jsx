@@ -13,7 +13,7 @@ function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
     useEffect(() => {
         async function fetchData() {
             try {
-                const categories = await getDatas("/categoriesevent");
+                const categories = await getDatas("/categoriesEvent");
                 setCategories(categories.data.result);
             } catch (err) {
                 throw new Error(err);

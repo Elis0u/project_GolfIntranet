@@ -2,7 +2,7 @@
 /* ================= HEADER MOBIL First ================= */
 /* ====================================================== */
 
-.leftHeader nav {
+.leftHeader .navGeneral {
   min-height: 100vh;
   max-height: 100vh;
   width: 320px;
@@ -15,6 +15,8 @@
   padding-top: 2rem;
   display: none;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .leftHeader .menuActive {
@@ -108,9 +110,10 @@
   object-fit: cover;
 }
 
-.leftHeader .navProfil span {
+.leftHeader .navProfil figcaption {
   margin: 1rem 0;
   font-size: 2.4rem;
+  text-align: center;
 }
 
 .leftHeader .navActions a {
@@ -140,10 +143,8 @@
 }
 
 .leftHeader .navFooter {
-  position: absolute;
+  text-align: center;
   bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
   font-size: 1.4rem;
 }
 
@@ -179,7 +180,7 @@
 /* ====================================================== */
 
 @media screen and (min-width:1024px) {
-  .leftHeader nav {
+  .leftHeader .navGeneral {
     left: 0;
     display: block;
   }
@@ -194,5 +195,13 @@
 
   .leftHeader .navActions a:hover {
     color: var(--threadBlue);
+  }
+
+  .leftHeader .navFooter {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
   }
 }

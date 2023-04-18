@@ -19,7 +19,7 @@ export const lastActivities = async (req, res) => {
 
 export const nextEvent = async (req, res) => {
     try {
-        const query = "SELECT event.id, title, location, startEvent, endEvent FROM event INNER JOIN categoryevent ON event.category_id = categoryevent.id WHERE categoryevent.label = 'Entraînement' AND endEvent >= CURRENT_DATE ORDER BY endEvent ASC LIMIT 1";
+        const query = "SELECT event.id, title, location, startEvent, endEvent FROM event INNER JOIN category_event ON event.category_id = category_event.id WHERE category_event.label = 'Entraînement' AND endEvent >= CURRENT_DATE ORDER BY endEvent ASC LIMIT 1";
         const [nextEvent] = await Query.find(query);
         if (nextEvent.length) {
             const msg = "Recovery next event where category is training";
@@ -35,7 +35,7 @@ export const nextEvent = async (req, res) => {
 
 export const fourEvents = async (req, res) => {
     try {
-        const query = "SELECT event.id, title, location, startEvent, endEvent, label FROM event JOIN categoryevent ON category_id = categoryevent.id WHERE endEvent >= CURRENT_DATE ORDER BY startEvent ASC LIMIT 4";
+        const query = "SELECT event.id, title, location, startEvent, endEvent, label FROM event JOIN category_event ON category_id = category_event.id WHERE endEvent >= CURRENT_DATE ORDER BY startEvent ASC LIMIT 4";
         const [nextEvent] = await Query.find(query);
         if (nextEvent.length) {
             const msg = "Recovery five event ";

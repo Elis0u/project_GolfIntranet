@@ -4,7 +4,7 @@ import Query from "../model/query.js";
 // Create
 export const add = async (req, res) => {
     try {
-        const query = "INSERT INTO categoryevent (label) VALUES (?)";
+        const query = "INSERT INTO category_event (label) VALUES (?)";
         const [result] = await Query.write(query, req.body);
 
         if (result.affectedRows) {
@@ -23,7 +23,7 @@ export const add = async (req, res) => {
 // Read
 export const all = async (req, res) => {
     try {
-        const query = "SELECT categoryevent.id, label FROM categoryevent";
+        const query = "SELECT category_event.id, label FROM category_event";
         const [categories] = await Query.find(query);
 
         if (categories.length) {
@@ -40,14 +40,14 @@ export const all = async (req, res) => {
 
 export const one = async (req, res) => {
     try {
-        const query = "SELECT categoryevent.id, label FROM categoryevent WHERE id = ?";
+        const query = "SELECT category_event.id, label FROM category_event WHERE id = ?";
         const category = await Query.findOne(query, req.params.id);
 
         if (!category.length) {
             const msg = "This event category does not exist in database";
             res.status(200).json(success(msg));
         } else {
-            const msg = "Recovery of event category : " + categoryevent[0].label;
+            const msg = "Recovery of event category : " + category_event[0].label;
             res.status(200).json(success(msg, category));
         }
     } catch (err) {
@@ -58,7 +58,7 @@ export const one = async (req, res) => {
 // Update
 export const update = async (req, res) => {
     try {
-        const query = "UPDATE categoryevent SET label = ? WHERE id = ?";
+        const query = "UPDATE category_event SET label = ? WHERE id = ?";
         const [result] = await Query.write(query, req.body);
 
         if (result.affectedRows) {
@@ -78,7 +78,7 @@ export const update = async (req, res) => {
 // Delete
 export const remove = async (req, res) => {
     try {
-        const query = "DELETE FROM categoryevent WHERE id = ?";
+        const query = "DELETE FROM category_event WHERE id = ?";
         const [result] = await Query.remove(query, req.body.id);
 
         if (result.affectedRows) {

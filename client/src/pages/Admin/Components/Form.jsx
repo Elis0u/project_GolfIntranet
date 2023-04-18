@@ -9,9 +9,9 @@ const DynamicForm = ({ activeNavItem, isEditMode, initialData, onSubmitSuccess }
       case 'Documents':
         return <DocumentForm isEditMode={isEditMode} initialData={initialData} onSubmitSuccess={onSubmitSuccess} />;
       case 'Catégories Documents':
-        return <CategoriesForm isEditMode={isEditMode} initialData={initialData} onSubmitSuccess={onSubmitSuccess} url="/categoriesdocument" />;
+        return <CategoriesForm isEditMode={isEditMode} initialData={initialData} onSubmitSuccess={onSubmitSuccess} url="/categoriesDocument" />;
       case 'Catégories Evènements':
-        return <CategoriesForm isEditMode={isEditMode} initialData={initialData} onSubmitSuccess={onSubmitSuccess} url="/categoriesevent" />;
+        return <CategoriesForm isEditMode={isEditMode} initialData={initialData} onSubmitSuccess={onSubmitSuccess} url="/categoriesEvent" />;
       case 'Evènements':
         return <EventForm isEditMode={isEditMode} initialData={initialData} onSubmitSuccess={onSubmitSuccess}/>;
       default:

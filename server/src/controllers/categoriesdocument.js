@@ -4,7 +4,7 @@ import Query from "../model/query.js";
 // Create
 export const add = async (req, res) => {
     try {
-        const query = "INSERT INTO categorydocument (label) VALUES (?)";
+        const query = "INSERT INTO category_document (label) VALUES (?)";
         const [result] = await Query.write(query, req.body);
 
         if (result.affectedRows) {
@@ -23,7 +23,7 @@ export const add = async (req, res) => {
 // Read
 export const all = async (req, res) => {
     try {
-        const query = "SELECT categorydocument.id, label FROM categorydocument";
+        const query = "SELECT category_document.id, label FROM category_document";
         const [categories] = await Query.find(query);
 
         if (categories.length) {
@@ -40,14 +40,14 @@ export const all = async (req, res) => {
 
 export const one = async (req, res) => {
     try {
-        const query = "SELECT categorydocument.id, label FROM categorydocument WHERE id = ?";
+        const query = "SELECT category_document.id, label FROM category_document WHERE id = ?";
         const category = await Query.findOne(query, req.params.id);
 
         if (!category.length) {
             const msg = "This document category does not exist in database";
             res.status(200).json(success(msg));
         } else {
-            const msg = "Recovery of document category : " + categorydocument[0].label;
+            const msg = "Recovery of document category : " + category_document[0].label;
             res.status(200).json(success(msg, category));
         }
     } catch (err) {
@@ -58,7 +58,7 @@ export const one = async (req, res) => {
 // Update
 export const update = async (req, res) => {
     try {
-        const query = "UPDATE categorydocument SET label = ? WHERE id = ?";
+        const query = "UPDATE category_document SET label = ? WHERE id = ?";
         const [result] = await Query.write(query, req.body);
 
         if (result.affectedRows) {
@@ -77,7 +77,7 @@ export const update = async (req, res) => {
 // Delete
 export const remove = async (req, res) => {
     try {
-        const query = "DELETE FROM categorydocument WHERE id = ?";
+        const query = "DELETE FROM category_document WHERE id = ?";
         const [result] = await Query.remove(query, req.body.id);
 
         if (result.affectedRows) {

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import {all, one, add, update, remove} from '../../controllers/categoriesevent.js'
+import {all, one, add, update, remove} from '../../controllers/categoriesEvent.js'
 
 const router = Router();
 

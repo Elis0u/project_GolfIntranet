@@ -10,7 +10,7 @@ function DocumentForm({ isEditMode = false, initialData, onSubmitSuccess }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const categories = await getDatas("/categoriesdocument");
+        const categories = await getDatas("/categoriesDocument");
         setCategories(categories.data.result);
       } catch (err) {
         throw new Error(err);
