@@ -40,6 +40,10 @@
     background-color: #7BC270;
 }
 
+.routine {
+    background-color: #d9744f;
+}
+
 .other {
     background-color: var(--threadBlue);
 }
