@@ -41,8 +41,10 @@ function Documents() {
     switch (category) {
       case 'Règlement':
         return style['rules'];
-      case 'mental':
+      case 'Mental':
         return style['mental'];
+      case 'Routine':
+        return style['routine'];
       default:
         return '';
     }
