@@ -64,19 +64,31 @@ function Documents() {
       <h2>Documents</h2>
 
       {
-        documents ?
-          documents.slice(pagesVisited, pagesVisited + documentsPerPage).map(d => {
-            return (
-              <article key={d.id} onClick={() => openModal(d)}>
-                <h3>{d.title}</h3>
-                <p>{d.content.slice(0, 200)} ...</p>
-                <p className={style.publish}>Ecrit par {d.firstName} {d.lastName} le <time dateTime={d.createdAt}>{new Date(d.createdAt).toLocaleDateString()} à {new Date(d.createdAt).toLocaleTimeString()}</time>.</p>
-                <p className={`${style.category} ${getCategory(d.label)}`}>{d.label}</p>
-              </article>
-            )
-          })
-          :
-          null
+        documents
+          ? documents
+            .slice(pagesVisited, pagesVisited + documentsPerPage)
+            .map((d) => {
+              return (
+                <article key={d.id} onClick={() => openModal(d)}>
+                  <h3>{d.title}</h3>
+                  <p>{d.content.slice(0, 200)} ...</p>
+                  <p className={style.publish}>
+                    Ecrit par{" "}
+                    {d.user_id
+                      ? `${d.firstName} ${d.lastName}`
+                      : "un ancien utilisateur"}{" "}
+                    le{" "}
+                    <time dateTime={d.createdAt}>
+                      {new Date(d.createdAt).toLocaleDateString()} à{" "}
+                      {new Date(d.createdAt).toLocaleTimeString()}
+                    </time>
+                    .
+                  </p>
+                  <p className={`${style.category} ${getCategory(d.label)}`}>{d.label}</p>
+                </article>
+              );
+            })
+          : null
       }
       <Modal
         isOpen={modalIsOpen}
@@ -90,7 +102,11 @@ function Documents() {
             <h3>{selectedDocument.title}</h3>
             <p>{selectedDocument.content}</p>
             <p className={style.publish}>
-              Ecrit par {selectedDocument.firstName} {selectedDocument.lastName} le{" "}
+              Ecrit par{" "}
+              {selectedDocument.user_id
+                ? `${selectedDocument.firstName} ${selectedDocument.lastName}`
+                : "un ancien utilisateur"}{" "}
+              le{" "}
               <time dateTime={selectedDocument.createdAt}>
                 {new Date(selectedDocument.createdAt).toLocaleDateString()} à{" "}
                 {new Date(selectedDocument.createdAt).toLocaleTimeString()}
