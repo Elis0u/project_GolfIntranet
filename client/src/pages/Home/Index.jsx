@@ -4,12 +4,17 @@ import Weather from './Components/Weather';
 import Activities from './Components/Activities';
 import NextEvent from './Components/NextEvent';
 import Event from './Components/Event';
+import { useSelector } from "react-redux";
 
 function Home() {
 
-    return (
-		<main className={style.wrapper}>		
-			
+  const user = useSelector(state => state.user);
+
+  return (
+    <main className={style.wrapper}>
+
+      <h2>Bonjour {user.infos.firstName} !</h2>
+
       <section className={style.ctnWeather}>
         <h2 className={style.whiteTitle}>Météo</h2>
         <Weather city="breville-sur-mer" />
@@ -29,9 +34,9 @@ function Home() {
         <h2>Prochains évènements</h2>
         <Event />
       </section>
-	
-		</main>
-    )
+
+    </main>
+  )
 }
 
 export default Home;
