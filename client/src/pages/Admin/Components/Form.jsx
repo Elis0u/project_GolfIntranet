@@ -19,7 +19,7 @@ const DynamicForm = ({ activeNavItem, isEditMode, initialData, onSubmitSuccess }
     }
   };
 
-  return <div>{renderForm()}</div>;
+  return <section>{renderForm()}</section>;
 };
 
 export default DynamicForm;

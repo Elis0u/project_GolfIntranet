@@ -39,7 +39,7 @@ const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated })
   };
 
   return (
-    <div className={style.tableWrapper}>
+    <section className={style.tableWrapper}>
       <table className={style.table}>
         <thead>
           <tr>
@@ -65,7 +65,7 @@ const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated })
           ))}
         </tbody>
       </table>
-    </div>
+    </section>
   );
 };
 

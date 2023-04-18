@@ -40,14 +40,14 @@ function Header() {
                     <span>Golf de Granville</span>
                 </div>
 
-                <div className={style.navProfil}>
-                    <img src={`/img/avatar_user/${user.infos && user.infos.avatarName ? user.infos.avatarName : "default.jpg"}`} alt="" />
+                <section className={style.navProfil}>
+                    <img src={`/img/avatar_user/${user.infos && user.infos.avatarName ? user.infos.avatarName : "default.jpg"}`} alt="avatar de profil" />
                     <span>{user.infos ? `${user.infos.lastName} ${user.infos.firstName}` : ""}</span>
                     <div className={style.navActions}>
                         <NavLink to="/user">Mon compte</NavLink>
                         <button className={style.btnSignout} onClick={handleSignOut}>Déconnexion</button>
                     </div>
-                </div>
+                </section>
                 
                 <ul className={style.navList}>
                     <li>
