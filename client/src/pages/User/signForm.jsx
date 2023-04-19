@@ -55,6 +55,9 @@ function SignForm() {
                 email: res.data.result.email,
                 lastName: res.data.result.lastName,
                 firstName: res.data.result.firstName,
+                birthDate: res.data.result.birthDate,
+                phone: res.data.result.phone,
+                handicap: res.data.result.handicap,
                 avatarName: res.data.result.avatarName,
                 isAdmin: res.data.result.isAdmin
             }));
@@ -63,6 +66,9 @@ function SignForm() {
                 email: res.data.result.email,
                 lastName: res.data.result.lastName,
                 firstName: res.data.result.firstName,
+                birthDate: res.data.result.birthDate,
+                phone: res.data.result.phone,
+                handicap: res.data.result.handicap,
                 avatarName: res.data.result.avatarName,
                 isAdmin: res.data.result.isAdmin
             }));
