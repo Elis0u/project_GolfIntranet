@@ -47,7 +47,7 @@ function Header() {
                     </figure>
 
                     <nav className={style.navActions}>
-                        <NavLink to="/user">Mon compte</NavLink>
+                        <NavLink to="/account">Mon compte</NavLink>
                         <button className={style.btnSignout} onClick={handleSignOut}>Déconnexion</button>
                     </nav>
                 </div>
