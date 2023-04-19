@@ -108,7 +108,7 @@ export const signup = async (req, res) => {
 export const signin = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const query1 = "SELECT user.id, email, password, lastName, firstName, avatarName, isAdmin, isConfirmed FROM user WHERE email = ?";
+        const query1 = "SELECT user.id, email, password, lastName, firstName, birthDate, phone, handicap, avatarName, isAdmin, isConfirmed FROM user WHERE email = ?";
         const [user] = await Query.findByValue(query1, email);
 
         if (!user || (user.email !== req.body.email)) {
@@ -126,7 +126,7 @@ export const signin = async (req, res) => {
             }
 
             const TOKEN = jwt.sign({ id: user.id }, TOKEN_SECRET, { expiresIn: '3h' });
-            const { id, email, lastName, firstName, avatarName, isAdmin } = user;
+            const { id, email, lastName, firstName, birthDate, phone, handicap, avatarName, isAdmin } = user;
             const msg = "connection successful";
             res.status(200).json(success(msg, {
                 TOKEN,
@@ -134,7 +134,10 @@ export const signin = async (req, res) => {
                 email,
                 lastName: lastName,
                 firstName: firstName,
+                birthDate: birthDate,
                 avatarName: avatarName,
+                phone: phone,
+                handicap: handicap,
                 isAdmin: isAdmin,
             }));
         } else {
