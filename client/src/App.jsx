@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Router from "./Router/Index";
 
 import Header from "./Components/Header/Index";
-import { signIn } from "./store/slices/user";
+import { signIn, signOut } from "./store/slices/user";
 import { getUserAuth } from "./services/api.js";
 
 function App() {
@@ -16,18 +16,16 @@ function App() {
     async function checkAuth() {
       const TOKEN = localStorage.getItem("auth");
       const user = localStorage.getItem("user");
-      if (TOKEN) {
+      if (TOKEN && user) {
         const res = await getUserAuth("/user/checkToken", TOKEN);
         if (res.status === 200) {
-          dispatch(signIn(res.data.email));
+          dispatch(signIn(JSON.parse(user)));
         } else {
+          localStorage.removeItem("auth");
+          localStorage.removeItem("user");
+          dispatch(signOut());
           navigate('/entry');
         }
-      } else {
-        navigate('/entry');
-      }
-      if (user) {
-        dispatch(signIn(JSON.parse(user)));
       } else {
         navigate('/entry');
       }
