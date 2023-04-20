@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import {checkToken, all, signup, signin, update_isConfirmed, update_isAdmin, remove_user } from '../../controllers/users.js';
+import {checkToken, all, activitiesUser, signup, signin, update_isConfirmed, update_isAdmin, remove_user } from '../../controllers/users.js';
 import { auth } from '../../middlewares/auth.js';
 
 
@@ -8,7 +8,7 @@ const router = Router();
 
 router.get("/", all);
 router.get("/checkToken", auth, checkToken);
-// router.get("/:id", one);
+router.get("/activities_user", activitiesUser);
 
 router.post("/signup", signup);
 router.post("/signin", signin);
