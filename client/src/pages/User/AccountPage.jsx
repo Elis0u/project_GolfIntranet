@@ -3,17 +3,31 @@ import { useSelector } from "react-redux";
 import style from "./accountPage.module.css";
 import { AiOutlineEdit } from "react-icons/ai";
 import { getDatas } from '../../services/api.js';
+import { Line } from 'react-chartjs-2';
+import { Chart } from "chart.js";
+import { TimeScale } from "chart.js/auto";
+import "chartjs-adapter-date-fns";
+import { formatISO } from 'date-fns';
+
+Chart.register(TimeScale);
+
 
 function AccountPage() {
   const user = useSelector((state) => state.user.infos);
   const [activitiesUser, setActivitiesUser] = useState(null);
+  const [pelzScores, setPelzScores] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (user.id) {
       async function fetchData() {
         try {
           const activitiesUser = await getDatas(`/user/activities_user?userId=${user.id}`);
+          const pelzScores = await getDatas(`/pelz/allPelzScoreByUser?userId=${user.id}`);
           setActivitiesUser(activitiesUser.data.result);
+          console.log('Pelz scores fetched:', pelzScores);
+          setPelzScores(pelzScores.data.result);
+          setIsLoading(false);
         } catch (error) {
           throw new Error(error);
         }
@@ -25,7 +39,7 @@ function AccountPage() {
   const renderUserActivity = (activity) => {
     const localDate = new Date(activity.createdAt).toLocaleString();
     const uniqueKey = `${activity.activity_type}-${activity.id}`;
-  
+
     switch (activity.activity_type) {
       case 'document':
         return (
@@ -48,6 +62,65 @@ function AccountPage() {
     }
   };
 
+  const getChartData = () => {
+    const scores = pelzScores.slice(-10).map((score) => score.score);
+    const dates = pelzScores
+      .slice(-10)
+      .map((score) => formatISO(new Date(score.createdAt)));
+
+      console.log(dates)
+    
+    return {
+      labels: dates,
+      datasets: [
+        {
+          label: 'Tableau des scores pelz',
+          data: scores,
+          backgroundColor: 'rgb(159, 196, 144)',
+          borderColor: 'rgba(19, 64, 116, 0.8)',
+        },
+      ],
+    };
+  };
+
+  const chartOptions = {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const date = new Date(context.parsed.x);
+            return `${date.toLocaleString()}`;
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        type: "time",
+        display: true,
+        title: {
+          display: true,
+          text: "Date",
+        },
+        time: {
+          unit: "month", 
+          displayFormats: {
+            week: "MMM dd", 
+          },
+          locale: "fr",
+        },
+      },
+      y: {
+        type: "linear",
+        display: true,
+        title: {
+          display: true,
+          text: "Score",
+        },
+      },
+    },
+  };
+
   return (
     <main className={style.ctnDashboard}>
       <h2>DashBoard {user.firstName}</h2>
@@ -67,7 +140,6 @@ function AccountPage() {
 
             <dt>Nom :</dt>
             <dd>{user.lastName}</dd>
-
             <dt>Date de naissance :</dt>
             <dd>{new Date(user.birthDate).toLocaleDateString()}</dd>
 
@@ -91,8 +163,14 @@ function AccountPage() {
 
       <section>
         <h3>PELZ stat</h3>
+        {isLoading ? (
+          <p>Chargement des données...</p>
+        ) : pelzScores.length > 0 ? (
+          <Line data={getChartData()} options={chartOptions} />
+        ) : (
+          <p>Aucune donnée disponible</p>
+        )}
       </section>
-
 
     </main>
   );
