@@ -151,7 +151,7 @@ function AccountPage() {
 
       </div>
 
-      <section>
+      <section className={style.pelzSection}>
         <h3>PELZ stat</h3>
         {isLoading ? (
           <p>Chargement des données...</p>
