@@ -74,8 +74,9 @@ function AccountPage() {
       labels: dates,
       datasets: [
         {
-          label: 'Tableau des scores pelz',
+          label: 'Score pelz ',
           data: scores,
+          fill: false,
           backgroundColor: 'rgb(159, 196, 144)',
           borderColor: 'rgba(19, 64, 116, 0.8)',
         },
@@ -84,16 +85,6 @@ function AccountPage() {
   };
 
   const chartOptions = {
-    plugins: {
-      tooltip: {
-        callbacks: {
-          label: function (context) {
-            const date = new Date(context.parsed.x);
-            return `${date.toLocaleString()}`;
-          },
-        },
-      },
-    },
     scales: {
       x: {
         type: "time",
@@ -105,9 +96,8 @@ function AccountPage() {
         time: {
           unit: "month", 
           displayFormats: {
-            week: "MMM dd", 
+            day: "MMM dd", 
           },
-          locale: "fr",
         },
       },
       y: {
@@ -166,7 +156,7 @@ function AccountPage() {
         {isLoading ? (
           <p>Chargement des données...</p>
         ) : pelzScores.length > 0 ? (
-          <Line data={getChartData()} options={chartOptions} />
+          <Line className={style.pelzChart} data={getChartData()} options={chartOptions} />
         ) : (
           <p>Aucune donnée disponible</p>
         )}
