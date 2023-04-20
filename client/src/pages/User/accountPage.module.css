@@ -53,3 +53,14 @@
     flex-direction: row;
     gap: 1.5rem;
 }
+
+.activitiesList {
+    list-style-type: none;
+    font-size: 1.6rem;
+}
+
+.activityItem {
+    margin: 1rem;
+    border-bottom : 1px solid white;
+    padding: 1rem;
+}
