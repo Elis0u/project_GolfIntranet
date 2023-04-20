@@ -149,13 +149,13 @@
 }
 
 .leftHeader .navFooter a {
-  color: var(--threadBlue);
+  color: var(--threadGreen);
   text-decoration: none;
 }
 
 .leftHeader .navList a.active {
-  color: var(--threadBlue);
-  border-bottom: 1px solid var(--threadBlue);
+  color: var(--threadGreen);
+  border-bottom: 1px solid var(--threadGreen);
 }
 
 .leftHeader .btnSignout {
@@ -166,7 +166,7 @@
 }
 
 .leftHeader .btnSignout:hover {
-  color: var(--threadBlue);
+  color: var(--threadGreen);
   cursor: pointer;
 }
 
@@ -194,7 +194,7 @@
   }
 
   .leftHeader .navActions a:hover {
-    color: var(--threadBlue);
+    color: var(--threadGreen);
   }
 
   .leftHeader .navFooter {

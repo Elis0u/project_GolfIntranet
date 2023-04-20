@@ -89,11 +89,11 @@
 }
 
 .adminNav li:hover {
-  background-color: var(--threadBlue);
+  background-color: var(--threadGreen);
 }
 
 .adminNav li.activeNavItem {
-  background-color: var(--threadBlue);
+  background-color: var(--threadGreen);
   color: var(--white);
   text-transform: uppercase;
 }
@@ -176,8 +176,8 @@
 }
 
 .modalActions button:hover {
-  background-color: var(--threadBlue);
-  border-color: var(--threadBlue);
+  background-color: var(--threadGreen);
+  border-color: var(--threadGreen);
 }
 
 .modalActions .deleteButton:hover {
@@ -198,7 +198,7 @@
 
 .addButton:hover {
   cursor: pointer;
-  background-color: var(--threadBlue);
+  background-color: var(--threadGreen);
 }
 
 /* Responsive */

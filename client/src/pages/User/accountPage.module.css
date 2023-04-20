@@ -13,7 +13,7 @@
 
 .userInfo button {
     position: absolute;
-    color: var(--threadBlue);
+    color: var(--threadGreen);
     background-color: var(--white);
     border-radius: 50%;
     border: none;

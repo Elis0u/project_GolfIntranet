@@ -45,7 +45,7 @@
 }
 
 .other {
-    background-color: var(--threadBlue);
+    background-color: var(--threadGreen);
 }
 
 /* TODO modifier le nom de la class */
@@ -87,7 +87,7 @@
 .pagination a:hover {
     background-color: var(--secondaryBlue);
     border-color: var(--secondaryBlue);
-    color: var(--threadBlue);
+    color: var(--threadGreen);
 }
 
 .paginationDisabled {

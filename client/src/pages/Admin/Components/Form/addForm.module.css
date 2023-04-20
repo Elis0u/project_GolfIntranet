@@ -1,7 +1,7 @@
 .addForm .addForm_label.active {
     top: -2rem;
     left: 0;
-    color: var(--threadBlue);
+    color: var(--threadGreen);
     font-size: 1.4rem;
   }
   
@@ -60,7 +60,7 @@
   }
   
   .addForm .submitButton:hover {
-    background-color: var(--threadBlue);
+    background-color: var(--threadGreen);
   }
 
   .addForm .hiddenOption {

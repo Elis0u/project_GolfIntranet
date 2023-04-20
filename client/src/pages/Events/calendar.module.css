@@ -111,7 +111,7 @@
   }
   
   .today {
-    background-color: var(--threadBlue);
+    background-color: var(--threadGreen);
     border-radius: 50%;
     padding: .7rem;
   }
@@ -146,7 +146,7 @@
   .navigation button:hover {
     background-color: var(--secondaryBlue);
     border-color: var(--secondaryBlue);
-    color: var(--threadBlue);
+    color: var(--threadGreen);
   }
   
 }
