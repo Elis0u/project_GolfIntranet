@@ -12,10 +12,10 @@ class Query{
         return result[0];
     }
 
-    // static async findByValue(query, value){
-    //     const result = await pool.execute(query, [value]);
-    //     return result[0][0];
-    // }
+    static async findByParams(query, value){
+        const result = await pool.execute(query, value);
+        return result;
+    }
 
     static async write(query, data){
         const result = await pool.execute(query, [...Object.values(data)]);
