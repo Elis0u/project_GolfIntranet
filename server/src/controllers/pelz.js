@@ -4,7 +4,7 @@ import Query from "../model/query.js";
 // Create
 export const add_pelz = async (req,res) => {
     try {
-        const query = "INSERT INTO pelz (score, date, user_id) VALUES (?, ?, ?)";
+        const query = "INSERT INTO pelz (score, createdAt, user_id) VALUES (?, NOW(), ?)";
         const [result] = await Query.write(query, req.body);
 
         if(result.affectedRows){
@@ -18,10 +18,11 @@ export const add_pelz = async (req,res) => {
 }
 
 // Read
-export const all = async (req, res) => {
+export const allByUser = async (req, res) => {
     try {
-        const query = "SELECT pelz.id, score, date, user_id FROM pelz";
-        const [pelzs] = await Query.find(query);
+        const userId = parseInt(req.query.userId, 10);
+        const query = "SELECT pelz.id, score, createdAt FROM pelz WHERE user_id = ?";
+        const [pelzs] = await Query.findByParams(query, [userId]);
         if(pelzs.length){
             const msg = "Récupération de tous les tests pelz";
             res.status(200).json(success(msg, pelzs));
@@ -33,7 +34,7 @@ export const all = async (req, res) => {
         throw Error(err);
     }
 }
-// TODO Do the last one added
+
 export const one = async (req, res) => {
     try {
         const queryPelz = "SELECT * FROM pelz WHERE id = ?";
@@ -55,7 +56,7 @@ export const one = async (req, res) => {
 export const update = async (req,res) => {
     try {
 
-        const query = "UPDATE pelz SET score = ?, date = ? WHERE id = ?";
+        const query = "UPDATE pelz SET score = ? WHERE id = ?";
         const [result] = await Query.write(query, req.body);
 
         if(result.affectedRows){
