@@ -1,70 +1,112 @@
-.userInfo, .activityUser {
-    background-color: var(--primaryBlue);
-    color: white;
-    border-radius: 1.5rem;
-    padding: 1.5rem;
-    position: relative;
-    flex: 1;
+/* Mobile-first styles */
+.userInfo,
+.activityUser {
+  background-color: var(--primaryBlue);
+  color: white;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  position: relative;
+  flex: 1;
+  margin-bottom: 1.5rem;
 }
 
-.userInfo h3 {
-    margin-bottom: 1.5rem;
+.userInfo h3,
+.activityUser h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .userInfo button {
-    position: absolute;
-    color: var(--threadGreen);
-    background-color: var(--white);
-    border-radius: 50%;
-    border: none;
-    font-size: 3rem;
-    right: 1.5rem;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    transition: all 0.3s ease;
+  position: absolute;
+  color: var(--threadGreen);
+  background-color: var(--white);
+  border-radius: 50%;
+  border: none;
+  font-size: 2.5rem;
+  right: 1rem;
+  top: 1rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
 .userInfo button:hover {
-    cursor: pointer;
-    color: var(--secondaryBlue);
-    transform: scale(1.1);
+  cursor: pointer;
+  color: var(--secondaryBlue);
+  transform: scale(1.1);
 }
 
 .userInfo dl {
-    font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .userInfo dd {
-    padding-bottom : 1rem;
-    margin-left : 1rem;
-    margin-bottom : 1rem;
-    border-bottom: white solid .1rem;
+  padding-bottom: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: white solid 0.1rem;
 }
 
 .userInfo dt {
-    margin-bottom : .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .ctnSection {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .activitiesList {
-    list-style-type: none;
-    font-size: 1.6rem;
+  list-style-type: none;
+  font-size: 1.4rem;
 }
 
 .activityItem {
-    margin: 1rem;
-    border-bottom : 1px solid white;
-    padding: 1rem;
+  margin: 1rem;
+  border-bottom: 1px solid white;
+  padding: 1rem;
 }
 
 .pelzChart {
-    width: 100%;
+  width: 100%;
+}
+
+.pelzSection {
+  margin-top: 1.5rem;
+}
+
+/* Media queries for larger screens */
+@media (min-width: 768px) {
+  .userInfo h3,
+  .activityUser h3 {
+    font-size: 2rem;
+  }
+
+  .userInfo button {
+    font-size: 3rem;
+    right: 1.5rem;
+    top: 1.5rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .userInfo dl {
+    font-size: 1.6rem;
+  }
+
+  .activitiesList {
+    font-size: 1.6rem;
+  }
+
+  .ctnSection {
+    flex-direction: row;
+  }
+
+  .ctnDashboard {
+    min-height: 100vh;
+  }
 }
