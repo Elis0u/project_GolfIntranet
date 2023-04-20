@@ -21,7 +21,7 @@ export const add_pelz = async (req,res) => {
 export const allByUser = async (req, res) => {
     try {
         const userId = parseInt(req.query.userId, 10);
-        const query = "SELECT pelz.id, score, createdAt FROM pelz WHERE user_id = ?";
+        const query = "SELECT pelz.id, score, createdAt FROM pelz WHERE user_id = ? ORDER BY createdAt ASC";
         const [pelzs] = await Query.findByParams(query, [userId]);
         if(pelzs.length){
             const msg = "Récupération de tous les tests pelz";
