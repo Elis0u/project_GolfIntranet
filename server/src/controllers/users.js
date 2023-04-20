@@ -39,6 +39,25 @@ export const all = async (req, res) => {
     }
 }
 
+export const activitiesUser = async (req, res) => {
+    try{
+        const userId = parseInt(req.query.userId, 10);
+
+        const query = "SELECT 'document' AS activity_type, document.id AS id, document.title AS title, document.createdAt AS createdAt FROM document WHERE document.user_id = ? UNION ALL SELECT 'event' AS activity_type, event.id AS id, event.title AS title, event.createdAt AS createdAt FROM event WHERE event.user_id = ? ORDER BY createdAt DESC"
+        const [activitiesUser] = await Query.findByParams(query, [userId, userId]);
+
+        if (activitiesUser.length){
+            const msg = "Recovery of all activites user";
+            res.status(200).json(success(msg, activitiesUser))
+        } else {
+            const msg = "No yet activity for user in database";
+            res.status(200).json(success(msg));
+        }
+    } catch (err) {
+        res.status(500).json({ err: 'An error occurred while processing your request.' });
+    }
+}
+
 export const update_isConfirmed = async (req, res) => {
     try {
         const query = "UPDATE user SET isConfirmed = ? WHERE id = ?";
