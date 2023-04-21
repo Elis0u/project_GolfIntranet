@@ -25,7 +25,6 @@ function AccountPage() {
           const activitiesUser = await getDatas(`/user/activities_user?userId=${user.id}`);
           const pelzScores = await getDatas(`/pelz/allPelzScoreByUser?userId=${user.id}`);
           setActivitiesUser(activitiesUser.data.result);
-          console.log('Pelz scores fetched:', pelzScores);
           setPelzScores(pelzScores.data.result);
           setIsLoading(false);
         } catch (error) {
@@ -67,8 +66,6 @@ function AccountPage() {
     const dates = pelzScores
       .slice(-10)
       .map((score) => formatISO(new Date(score.createdAt)));
-
-      console.log(dates)
     
     return {
       labels: dates,
@@ -155,7 +152,7 @@ function AccountPage() {
         <h3>PELZ stat</h3>
         {isLoading ? (
           <p>Chargement des données...</p>
-        ) : pelzScores.length > 0 ? (
+        ) : pelzScores ? (
           <Line className={style.pelzChart} data={getChartData()} options={chartOptions} />
         ) : (
           <p>Aucune donnée disponible</p>
