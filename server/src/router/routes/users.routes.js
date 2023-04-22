@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import {checkToken, all, activitiesUser, signup, signin, update_isConfirmed, update_isAdmin, remove_user } from '../../controllers/users.js';
+import {checkToken, all, activitiesUser, signup, signin, update_isConfirmed, update_isAdmin, update_user, remove_user } from '../../controllers/users.js';
 import { auth } from '../../middlewares/auth.js';
 
 
@@ -15,6 +15,7 @@ router.post("/signin", signin);
 
 router.put("/update_isConfirmed", update_isConfirmed);
 router.put("/update_isAdmin", update_isAdmin);
+router.put("/update_user", update_user);
 
 router.delete("/", remove_user);
 
