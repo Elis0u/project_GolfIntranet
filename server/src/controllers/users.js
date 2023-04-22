@@ -43,7 +43,7 @@ export const activitiesUser = async (req, res) => {
     try{
         const userId = parseInt(req.query.userId, 10);
 
-        const query = "SELECT 'document' AS activity_type, document.id AS id, document.title AS title, document.createdAt AS createdAt FROM document WHERE document.user_id = ? UNION ALL SELECT 'event' AS activity_type, event.id AS id, event.title AS title, event.createdAt AS createdAt FROM event WHERE event.user_id = ? ORDER BY createdAt DESC"
+        const query = "SELECT 'document' AS activity_type, document.id AS id, document.title AS title, document.createdAt AS createdAt FROM document WHERE document.user_id = ? UNION ALL SELECT 'event' AS activity_type, event.id AS id, event.title AS title, event.createdAt AS createdAt FROM event WHERE event.user_id = ? ORDER BY createdAt DESC LIMIT 6"
         const [activitiesUser] = await Query.findByParams(query, [userId, userId]);
 
         if (activitiesUser.length){
