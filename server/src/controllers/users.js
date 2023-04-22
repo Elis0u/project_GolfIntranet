@@ -96,6 +96,27 @@ export const update_isAdmin = async (req, res) => {
     }
 }
 
+export const update_user = async (req, res) => {
+    try {
+      const { email, firstName, lastName, birthDate, phone, handicap, id } = req.body;
+      
+      const query = "UPDATE user SET email = ?, firstName = ?, lastName = ?, birthDate = ?, phone = ?, handicap = ? WHERE id = ?";
+      const [result] = await Query.write(query, [email, firstName, lastName, birthDate, phone, handicap, id]);
+  
+      if (result.affectedRows) {
+        const msg = "User updated";
+        res.status(200).json(success(msg));
+  
+      } else {
+        const msg = "User couldn't be updated, probably syntax error in object";
+        res.status(400).json({ error: msg });
+      }
+  
+    } catch (err) {
+        res.status(500).json({ err: 'An error occurred while processing your request.' });
+    }
+  }
+
 export const signup = async (req, res) => {
     try {
         const query = "SELECT email password FROM user WHERE email = ?";
