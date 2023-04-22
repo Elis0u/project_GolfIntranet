@@ -188,3 +188,85 @@
   background-color: red;
   border-color: red;
 }
+
+.editUserForm .addForm_label.active {
+  top: -2rem;
+  left: 0;
+  color: var(--threadGreen);
+  font-size: 1.4rem;
+}
+
+.editUserForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup:first-child{
+  margin-top:1rem;
+}
+
+.editUserForm .addForm_input {
+  width: 100%;
+  min-width: 320px;
+  padding: 1rem 0;
+  font-size: 1.6rem;
+  color: var(--primaryBlue);
+  margin-bottom: 3rem;
+  border: none;
+  border-bottom: .2rem solid var(--primaryBlue);
+  outline: none;
+  background: transparent;
+}
+
+.editUserForm .inputGroup {
+  position: relative;
+}
+
+.editUserForm .addForm_label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--primaryBlue);
+  pointer-events: none;
+  transition: .5s;
+}
+
+.editUserForm .submitButton {
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--secondaryBlue); 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  outline: none;
+  margin-bottom: 1rem;
+}
+
+.editUserForm .submitButton:hover {
+  background-color: var(--threadGreen);
+}
+
+.editUserForm .hiddenOption {
+  display: none;
+}
+
+.successMessage {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.6rem;
+  color: #ffffff;
+  background-color: #4caf50;
+  border-radius: .4rem;
+}
+
+.editUserForm .dateTime {
+  top: -2rem;
+}
