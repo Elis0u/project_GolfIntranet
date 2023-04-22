@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { editData } from '../../../../services/api.js';
-import style from "./editUserForm.module.css";
+import style from "../../accountPage.module.css";
 
 function UserEditForm({ initialData, onSubmitSuccess }) {
 
+  const user = useSelector((state) => state.user.infos);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const [inputs, setInputs] = useState({
@@ -51,7 +52,19 @@ function UserEditForm({ initialData, onSubmitSuccess }) {
       };
 
       formData.id = initialData.id;
-      await editData("/user", formData);
+      await editData("/user/update_user", formData);
+
+      localStorage.setItem("user", JSON.stringify({
+        id: user.id,
+        email,
+        firstName,
+        lastName,
+        birthDate,
+        phone,
+        handicap,
+        avatarName: user.avatarName,
+        isAdmin: user.isAdmin
+      }));
 
       setSubmitSuccess(true);
       onSubmitSuccess();
@@ -111,13 +124,13 @@ function UserEditForm({ initialData, onSubmitSuccess }) {
           />
         </div>
         <div className={style.inputGroup}>
-          <label htmlFor="birthDate" >Date d'anniversaire</label>
+          <label htmlFor="birthDate" className={`${style.addForm_label} ${isActive("lastName") ? style.active : ""}`} >Date d'anniversaire</label>
           <input
             type="date"
             name="birthDate"
             id="birthDate"
             value={birthDate}
-            className={style.signForm_input}
+            className={style.addForm_input}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onChange={handleInputChange}
@@ -125,13 +138,13 @@ function UserEditForm({ initialData, onSubmitSuccess }) {
           />
         </div>
         <div className={style.inputGroup}>
-          <label htmlFor="phone">Numéro de téléphone</label>
+          <label htmlFor="phone" className={`${style.addForm_label} ${isActive("lastName") ? style.active : ""}`}>Numéro de téléphone</label>
           <input
             type="tel"
             name="phone"
             id="phone"
             value={phone}
-            className={style.signForm_input}
+            className={style.addForm_input}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onChange={handleInputChange}
@@ -142,13 +155,13 @@ function UserEditForm({ initialData, onSubmitSuccess }) {
         </div>
 
         <div className={style.inputGroup}>
-          <label htmlFor="handicap" className={style.signForm_label}>Handicap</label>
+          <label htmlFor="handicap" className={`${style.addForm_label} ${isActive("lastName") ? style.active : ""}`}>Handicap</label>
           <input
             type="text"
             name="handicap"
             id="handicap"
             value={handicap}
-            className={style.signForm_input}
+            className={style.addForm_input}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onChange={handleInputChange}
