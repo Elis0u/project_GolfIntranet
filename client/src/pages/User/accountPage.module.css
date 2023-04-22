@@ -16,7 +16,7 @@
   font-size: 1.8rem;
 }
 
-.userInfo button {
+.userInfo .btnEdit {
   position: absolute;
   color: var(--threadGreen);
   background-color: var(--white);
@@ -33,7 +33,7 @@
   transition: all 0.3s ease;
 }
 
-.userInfo button:hover {
+.userInfo .btnEdit:hover {
   cursor: pointer;
   color: var(--secondaryBlue);
   transform: scale(1.1);
@@ -86,7 +86,7 @@
     font-size: 2rem;
   }
 
-  .userInfo button {
+  .userInfo .btnEdit {
     font-size: 3rem;
     right: 1.5rem;
     top: 1.5rem;
@@ -109,4 +109,82 @@
   .ctnDashboard {
     min-height: 100vh;
   }
+}
+
+
+
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContentDelete, .modalContentView, .modalContentForm {
+  background-color: var(--white);
+  padding: 2.4rem;
+  border-radius: .4rem;
+  max-width: 90%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modalContentDelete {
+  width: 400px;
+}
+
+.modalContentView, .modalContentForm {
+  width: 800px;
+  font-size: 1.6rem;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.elementContent {
+  display: flex;
+  padding: .4rem;
+  margin-left: 2rem;
+  font-size: 1.6rem;
+}
+
+.elementContent dd {
+  margin-left: .6rem;
+}
+
+.modalContentDelete p {
+  margin: 2.4rem 0;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modalActions button{
+  font-size: 1.6rem;
+  padding: .8rem 1.6rem;
+  margin-left: .8rem;
+  border: 2px solid var(--secondaryBlue);
+  background-color: var(--secondaryBlue);
+  color: #fff;
+  border-radius: 1.4rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modalActions button:hover {
+  background-color: var(--threadGreen);
+  border-color: var(--threadGreen);
+}
+
+.modalActions .deleteButton:hover {
+  background-color: red;
+  border-color: red;
 }
