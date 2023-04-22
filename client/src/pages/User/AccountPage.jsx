@@ -8,15 +8,16 @@ import { Chart } from "chart.js";
 import { TimeScale } from "chart.js/auto";
 import "chartjs-adapter-date-fns";
 import { formatISO } from 'date-fns';
+import FormModal from './Components/Modal/FormModal';
 
 Chart.register(TimeScale);
-
 
 function AccountPage() {
   const user = useSelector((state) => state.user.infos);
   const [activitiesUser, setActivitiesUser] = useState(null);
   const [pelzScores, setPelzScores] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [formModalIsOpen, setFormModalIsOpen] = useState(false);
 
   useEffect(() => {
     if (user.id) {
@@ -34,6 +35,14 @@ function AccountPage() {
       fetchData();
     }
   }, [user.id]);
+
+  const openFormModal = () => {
+    setFormModalIsOpen(true);
+  };
+
+  const closeFormModal = () => {
+    setFormModalIsOpen(false);
+  };
 
   const renderUserActivity = (activity) => {
     const localDate = new Date(activity.createdAt).toLocaleString();
@@ -66,7 +75,7 @@ function AccountPage() {
     const dates = pelzScores
       .slice(-10)
       .map((score) => formatISO(new Date(score.createdAt)));
-    
+
     return {
       labels: dates,
       datasets: [
@@ -91,9 +100,9 @@ function AccountPage() {
           text: "Date",
         },
         time: {
-          unit: "month", 
+          unit: "month",
           displayFormats: {
-            day: "MMM dd", 
+            day: "MMM dd",
           },
         },
       },
@@ -115,7 +124,7 @@ function AccountPage() {
       <div className={style.ctnSection}>
 
         <section className={style.userInfo}>
-          <button><AiOutlineEdit /></button>
+          <button className={style.btnEdit} onClick={openFormModal}><AiOutlineEdit /></button>
           <h3>Vos informations</h3>
 
           <dl>
@@ -158,6 +167,13 @@ function AccountPage() {
           <p>Aucune donnée disponible</p>
         )}
       </section>
+
+      <FormModal
+        formModalIsOpen={formModalIsOpen}
+        closeFormModal={closeFormModal}
+        initialData={user}
+        onSubmitSuccess={closeFormModal}
+      />
 
     </main>
   );
