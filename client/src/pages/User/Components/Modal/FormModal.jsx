@@ -1,9 +1,12 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { useSelector } from "react-redux";
 import style from '../../accountPage.module.css';
 import UserEditForm from '../Form/InformationForm';
 
 function FormModal({ formModalIsOpen, closeFormModal, isEditMode, initialData, handleFormSubmitSuccess }) {
+  const user = useSelector((state) => state.user.infos);
+  const key = user.id;
   return (
     <Modal
       isOpen={formModalIsOpen}
@@ -18,6 +21,7 @@ function FormModal({ formModalIsOpen, closeFormModal, isEditMode, initialData, h
         isEditMode={isEditMode}
         initialData={initialData}
         onSubmitSuccess={handleFormSubmitSuccess}
+        key={key}
       />
       <div className={style.modalActions}>
         <button onClick={closeFormModal}>Annuler</button>
