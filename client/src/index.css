@@ -59,6 +59,24 @@ p, li {
   line-height: 2rem;
 }
 
+/* Style pour la barre de défilement */
+::-webkit-scrollbar {
+  width: 10px; /* Largeur de la barre */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Couleur de fond */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Couleur de la poignée */
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Couleur de la poignée au survol */
+}
+
 
 /* ====================================================== */
 /* =======================  DESKTOP ===================== */
