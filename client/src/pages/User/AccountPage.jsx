@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import style from "./accountPage.module.css";
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlinePlus } from "react-icons/ai";
 import { getDatas } from '../../services/api.js';
 import { Line } from 'react-chartjs-2';
 import { Chart } from "chart.js";
@@ -9,6 +9,7 @@ import { TimeScale } from "chart.js/auto";
 import "chartjs-adapter-date-fns";
 import { formatISO } from 'date-fns';
 import FormModal from './Components/Modal/FormModal';
+import AddPelzModal from './Components/Modal/AddPelzModal';
 
 Chart.register(TimeScale);
 
@@ -18,6 +19,7 @@ function AccountPage() {
   const [pelzScores, setPelzScores] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [formModalIsOpen, setFormModalIsOpen] = useState(false);
+  const [formPelzModalIsOpen, setFormPelzModalIsOpen] = useState(false);
 
   useEffect(() => {
     if (user.id) {
@@ -42,6 +44,14 @@ function AccountPage() {
 
   const closeFormModal = () => {
     setFormModalIsOpen(false);
+  };
+
+  const openFormPelzModal = () => {
+    setFormPelzModalIsOpen(true);
+  };
+
+  const closeFormPelzModal = () => {
+    setFormPelzModalIsOpen(false);
   };
 
   const renderUserActivity = (activity) => {
@@ -159,6 +169,7 @@ function AccountPage() {
 
       <section className={style.pelzSection}>
         <h3>PELZ stat</h3>
+        <button className={style.btnAddPelz} onClick={openFormPelzModal}><AiOutlinePlus /></button>
         {isLoading ? (
           <p>Chargement des données...</p>
         ) : pelzScores ? (
@@ -173,6 +184,11 @@ function AccountPage() {
         closeFormModal={closeFormModal}
         initialData={user}
         onSubmitSuccess={closeFormModal}
+      />
+      <AddPelzModal
+        formModalIsOpen={formPelzModalIsOpen}
+        closeFormModal={closeFormPelzModal}
+        onSubmitSuccess={closeFormPelzModal}
       />
 
     </main>
