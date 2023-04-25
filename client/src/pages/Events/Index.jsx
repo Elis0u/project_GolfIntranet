@@ -5,7 +5,7 @@ import { getDatas } from "../../services/api.js";
 import style from "./calendar.module.css";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoGolfOutline } from "react-icons/io5";
-import { formatDateAndTime, isToday } from './utils';
+import { formatDateAndTime } from './utils';
 import GenerateCalendar from "./Components/GenerateCalendar.jsx";
 import loader from "../../assets/img/loader.svg";
 
