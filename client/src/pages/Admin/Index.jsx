@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import DeleteModal from './Components/Modal/DeleteModal';
 import ViewModal from './Components/Modal/ViewModal';
 import FormModal from './Components/Modal/FormModal';
+import loader from '../../assets/img/loader.svg';
 
 Modal.setAppElement('#root');
 
@@ -19,6 +20,7 @@ function Admin() {
   const [formModalIsOpen, setFormModalIsOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [initialData, setInitialData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigationItems = [
     { name: 'Documents', url: '/documents' },
@@ -29,6 +31,7 @@ function Admin() {
   ];
 
   const fetchData = useCallback(async () => {
+    setIsLoading(true);
     try {
       const response = await getDatas(activeNavItem.url);
       setData(response.data.result);
@@ -40,6 +43,7 @@ function Admin() {
       }
     } catch (err) {
     }
+    setIsLoading(false);
   }, [activeNavItem]);
 
   useEffect(() => {
@@ -126,14 +130,21 @@ function Admin() {
           Ajouter un élément
         </button>
       )}
-      {columns && data && <DataTable
-        columns={columns}
-        data={data}
-        onView={handleView}
-        onUpdate={handleUpdate}
-        onDelete={openModal}
-        onDataUpdated={handleDataUpdated}
-      />}
+      {isLoading && (
+        <div className={style.loaderContainer}>
+          <img src={loader} alt="Chargement..." className={style.loader} />
+        </div>
+      )}
+      {!isLoading && columns && data && (
+        <DataTable
+          columns={columns}
+          data={data}
+          onView={handleView}
+          onUpdate={handleUpdate}
+          onDelete={openModal}
+          onDataUpdated={handleDataUpdated}
+        />
+      )}
       <DeleteModal
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
