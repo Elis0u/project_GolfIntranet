@@ -4,7 +4,7 @@ import style from "../calendar.module.css";
 import  RenderEvents  from "./RenderEvent.jsx"
 import { isToday } from '../utils';
 
-function GenerateCalendar(events, currentDate) {
+function GenerateCalendar(events, currentDate, isLoading) {
     const calendar = [];
     if (events.length > 0) {
       const startDate = moment(currentDate)
@@ -16,7 +16,7 @@ function GenerateCalendar(events, currentDate) {
         calendar.push(
           <div key={day.format("L")} className={style.day} >
             <span className={`${isToday(day) ? style.today : " "}`}>{day.format("D")}</span>
-            {RenderEvents(day, events)}
+            {RenderEvents(day, events, isLoading)}
           </div>
         );
         day = day.add(1, "day");

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { IoLocationOutline } from "react-icons/io5";
+import loader from "../../../assets/img/loader.svg";
 
 function Weather({ city }) {
   const [weatherData, setWeatherData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const apiKey = 'API';
 
   const translations = {
@@ -15,25 +17,37 @@ function Weather({ city }) {
     'Thunderstorm': 'Orage'
   };
 
-
-
   useEffect(() => {
     const fetchWeather = async () => {
       try {
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=fr`);
         setWeatherData(response.data);
+        setIsLoading(false);
       } catch (error) {
+        setIsLoading(false);
       }
     };
 
     fetchWeather();
   }, [city]);
 
+  const renderLoader = () => {
+    return (
+      <div className="loader">
+        <img src={loader} alt="Loading" />
+      </div>
+    );
+  };
+
   return (
     <>
-      {weatherData ? (
+      {(isLoading || !weatherData) ? (
+        renderLoader()
+      ) : (
         <>
-          <h3> <IoLocationOutline /> {city}</h3>
+          <h3>
+            <IoLocationOutline /> {city}
+          </h3>
           <p>Température : {weatherData.main.temp} °C</p>
           <p>Humidité : {weatherData.main.humidity} %</p>
           <p>Vent : {weatherData.wind.speed}m/s</p>
@@ -41,8 +55,6 @@ function Weather({ city }) {
             {translations[weatherData.weather[0].main] || weatherData.weather[0].main} - {weatherData.weather[0].description}
           </p>
         </>
-      ) : (
-        <p>Chargement de la météo...</p>
       )}
     </>
   );

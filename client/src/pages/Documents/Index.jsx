@@ -3,6 +3,7 @@ import style from "./document.module.css";
 import { getDatas } from '../../services/api.js';
 import ReactPaginate from 'react-paginate';
 import Modal from 'react-modal';
+import loader from '../../assets/img/loader.svg';
 
 Modal.setAppElement('#root');
 
@@ -13,6 +14,7 @@ function Documents() {
   const documentsPerPage = 4;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
 
@@ -21,8 +23,10 @@ function Documents() {
         const documents = await getDatas("/documents");
 
         setDocuments(documents.data.result);
+        setIsLoading(false);
 
       } catch (err) {
+        setIsLoading(false);
         throw new Error(err);
       }
 
@@ -60,82 +64,96 @@ function Documents() {
     setModalIsOpen(false);
   };
 
+  const renderLoader = () => {
+    return (
+      <div className="loader">
+        <img src={loader} alt="Loading" />
+      </div>
+    );
+  };
+
   return (
     <main className={style.container}>
 
       <h2>Documents</h2>
 
-      {
-        documents
-          ? documents
-            .slice(pagesVisited, pagesVisited + documentsPerPage)
-            .map((d) => {
-              return (
-                <article key={d.id} onClick={() => openModal(d)}>
-                  <h3>{d.title}</h3>
-                  <p>{d.content.slice(0, 200)} ...</p>
-                  <p className={style.publish}>
-                    Ecrit par{" "}
-                    {d.user_id
-                      ? `${d.firstName} ${d.lastName}`
-                      : "un ancien utilisateur"}{" "}
+      {isLoading ? (
+        renderLoader()
+      ) : (
+        <>
+          {
+            documents
+              ? documents
+                .slice(pagesVisited, pagesVisited + documentsPerPage)
+                .map((d) => {
+                  return (
+                    <article key={d.id} onClick={() => openModal(d)}>
+                      <h3>{d.title}</h3>
+                      <p>{d.content.slice(0, 200)} ...</p>
+                      <p className={style.publish}>
+                        Ecrit par{" "}
+                        {d.user_id
+                          ? `${d.firstName} ${d.lastName}`
+                          : "un ancien utilisateur"}{" "}
+                        le{" "}
+                        <time dateTime={d.createdAt}>
+                          {new Date(d.createdAt).toLocaleDateString()} à{" "}
+                          {new Date(d.createdAt).toLocaleTimeString()}
+                        </time>
+                        .
+                      </p>
+                      <p className={`${style.category} ${getCategory(d.label)}`}>{d.label}</p>
+                    </article>
+                  );
+                })
+              : null
+          }
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Document Details"
+            className={style.modalContent}
+            overlayClassName={style.modalOverlay}
+          >
+            {selectedDocument && (
+              <div>
+                <h3>{selectedDocument.title}</h3>
+                <p>{selectedDocument.content}</p>
+                <p className={style.publish}>
+                  Ecrit par{" "}
+                  {selectedDocument.user_id
+                    ? `${selectedDocument.firstName} ${selectedDocument.lastName}`
+                    : "un ancien utilisateur "}
                     le{" "}
-                    <time dateTime={d.createdAt}>
-                      {new Date(d.createdAt).toLocaleDateString()} à{" "}
-                      {new Date(d.createdAt).toLocaleTimeString()}
+                    <time dateTime={selectedDocument.createdAt}>
+                      {new Date(selectedDocument.createdAt).toLocaleDateString()} à{" "}
+                      {new Date(selectedDocument.createdAt).toLocaleTimeString()}
                     </time>
                     .
                   </p>
-                  <p className={`${style.category} ${getCategory(d.label)}`}>{d.label}</p>
-                </article>
-              );
-            })
-          : null
-      }
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Document Details"
-        className={style.modalContent}
-        overlayClassName={style.modalOverlay}
-      >
-        {selectedDocument && (
-          <div>
-            <h3>{selectedDocument.title}</h3>
-            <p>{selectedDocument.content}</p>
-            <p className={style.publish}>
-              Ecrit par{" "}
-              {selectedDocument.user_id
-                ? `${selectedDocument.firstName} ${selectedDocument.lastName}`
-                : "un ancien utilisateur"}{" "}
-              le{" "}
-              <time dateTime={selectedDocument.createdAt}>
-                {new Date(selectedDocument.createdAt).toLocaleDateString()} à{" "}
-                {new Date(selectedDocument.createdAt).toLocaleTimeString()}
-              </time>
-              .
-            </p>
-            <p className={`${style.category} ${getCategory(selectedDocument.label)}`}>
-              {selectedDocument.label}
-            </p>
-          </div>
+                  <p className={`${style.category} ${getCategory(selectedDocument.label)}`}>
+                    {selectedDocument.label}
+                  </p>
+                </div>
+              )}
+              <button onClick={closeModal}>Fermer</button>
+            </Modal>
+            <ReactPaginate
+              previousLabel={"<<"}
+              nextLabel={">>"}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={style.pagination}
+              previousLinkClassName={style.previousPage}
+              nextLinkClassName={style.nextPage}
+              disabledClassName={style.paginationDisabled}
+              activeClassName={style.paginationActive}
+            />
+          </>
         )}
-        <button onClick={closeModal}>Fermer</button>
-      </Modal>
-      <ReactPaginate
-        previousLabel={"<<"}
-        nextLabel={">>"}
-        pageCount={pageCount}
-        onPageChange={changePage}
-        containerClassName={style.pagination}
-        previousLinkClassName={style.previousPage}
-        nextLinkClassName={style.nextPage}
-        disabledClassName={style.paginationDisabled}
-        activeClassName={style.paginationActive}
-      />
-
-    </main>
-  )
-}
-
-export default Documents;
+  
+      </main>
+    )
+  }
+  
+  export default Documents;

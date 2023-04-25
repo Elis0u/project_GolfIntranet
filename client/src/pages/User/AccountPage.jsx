@@ -10,6 +10,7 @@ import "chartjs-adapter-date-fns";
 import { formatISO } from 'date-fns';
 import FormModal from './Components/Modal/FormModal';
 import AddPelzModal from './Components/Modal/AddPelzModal';
+import Loader from "../../assets/img/loader.svg";
 
 Chart.register(TimeScale);
 
@@ -132,37 +133,49 @@ function AccountPage() {
       <h2>DashBoard {user.firstName}</h2>
 
       <div className={style.ctnSection}>
-
+        
         <section className={style.userInfo}>
           <button className={style.btnEdit} onClick={openFormModal}><AiOutlineEdit /></button>
           <h3>Vos informations</h3>
+          {isLoading ? (
+            <div className="loader">
+              <img src={Loader} alt="Chargement des informations utilisateur..." />
+            </div>
+          ) : (
 
-          <dl>
-            <dt>Email :</dt>
-            <dd>{user.email}</dd>
+            <dl>
+              <dt>Email :</dt>
+              <dd>{user.email}</dd>
 
-            <dt>Prénom :</dt>
-            <dd>{user.firstName}</dd>
+              <dt>Prénom :</dt>
+              <dd>{user.firstName}</dd>
 
-            <dt>Nom :</dt>
-            <dd>{user.lastName}</dd>
-            <dt>Date de naissance :</dt>
-            <dd>{new Date(user.birthDate).toLocaleDateString()}</dd>
+              <dt>Nom :</dt>
+              <dd>{user.lastName}</dd>
+              <dt>Date de naissance :</dt>
+              <dd>{new Date(user.birthDate).toLocaleDateString()}</dd>
 
-            <dt>Téléphone :</dt>
-            <dd>{user.phone}</dd>
+              <dt>Téléphone :</dt>
+              <dd>{user.phone}</dd>
 
-            <dt>Handicap :</dt>
-            <dd>{user.handicap}</dd>
+              <dt>Handicap :</dt>
+              <dd>{user.handicap}</dd>
 
-          </dl>
+            </dl>
+          )}
         </section>
 
         <section className={style.activityUser}>
           <h3>Vos activités</h3>
-          <ul className={style.activitiesList}>
-            {activitiesUser ? activitiesUser.map((a) => renderUserActivity(a)) : null}
-          </ul>
+          {isLoading ? (
+            <div className="loader">
+              <img src={Loader} alt="Chargement des activités utilisateur..." />
+            </div>
+          ) : (
+            <ul className={style.activitiesList}>
+              {activitiesUser ? activitiesUser.map((a) => renderUserActivity(a)) : null}
+            </ul>
+          )}
         </section>
 
       </div>
@@ -171,7 +184,7 @@ function AccountPage() {
         <h3>PELZ stat</h3>
         <button className={style.btnAddPelz} onClick={openFormPelzModal}><AiOutlinePlus /></button>
         {isLoading ? (
-          <p>Chargement des données...</p>
+          <div className="loader"><img src={Loader} alt="Chargement des données..." /></div>
         ) : pelzScores ? (
           <Line className={style.pelzChart} data={getChartData()} options={chartOptions} />
         ) : (
