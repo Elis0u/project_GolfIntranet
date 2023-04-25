@@ -216,14 +216,14 @@
   border-color: red;
 }
 
-.editUserForm .addForm_label.active {
+.editUserForm .addForm_label.active, .pelzForm .addForm_label.active {
   top: -2rem;
   left: 0;
   color: var(--threadGreen);
   font-size: 1.4rem;
 }
 
-.editUserForm {
+.editUserForm, .pelzForm {
   display: flex;
   flex-direction: column;
 }
@@ -232,7 +232,7 @@
   margin-top:1rem;
 }
 
-.editUserForm .addForm_input {
+.editUserForm .addForm_input, .pelzForm .addForm_input {
   width: 100%;
   min-width: 320px;
   padding: 1rem 0;
@@ -245,11 +245,11 @@
   background: transparent;
 }
 
-.editUserForm .inputGroup {
+.editUserForm .inputGroup, .pelzForm .inputGroup {
   position: relative;
 }
 
-.editUserForm .addForm_label {
+.editUserForm .addForm_label, .pelzForm .addForm_label {
   position: absolute;
   top:0;
   left: 0;
@@ -260,7 +260,7 @@
   transition: .5s;
 }
 
-.editUserForm .submitButton {
+.editUserForm .submitButton, .pelzForm .submitButton {
   display: inline-block;
   padding: 1rem 1.5rem;
   font-size: 1.2rem;
@@ -277,7 +277,7 @@
   margin-bottom: 1rem;
 }
 
-.editUserForm .submitButton:hover {
+.editUserForm .submitButton:hover, .pelzForm .submitButton:hover {
   background-color: var(--threadGreen);
 }
 
