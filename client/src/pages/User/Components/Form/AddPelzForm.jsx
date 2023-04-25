@@ -18,7 +18,7 @@ function PelzForm({ onSubmitSuccess }) {
   });
 
   const { score } = inputs;
-  const userId = useSelector((state) => state.user.infos.id);
+  const userId = user.id;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -56,7 +56,7 @@ function PelzForm({ onSubmitSuccess }) {
   };
 
   const isActive = (field) => {
-    return inputs[field] !== "";
+    return inputs[field] !== null && inputs[field] !== undefined && inputs[field] !== "";
   };
 
   return (
@@ -83,7 +83,7 @@ function PelzForm({ onSubmitSuccess }) {
         {
           submitSuccess && (
             <div className={style.successMessage}>
-              Le score de pelz a été ajouté.
+              Le score de pelz a été ajouté. Rafraichissez la page !
             </div>
           )}
       </form>
