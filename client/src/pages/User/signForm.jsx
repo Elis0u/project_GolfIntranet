@@ -6,14 +6,12 @@ import { useDispatch } from "react-redux";
 import { signIn } from "../../store/slices/user";
 import style from "./signForm.module.css";
 import { IoGolfOutline } from "react-icons/io5";
-import loader from '../../assets/img/loader.svg';
 
 function SignForm() {
     const { state } = useLocation();
     const type = state?.type || "se connecter";
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [isLoading, setIsLoading] = useState(false);
 
     const [msg, setMsg] = useState(null);
 
@@ -33,26 +31,16 @@ function SignForm() {
         const { name, value } = e.target;
         const newValue = e.target.type === 'checkbox' ? e.target.checked : value;
         setInputs({ ...inputs, [name]: newValue });
-    };    
-    
-    const renderLoader = () => {
-        return (
-            <div style="loader">
-                <img src={loader} alt="Loading..." />
-            </div>
-        );
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setIsLoading(true);
 
         type === "se connecter" ?
             handleSignIn()
             :
             handleSignUp();
     };
-
 
     const handleSignIn = async () => {
         try {
@@ -87,7 +75,6 @@ function SignForm() {
             navigate("/");
 
         } catch (err) {
-            setIsLoading(false);
             setMsg("problème d'identifiant");
         }
     };
@@ -101,7 +88,6 @@ function SignForm() {
                 setMsg("Votre compte à bien été crée, la validation peut prendre jusqu'à 24h");
             }
         } catch (err) {
-            setIsLoading(false);
             setMsg("Erreur lors de l'inscription. Veuillez réessayer.");
         }
     };
@@ -126,7 +112,6 @@ function SignForm() {
 
     return (
         <>
-        {isLoading && renderLoader()}
             {type === "se connecter" ? (
                 <h2><IoGolfOutline /> Connexion</h2>
             ) : (
@@ -257,15 +242,15 @@ function SignForm() {
                                 onChange={handleInputChange}
                                 required
                             />
-                            <label htmlFor="termsAccepted" >
-                                J'accepte les{" "}
-                                <a href="/politique-confidentialite" target="_blank" rel="noopener noreferrer">
+                            <label htmlFor="termsAccepted">
+                                J'accepte les{' '}
+                                <Link to="/privacypolicy">
                                     politiques de confidentialité
-                                </a>{" "}
-                                et les{" "}
-                                <a href="/mentions-legales" target="_blank" rel="noopener noreferrer">
+                                </Link>{' '}
+                                et les{' '}
+                                <Link to="/legalmentions">
                                     mentions légales
-                                </a>
+                                </Link>
                             </label>
                         </div>
                     </>
@@ -287,17 +272,17 @@ function SignForm() {
                     </Link>
                 </p>
             )
-            : (
-                <p>
-                    Déjà un compte ? {" "}
-                    <Link
-                        to={"/entry"}
-                        state={{ type: "se connecter" }}
-                    >
-                        Connectez-vous
-                    </Link>
-                </p>
-            )}
+                : (
+                    <p>
+                        Déjà un compte ? {" "}
+                        <Link
+                            to={"/entry"}
+                            state={{ type: "se connecter" }}
+                        >
+                            Connectez-vous
+                        </Link>
+                    </p>
+                )}
         </>
     );
 }
