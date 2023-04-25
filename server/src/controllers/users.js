@@ -8,20 +8,30 @@ const saltRounds = 10;
 
 export const checkToken = async (req, res) => {
     try {
-        const query = "SELECT email, isAdmin FROM user WHERE id = ?";
-        const [user] = await Query.findByValue(query, req.params.id);
-        if (user) {
-            const msg = "User recorved";
-            res.status(200).json(success(msg, user));
-        } else {
-            const msg = "User not found with this identifier";
-            res.status(200).json(success(msg));
+      const token = req.headers["x-access-token"] || req.headers["authorization"];
+      if (!token) {
+        return res.status(401).json({ error: "Token missing" });
+      }
+  
+      jwt.verify(token, TOKEN_SECRET, async (err, decoded) => {
+        if (err) {
+          return res.status(401).json({ error: "Token expired" });
         }
-
+  
+        const query = "SELECT email, isAdmin FROM user WHERE id = ?";
+        const [user] = await Query.findByValue(query, decoded.id);
+        if (user) {
+          const msg = "User recorved";
+          res.status(200).json(success(msg, user));
+        } else {
+          const msg = "User not found with this identifier";
+          res.status(200).json(success(msg));
+        }
+      });
     } catch (error) {
-        res.status(500).json({ err: 'An error occurred while processing your request.' });
+      res.status(500).json({ err: "An error occurred while processing your request." });
     }
-}
+  };
 
 export const all = async (req, res) => {
     try {
@@ -165,7 +175,7 @@ export const signin = async (req, res) => {
                 return;
             }
 
-            const TOKEN = jwt.sign({ id: user.id }, TOKEN_SECRET, { expiresIn: '3h' });
+            const TOKEN = jwt.sign({ id: user.id }, TOKEN_SECRET, { expiresIn: '1d' });
             const { id, email, lastName, firstName, birthDate, phone, handicap, avatarName, isAdmin } = user;
             const msg = "connection successful";
             res.status(200).json(success(msg, {
