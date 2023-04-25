@@ -7,11 +7,13 @@ import { getUserAuth } from "../../services/api.js";
 function HOCAuth({ child, auth }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const Child = child;
 
   useEffect(() => {
+    setIsMounted(true);
+
     async function checkAuth() {
       if (auth) {
         const TOKEN = localStorage.getItem("auth");
@@ -19,14 +21,13 @@ function HOCAuth({ child, auth }) {
         if (TOKEN) {
           try {
             res = await getUserAuth("/user/checkToken", TOKEN);
-            if (res.status === 200) setIsAuthorized(true);
           } catch (err) {
             if (err.response && err.response.status === 401) {
               res = { status: 401 };
             }
           }
         }
-        if (!res || res.status === 401 || !TOKEN) {
+        if ((!res || res.status === 401 || !TOKEN) && isMounted) {
           dispatch(signOut());
           localStorage.removeItem("auth");
           localStorage.removeItem("user");
@@ -34,11 +35,30 @@ function HOCAuth({ child, auth }) {
         }
       }
     }
-    checkAuth();
-  }, [auth, dispatch, navigate]);
 
-  if (isAuthorized) return <Child />;
-  return null;
+    if (auth !== undefined && isMounted) {
+      checkAuth();
+    }
+
+    return () => {
+      setIsMounted(false);
+    };
+  }, [auth, dispatch, navigate, isMounted]);
+
+  const renderChild = () => {
+    if (auth === undefined) {
+      return <Child />;
+    } else if (auth === true) {
+      const TOKEN = localStorage.getItem("auth");
+      if (TOKEN) {
+        return <Child />;
+      }
+    } else {
+      return null;
+    }
+  };
+
+  return renderChild();
 }
 
 export default HOCAuth;

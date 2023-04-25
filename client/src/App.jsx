@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import Router from "./Router/Index";
@@ -11,26 +11,34 @@ function App() {
   const isLogged = useSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    async function checkAuth() {
+    async function checkAuthAsync() {
       const TOKEN = localStorage.getItem("auth");
       const user = localStorage.getItem("user");
       if (TOKEN && user) {
         const res = await getUserAuth("/user/checkToken", TOKEN);
         if (res.status === 200) {
           dispatch(signIn(JSON.parse(user)));
+          setIsAuthenticated(true);
         } else {
           localStorage.removeItem("auth");
           localStorage.removeItem("user");
           dispatch(signOut());
-          navigate('/entry');
+          setIsAuthenticated(false);
         }
       } else {
-        navigate('/entry');
+        const currentPath = window.location.pathname;
+        if (
+          currentPath !== "/legalmentions" &&
+          currentPath !== "/privacypolicy"
+        ) {
+          navigate("/entry");
+        }
       }
     }
-    checkAuth();
+    checkAuthAsync();
   }, [dispatch, navigate]);
 
   return (

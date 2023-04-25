@@ -18,10 +18,10 @@ function Router() {
             <Route path="/team" element={<HOCAuth child={Team} auth />} />
             <Route path="/event" element={<HOCAuth child={Calendar} auth />} />
             <Route path="/account" element={<HOCAuth child={AccountPage} auth />} />
-            <Route path="/legalmentions" element={<LegalMentions />} />
-            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+            <Route path="/privacypolicy" element={ <HOCAuth child={PrivacyPolicy} />} />
+            <Route path="/legalmentions" element={ <HOCAuth child={LegalMentions} />} />
             <Route path="/entry" element={<Entry />} />
-            <Route path="/admin" element={<HOCAuth child={Admin} auth />} />         
+            <Route path="/admin" element={<HOCAuth child={Admin} auth />} />
         </Routes>
     );
 }
