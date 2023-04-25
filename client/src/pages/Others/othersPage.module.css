@@ -1,0 +1,27 @@
+.ctnOtherPage {
+    width: 75%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .ctnOtherPage section {
+    padding: 2rem;
+    background-color: #f5f5f5;
+    border-radius: .5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ctnOtherPage h2 {
+    text-align: center;
+  }
+  
+  .ctnOtherPage h3, .ctnOtherPage h2 {
+    margin-bottom: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+  }
+  
+  .ctnOtherPage p {
+    margin-bottom: 2rem;
+  }
