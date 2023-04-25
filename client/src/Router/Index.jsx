@@ -5,6 +5,8 @@ import Team from "../pages/Team/Index";
 import Calendar from "../pages/Events/Index";
 import Entry from "../pages/User/Index";
 import Admin from "../pages/Admin/Index";
+import LegalMentions from "../pages/Others/LegalMentions";
+import PrivacyPolicy from "../pages/Others/PrivacyPolicy";
 import HOCAuth from "../helpers/HOC/Auth";
 import AccountPage from "../pages/User/AccountPage";
 
@@ -16,6 +18,8 @@ function Router() {
             <Route path="/team" element={<HOCAuth child={Team} auth />} />
             <Route path="/event" element={<HOCAuth child={Calendar} auth />} />
             <Route path="/account" element={<HOCAuth child={AccountPage} auth />} />
+            <Route path="/legalmentions" element={<LegalMentions />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
             <Route path="/entry" element={<Entry />} />
             <Route path="/admin" element={<HOCAuth child={Admin} auth />} />         
         </Routes>
