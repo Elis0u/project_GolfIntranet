@@ -17,19 +17,25 @@ function HOCAuth({ child, auth }) {
         const TOKEN = localStorage.getItem("auth");
         let res = null;
         if (TOKEN) {
-          res = await getUserAuth("/user/checkToken", TOKEN);
-          if (res.status === 200) setIsAuthorized(true);
+          try {
+            res = await getUserAuth("/user/checkToken", TOKEN);
+            if (res.status === 200) setIsAuthorized(true);
+          } catch (err) {
+            if (err.response && err.response.status === 401) {
+              res = { status: 401 };
+            }
+          }
         }
-        if (res.code || !TOKEN) {
+        if (!res || res.status === 401 || !TOKEN) {
           dispatch(signOut());
           localStorage.removeItem("auth");
-          localStorage.removeItem("user")
+          localStorage.removeItem("user");
           navigate("/entry");
         }
       }
     }
     checkAuth();
-  });
+  }, [auth, dispatch, navigate]);
 
   if (isAuthorized) return <Child />;
   return null;
