@@ -23,6 +23,16 @@
     color: var(--white);
 }
 
+.ctnWeather {
+    display: flex;
+    flex-direction: column;
+    gap : 1rem;
+}
+
+.ctnWeather p {
+    margin-left: 2rem;
+}
+
 .ctnEvent {
     display: flex;
     flex-direction: column;

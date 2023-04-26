@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { IoLocationOutline } from "react-icons/io5";
 import loader from "../../../assets/img/loader.svg";
 import { getWeather } from '../../../services/api';
+import style from "../home.module.css";
 
 function Weather({ city }) {
   const [weatherData, setWeatherData] = useState(null);
