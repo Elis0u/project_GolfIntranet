@@ -1,4 +1,4 @@
-.wrapper {
+.ctnHome {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -6,8 +6,12 @@
     color: white;
 }
 
-.wrapper section {
+.ctnHome section {
     width: 100%;
+}
+
+.ctnHome li {
+    font-size: 1.8rem;
 }
 
 .ctnWeather, .ctnPin, .ctnNews, .ctnChat {
@@ -54,7 +58,7 @@
 /* ====================================================== */
 
 @media screen and (min-width: 768px) {
-    .wrapper {
+    .ctnHome {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 4rem;
@@ -84,8 +88,12 @@
 
 @media screen and (min-width:1024px) {
     
-    .wrapper section {
+    .ctnHome section {
         overflow-y: auto;
+    }
+
+    .ctnHome li {
+        font-size: 1.6rem;
     }
     
     .ctnWeather, .ctnPin, .ctnNews, .ctnChat {
@@ -102,7 +110,7 @@
 
   @media screen and (min-width: 1594px) {
 
-    .wrapper {
+    .ctnHome {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 4rem;

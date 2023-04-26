@@ -17,7 +17,7 @@ function Home() {
         <title>Accueil - Equipe femme de Granville</title>
       </Helmet>
 
-      <main className={style.wrapper}>
+      <main className={style.ctnHome}>
 
         <h2>Bonjour {user.infos.firstName} !</h2>
 

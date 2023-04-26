@@ -4,8 +4,6 @@
   --threadGreen : #9FC490;
   --white: #EEF4ED;
 }
-/* #DDCA7D  #CEB992  #9FC490*/
-
 
 *, ::before, ::after {
   box-sizing: border-box;
@@ -23,21 +21,21 @@ body {
 }
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 3.4rem;
 }
 
 h2 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   padding: .5rem;
   color: var(--primaryBlue);
 }
 
 h3 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
 }
 
 p {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 section {
@@ -47,10 +45,6 @@ section {
 #root {
   display: flex;
 }
-
-/* .loader {
-  width: 100%; 
-} */
 
 main {
   width: 100%;
@@ -63,22 +57,22 @@ p, li {
   line-height: 2rem;
 }
 
-/* Style pour la barre de défilement */
+/* Style pour la scrollbar */
 ::-webkit-scrollbar {
-  width: 10px; /* Largeur de la barre */
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Couleur de fond */
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Couleur de la poignée */
+  background: #888;
   border-radius: 1rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Couleur de la poignée au survol */
+  background: #555;
 }
 
 
@@ -90,6 +84,22 @@ p, li {
 
   main{
     margin-left: 320px;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+  }
+  
+  h2 {
+    font-size: 2.8rem;
+  }
+  
+  h3 {
+    font-size: 2.4rem;
+  }
+  
+  p {
+    font-size: 1.6rem;
   }
 
 }
