@@ -16,6 +16,14 @@ async function getDatas(url){
     }
 }
 
+async function getWeather(city) {
+  try {
+    return await axios.get(`/home/weather?city=${city}`);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 async function addData(url, data) {
   try {
     return await axios.post(url, data);
@@ -57,6 +65,4 @@ async function signin (datas) {
     }
 }
 
-
-
-export {getUserAuth, getDatas, signup, signin, deleteData, addData, editData};
+export {getUserAuth, getDatas, signup, signin, deleteData, addData, editData, getWeather};
