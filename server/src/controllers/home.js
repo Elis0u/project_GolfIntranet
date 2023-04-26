@@ -1,5 +1,8 @@
 import { success } from "../helpers/index.js";
 import Query from "../model/query.js";
+import axios from "axios";
+
+const { API_WEATHER_KEY } = process.env;
 
 export const lastActivities = async (req, res) => {
     try {
@@ -48,3 +51,13 @@ export const fourEvents = async (req, res) => {
         res.status(500).json({ err: 'An error occurred while processing your request.' });
     }
 }
+
+export const weather = async (req, res) => {
+    try {
+      const city = req.query.city;
+      const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_WEATHER_KEY}&units=metric&lang=fr`);
+      res.status(200).json(response.data);
+    } catch (error) {
+      res.status(500).json({ err: 'An error occurred while processing your request.' });
+    }
+  };
