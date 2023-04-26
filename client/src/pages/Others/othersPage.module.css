@@ -1,5 +1,5 @@
 .ctnOtherPage {
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -25,3 +25,14 @@
   .ctnOtherPage p {
     margin-bottom: 2rem;
   }
+
+
+/* ====================================================== */
+/* =======================  TABLET ====================== */
+/* ====================================================== */
+
+@media screen and (min-width: 768px) {
+  .ctnOtherPage {
+    width: 75%;
+  }
+}

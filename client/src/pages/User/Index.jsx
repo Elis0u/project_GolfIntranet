@@ -10,7 +10,7 @@ function Entry() {
         </div>
         <div className={style.figureContainer}>
           <figure>
-            <img src="/img/divers/golf_fond.jpg" alt="" />
+            <img src="/img/divers/golf_fond.jpg" alt="Golf de Granville" />
           </figure>
         </div>
       </main>

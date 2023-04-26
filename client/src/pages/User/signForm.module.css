@@ -21,8 +21,7 @@
 }
 
 .figureContainer {
-  flex: 1;
-  position: relative;
+  display: none;
 }
 
 .entryContainer figure {
@@ -147,3 +146,19 @@
 .termsAccepted a:hover {
   color: var(--secondaryBlue);
 }
+
+/* ====================================================== */
+/* =======================  TABLET ====================== */
+/* ====================================================== */
+
+@media screen and (min-width: 768px) {
+
+  .figureContainer {
+    display: block;
+    flex: 1;
+    position: relative;
+  }
+}
+
+
+
