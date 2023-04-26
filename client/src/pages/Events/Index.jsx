@@ -78,6 +78,7 @@ function Calendar() {
         </section>
 
         <section className={style.eventMobil}>
+          <h2>Calendrier</h2>
           {isLoading ? (
             renderLoader()
           ) : (
