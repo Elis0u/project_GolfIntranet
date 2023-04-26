@@ -11,6 +11,7 @@ import { formatISO } from 'date-fns';
 import FormModal from './Components/Modal/FormModal';
 import AddPelzModal from './Components/Modal/AddPelzModal';
 import Loader from "../../assets/img/loader.svg";
+import { Helmet } from 'react-helmet';
 
 Chart.register(TimeScale);
 
@@ -129,82 +130,88 @@ function AccountPage() {
   };
 
   return (
-    <main className={style.ctnDashboard}>
-      <h2>DashBoard {user.firstName}</h2>
+    <>
+      <Helmet>
+        <title>Mon compte - Equipe femme de Granville</title>
+      </Helmet>
 
-      <div className={style.ctnSection}>
-        
-        <section className={style.userInfo}>
-          <button className={style.btnEdit} onClick={openFormModal}><AiOutlineEdit /></button>
-          <h3>Vos informations</h3>
+      <main className={style.ctnDashboard}>
+        <h2>DashBoard {user.firstName}</h2>
+
+        <div className={style.ctnSection}>
+
+          <section className={style.userInfo}>
+            <button className={style.btnEdit} onClick={openFormModal}><AiOutlineEdit /></button>
+            <h3>Vos informations</h3>
+            {isLoading ? (
+              <div className="loader">
+                <img src={Loader} alt="Chargement des informations utilisateur..." />
+              </div>
+            ) : (
+
+              <dl>
+                <dt>Email :</dt>
+                <dd>{user.email}</dd>
+
+                <dt>Prénom :</dt>
+                <dd>{user.firstName}</dd>
+
+                <dt>Nom :</dt>
+                <dd>{user.lastName}</dd>
+                <dt>Date de naissance :</dt>
+                <dd>{new Date(user.birthDate).toLocaleDateString()}</dd>
+
+                <dt>Téléphone :</dt>
+                <dd>{user.phone}</dd>
+
+                <dt>Handicap :</dt>
+                <dd>{user.handicap}</dd>
+
+              </dl>
+            )}
+          </section>
+
+          <section className={style.activityUser}>
+            <h3>Vos activités</h3>
+            {isLoading ? (
+              <div className="loader">
+                <img src={Loader} alt="Chargement des activités utilisateur..." />
+              </div>
+            ) : (
+              <ul className={style.activitiesList}>
+                {activitiesUser ? activitiesUser.map((a) => renderUserActivity(a)) : null}
+              </ul>
+            )}
+          </section>
+
+        </div>
+
+        <section className={style.pelzSection}>
+          <h3>PELZ stat</h3>
+          <button className={style.btnAddPelz} onClick={openFormPelzModal}><AiOutlinePlus /></button>
           {isLoading ? (
-            <div className="loader">
-              <img src={Loader} alt="Chargement des informations utilisateur..." />
-            </div>
+            <div className="loader"><img src={Loader} alt="Chargement des données..." /></div>
+          ) : pelzScores ? (
+            <Line className={style.pelzChart} data={getChartData()} options={chartOptions} />
           ) : (
-
-            <dl>
-              <dt>Email :</dt>
-              <dd>{user.email}</dd>
-
-              <dt>Prénom :</dt>
-              <dd>{user.firstName}</dd>
-
-              <dt>Nom :</dt>
-              <dd>{user.lastName}</dd>
-              <dt>Date de naissance :</dt>
-              <dd>{new Date(user.birthDate).toLocaleDateString()}</dd>
-
-              <dt>Téléphone :</dt>
-              <dd>{user.phone}</dd>
-
-              <dt>Handicap :</dt>
-              <dd>{user.handicap}</dd>
-
-            </dl>
+            <p>Aucune donnée disponible</p>
           )}
         </section>
 
-        <section className={style.activityUser}>
-          <h3>Vos activités</h3>
-          {isLoading ? (
-            <div className="loader">
-              <img src={Loader} alt="Chargement des activités utilisateur..." />
-            </div>
-          ) : (
-            <ul className={style.activitiesList}>
-              {activitiesUser ? activitiesUser.map((a) => renderUserActivity(a)) : null}
-            </ul>
-          )}
-        </section>
+        <FormModal
+          formModalIsOpen={formModalIsOpen}
+          closeFormModal={closeFormModal}
+          initialData={user}
+          onSubmitSuccess={closeFormModal}
+        />
+        <AddPelzModal
+          formModalIsOpen={formPelzModalIsOpen}
+          closeFormModal={closeFormPelzModal}
+          onSubmitSuccess={closeFormPelzModal}
+        />
 
-      </div>
-
-      <section className={style.pelzSection}>
-        <h3>PELZ stat</h3>
-        <button className={style.btnAddPelz} onClick={openFormPelzModal}><AiOutlinePlus /></button>
-        {isLoading ? (
-          <div className="loader"><img src={Loader} alt="Chargement des données..." /></div>
-        ) : pelzScores ? (
-          <Line className={style.pelzChart} data={getChartData()} options={chartOptions} />
-        ) : (
-          <p>Aucune donnée disponible</p>
-        )}
-      </section>
-
-      <FormModal
-        formModalIsOpen={formModalIsOpen}
-        closeFormModal={closeFormModal}
-        initialData={user}
-        onSubmitSuccess={closeFormModal}
-      />
-      <AddPelzModal
-        formModalIsOpen={formPelzModalIsOpen}
-        closeFormModal={closeFormPelzModal}
-        onSubmitSuccess={closeFormPelzModal}
-      />
-
-    </main>
+      </main>
+    </>
   );
 }
 

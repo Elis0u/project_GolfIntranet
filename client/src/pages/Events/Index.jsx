@@ -8,6 +8,7 @@ import { IoGolfOutline } from "react-icons/io5";
 import { formatDateAndTime } from './utils';
 import GenerateCalendar from "./Components/GenerateCalendar.jsx";
 import loader from "../../assets/img/loader.svg";
+import { Helmet } from 'react-helmet';
 
 function Calendar() {
   const [events, setEvents] = useState([]);
@@ -46,6 +47,10 @@ function Calendar() {
 
   return (
     <>
+      <Helmet>
+        <title>Calendrier - Equipe femme de Granville</title>
+      </Helmet>
+
       <main>
         <section className={style.calendar}>
           <h2 className={style.header}>Calendrier de l'équipe</h2>

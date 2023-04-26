@@ -7,6 +7,7 @@ import DeleteModal from './Components/Modal/DeleteModal';
 import ViewModal from './Components/Modal/ViewModal';
 import FormModal from './Components/Modal/FormModal';
 import loader from '../../assets/img/loader.svg';
+import { Helmet } from 'react-helmet';
 
 Modal.setAppElement('#root');
 
@@ -114,56 +115,62 @@ function Admin() {
   };
 
   return (
-    <main className={style.adminContainer}>
-      <h2>Admin Panel</h2>
-      <nav>
-        <ul className={style.adminNav}>
-          {navigationItems.map((navItem, index) => (
-            <li key={index} className={navItem.name === activeNavItem.name ? style.activeNavItem : ''} onClick={() => handleNavItemClick(navItem)}>
-              {navItem.name}
-            </li>
-          ))}
-        </ul>
-      </nav>
-      {activeNavItem.name !== 'Utilisateurs' && (
-        <button onClick={openFormModal} className={style.addButton}>
-          Ajouter un élément
-        </button>
-      )}
-      {isLoading && (
-        <div className={style.loaderContainer}>
-          <img src={loader} alt="Chargement..." className={style.loader} />
-        </div>
-      )}
-      {!isLoading && columns && data && (
-        <DataTable
-          columns={columns}
-          data={data}
-          onView={handleView}
-          onUpdate={handleUpdate}
-          onDelete={openModal}
-          onDataUpdated={handleDataUpdated}
+    <>
+      <Helmet>
+        <title>Admin - Equipe femme de Granville</title>
+      </Helmet>
+
+      <main className={style.adminContainer}>
+        <h2>Admin Panel</h2>
+        <nav>
+          <ul className={style.adminNav}>
+            {navigationItems.map((navItem, index) => (
+              <li key={index} className={navItem.name === activeNavItem.name ? style.activeNavItem : ''} onClick={() => handleNavItemClick(navItem)}>
+                {navItem.name}
+              </li>
+            ))}
+          </ul>
+        </nav>
+        {activeNavItem.name !== 'Utilisateurs' && (
+          <button onClick={openFormModal} className={style.addButton}>
+            Ajouter un élément
+          </button>
+        )}
+        {isLoading && (
+          <div className={style.loaderContainer}>
+            <img src={loader} alt="Chargement..." className={style.loader} />
+          </div>
+        )}
+        {!isLoading && columns && data && (
+          <DataTable
+            columns={columns}
+            data={data}
+            onView={handleView}
+            onUpdate={handleUpdate}
+            onDelete={openModal}
+            onDataUpdated={handleDataUpdated}
+          />
+        )}
+        <DeleteModal
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+          handleDelete={handleDelete}
         />
-      )}
-      <DeleteModal
-        modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
-        handleDelete={handleDelete}
-      />
-      <ViewModal
-        viewModalIsOpen={viewModalIsOpen}
-        closeViewModal={closeViewModal}
-        selectedData={selectedData}
-      />
-      <FormModal
-        formModalIsOpen={formModalIsOpen}
-        closeFormModal={closeFormModal}
-        activeNavItem={activeNavItem}
-        isEditMode={isEditMode}
-        initialData={initialData}
-        handleFormSubmitSuccess={handleFormSubmitSuccess}
-      />
-    </main>
+        <ViewModal
+          viewModalIsOpen={viewModalIsOpen}
+          closeViewModal={closeViewModal}
+          selectedData={selectedData}
+        />
+        <FormModal
+          formModalIsOpen={formModalIsOpen}
+          closeFormModal={closeFormModal}
+          activeNavItem={activeNavItem}
+          isEditMode={isEditMode}
+          initialData={initialData}
+          handleFormSubmitSuccess={handleFormSubmitSuccess}
+        />
+      </main>
+    </>
   );
 }
 

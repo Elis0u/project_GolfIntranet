@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
 import { signup, signin } from "../../services/api.js"
 import { useDispatch } from "react-redux";
 import { signIn } from "../../store/slices/user";
 import style from "./signForm.module.css";
 import { IoGolfOutline } from "react-icons/io5";
+import { Helmet } from 'react-helmet';
 
 function SignForm() {
     const { state } = useLocation();
     const type = state?.type || "se connecter";
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const title = type === "se connecter" ? "Connexion - Equipe femme de Granville" : "Inscription - Equipe femme de Granville";
 
     const [msg, setMsg] = useState(null);
 
@@ -112,6 +113,10 @@ function SignForm() {
 
     return (
         <>
+            <Helmet>
+                <title>{title}</title>
+            </Helmet>
+
             {type === "se connecter" ? (
                 <h2><IoGolfOutline /> Connexion</h2>
             ) : (
