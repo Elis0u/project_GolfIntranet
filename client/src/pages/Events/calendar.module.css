@@ -135,18 +135,19 @@
   .navigation button {
     width: 3rem;
     height: 3rem;
-    color: var(--primaryBlue);
-    border: 1px solid var(--primaryBlue);
+    background-color: var(--threadGreen);
+    color: white;
     border-radius: 50%;
+    border: none;
     font-size: 1.6rem;
     text-decoration: none;
     transition: all 0.3s ease;
   }
   
   .navigation button:hover {
+    cursor: pointer;
     background-color: var(--secondaryBlue);
-    border-color: var(--secondaryBlue);
-    color: var(--threadGreen);
+    transform: scale(1.1);
   }
   
 }

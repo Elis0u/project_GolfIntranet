@@ -76,8 +76,9 @@
     align-items: center;
     width: 3rem;
     height: 3rem;
-    color: var(--primaryBlue);
-    border: 1px solid var(--primaryBlue);
+    background-color: var(--threadGreen);
+    color: white;
+    border: none;
     border-radius: 50%;
     font-size: 1.6rem;
     text-decoration: none;
@@ -85,9 +86,9 @@
 }
 
 .pagination a:hover {
+    cursor: pointer;
     background-color: var(--secondaryBlue);
-    border-color: var(--secondaryBlue);
-    color: var(--threadGreen);
+    transform: scale(1.1);
 }
 
 .paginationDisabled {
