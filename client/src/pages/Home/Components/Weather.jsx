@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { IoLocationOutline } from "react-icons/io5";
 import loader from "../../../assets/img/loader.svg";
+import { getWeather } from '../../../services/api';
 
 function Weather({ city }) {
   const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const apiKey = 'API';
 
   const translations = {
     'Clouds': 'Nuages',
@@ -20,7 +19,7 @@ function Weather({ city }) {
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=fr`);
+        const response = await getWeather(city);
         setWeatherData(response.data);
         setIsLoading(false);
       } catch (error) {
