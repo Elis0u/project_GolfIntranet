@@ -106,6 +106,12 @@
   margin-top: 1.5rem;
 }
 
+.editAvatarForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 /* Modal */
 .modalOverlay {
   position: fixed;
@@ -234,7 +240,8 @@
 }
 
 .editUserForm .submitButton,
-.pelzForm .submitButton {
+.pelzForm .submitButton,
+.editAvatarBtn {
   display: inline-block;
   padding: 1rem 1.5rem;
   font-size: 1.2rem;
@@ -252,7 +259,8 @@
 }
 
 .editUserForm .submitButton:hover,
-.pelzForm .submitButton:hover {
+.pelzForm .submitButton:hover,
+.editAvatarBtn:hover {
   background-color: var(--threadGreen);
 }
 
