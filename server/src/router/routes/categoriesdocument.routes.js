@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import {all, one, add, update, remove} from '../../controllers/categoriesDocument.js'
+import {all, add, update, remove} from '../../controllers/categoriesDocument.js'
 
 const router = Router();
 
