@@ -41,7 +41,7 @@ export const all = async (req, res) => {
 export const one = async (req, res) => {
     try {
         const query = "SELECT category_document.id, label FROM category_document WHERE id = ?";
-        const category = await Query.findOne(query, req.params.id);
+        const category = await Query.findOne(query, req.user.id);
 
         if (!category.length) {
             const msg = "This document category does not exist in database";
