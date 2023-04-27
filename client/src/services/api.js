@@ -32,9 +32,9 @@ async function addData(url, data) {
   }
 }
 
-async function editData(url, data) {
+async function editData(url, data, config = {}) {
   try {
-    const response = await axios.put(url, data);
+    const response = await axios.put(url, data, config);
     return response;
   } catch (error) {
     throw new Error(`Error editing element: ${error}`);
