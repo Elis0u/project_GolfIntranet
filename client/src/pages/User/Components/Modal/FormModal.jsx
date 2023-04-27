@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { useSelector } from "react-redux";
 import style from '../../accountPage.module.css';
 import UserEditForm from '../Form/InformationForm';
+import UpdateAvatar from '../Form/UpdateAvatar';
 
 function FormModal({ formModalIsOpen, closeFormModal, isEditMode, initialData, handleFormSubmitSuccess }) {
   const user = useSelector((state) => state.user.infos);
@@ -23,6 +24,11 @@ function FormModal({ formModalIsOpen, closeFormModal, isEditMode, initialData, h
         onSubmitSuccess={handleFormSubmitSuccess}
         key={key}
       />
+
+      <section>
+        <UpdateAvatar />
+      </section>
+
       <div className={style.modalActions}>
         <button onClick={closeFormModal}>Annuler</button>
       </div>
