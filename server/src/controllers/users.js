@@ -131,14 +131,14 @@ export const update_user = async (req, res) => {
 export const update_avatar = async (req, res) => {
     try {
         const userId = req.user.id;
-        const avatarPath = path.basename(req.file.path);       
+        const avatarPath = path.basename(req.file.path);
 
         const query = "UPDATE user SET avatarName = ? WHERE id = ?";
         const [result] = await Query.write(query, [avatarPath, userId]);
 
         if (result.affectedRows) {
             const msg = "Avatar updated successfully";
-            res.status(200).json(success(msg, {avatarName: avatarPath }));
+            res.status(200).json(success(msg, { avatarName: avatarPath }));
         } else {
             const msg = "Error updating avatar";
             res.status(400).json({ error: msg });

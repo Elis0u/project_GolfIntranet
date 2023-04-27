@@ -37,7 +37,7 @@ async function editData(url, data, config = {}) {
     const response = await axios.put(url, data, config);
     return response;
   } catch (error) {
-    throw new Error(`Error editing element: ${error}`);
+    throw error;
   }
 }
 
