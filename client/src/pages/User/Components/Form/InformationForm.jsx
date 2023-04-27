@@ -85,7 +85,7 @@ function UserEditForm({ initialData, onSubmitSuccess }) {
 
   return (
     <>
-      <h2>Édition de l'utilisateur</h2>
+      <h2>Éditer mes informations</h2>
       <form className={style.editUserForm} onSubmit={handleSubmit}>
         <div className={style.inputGroup}>
           <label htmlFor="email" className={`${style.addForm_label} ${isActive("email") ? style.active : ""}`}>Email</label>
