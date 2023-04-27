@@ -10,7 +10,6 @@ import "chartjs-adapter-date-fns";
 import { formatISO } from 'date-fns';
 import FormModal from './Components/Modal/FormModal';
 import AddPelzModal from './Components/Modal/AddPelzModal';
-import UpdateAvatar from './Components/Form/UpdateAvatar';
 import Loader from "../../assets/img/loader.svg";
 import { Helmet } from 'react-helmet';
 
