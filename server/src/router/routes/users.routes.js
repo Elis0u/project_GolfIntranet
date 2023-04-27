@@ -5,7 +5,6 @@ import { auth } from '../../middlewares/auth.js';
 import upload from '../../middlewares/multerConfig.js';
 import { multerErrorHandler } from '../../middlewares/multerErrorHandler.js';
 
-
 const router = Router();
 
 router.get("/", all);

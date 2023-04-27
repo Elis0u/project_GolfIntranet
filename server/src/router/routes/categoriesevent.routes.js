@@ -5,10 +5,11 @@ import {all, one, add, update, remove} from '../../controllers/categoriesEvent.j
 const router = Router();
 
 router.get("/", all);
-router.get("/:id", one);
 
 router.post("/", add);
+
 router.put("/", update);
+
 router.delete("/", remove);
 
 export default router;

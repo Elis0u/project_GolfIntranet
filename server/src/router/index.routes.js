@@ -7,14 +7,11 @@ import categoriesEvent_routes from "./routes/categoriesEvent.routes.js";
 import pelz_routes from "./routes/pelz.routes.js";
 import users_routes from "./routes/users.routes.js";
 import home_routes from "./routes/home.routes.js";
-import { isAdmin } from '../middlewares/admin.js';
 
 const router = Router();
 
 router.use("/documents", documents_routes);
 router.use("/categoriesDocument", categoriesDocument_routes);
-
-
 
 router.use("/events", events_routes);
 router.use("/categoriesEvent", categoriesEvent_routes);
