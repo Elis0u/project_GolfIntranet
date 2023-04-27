@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUser } from '../../../../store/slices/user';
 import { editData } from '../../../../services/api';
+import style from '../../accountPage.module.css'
 
 const UpdateAvatar = () => {
   const dispatch = useDispatch();
@@ -65,12 +66,12 @@ const UpdateAvatar = () => {
 
   return (
     <div>
-      <h2>Mettre à jour l'avatar</h2>
-      {message && <p>{message}</p>}
-      <form onSubmit={handleSubmit}>
+      <h2>Mettre à jour mon avatar</h2>
+      <form className={style.editAvatarForm} onSubmit={handleSubmit}>
         <input type="file" onChange={handleChange} />
-        <button type="submit">Mettre à jour</button>
+        <button className={style.editAvatarBtn} type="submit">Mettre à jour</button>
       </form>
+      {message && <p>{message}</p>}
     </div>
   );
 };
