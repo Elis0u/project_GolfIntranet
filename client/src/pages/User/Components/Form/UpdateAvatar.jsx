@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateUser } from '../../../../store/slices/user'; 
+import { updateUser } from '../../../../store/slices/user';
 import { editData } from '../../../../services/api';
 
 const UpdateAvatar = () => {
@@ -55,7 +55,11 @@ const UpdateAvatar = () => {
 
       setMessage('Avatar mis à jour avec succès');
     } catch (error) {
-      setMessage('Erreur lors de la mise à jour de l\'avatar');
+      if (error.response && error.response.data.error && error.response.data.error.includes('File size is too large')) {
+        setMessage("Votre image est trop grande (max : 2MO)");
+      } else {
+        setMessage('Erreur lors de la mise à jour de l\'avatar');
+      }
     }
   };
 
