@@ -199,10 +199,6 @@ function AccountPage() {
           )}
         </section>
 
-        <section>
-          <UpdateAvatar />
-        </section>
-
         <FormModal
           formModalIsOpen={formModalIsOpen}
           closeFormModal={closeFormModal}
