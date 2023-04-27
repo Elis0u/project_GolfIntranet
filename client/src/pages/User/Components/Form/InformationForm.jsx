@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateUser } from '../../../../store/slices/user';
 import { editData } from '../../../../services/api.js';
 import style from "../../accountPage.module.css";
 
 function UserEditForm({ initialData, onSubmitSuccess }) {
 
   const user = useSelector((state) => state.user.infos);
+  const dispatch = useDispatch();
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const [inputs, setInputs] = useState({
@@ -54,7 +56,7 @@ function UserEditForm({ initialData, onSubmitSuccess }) {
       formData.id = initialData.id;
       await editData("/user/update_user", formData);
 
-      localStorage.setItem("user", JSON.stringify({
+      const updatedUser = {
         id: user.id,
         email,
         firstName,
@@ -64,7 +66,11 @@ function UserEditForm({ initialData, onSubmitSuccess }) {
         handicap,
         avatarName: user.avatarName,
         isAdmin: user.isAdmin
-      }));
+      };
+
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+
+      dispatch(updateUser(updatedUser));
 
       setSubmitSuccess(true);
       onSubmitSuccess();
