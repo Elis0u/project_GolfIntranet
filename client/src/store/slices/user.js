@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
     name: "user",
@@ -21,12 +21,15 @@ const userSlice = createSlice({
             state.infos = action.payload;
             state.isLogged = true;
         },
-        signOut(state, action){
+        signOut(state, action) {
             state.infos = null;
             state.isLogged = false;
-        }
+        },
+        updateUser(state, action) {
+            state.infos = action.payload;
+        },
     }
 });
 
-export const {signIn, signOut} = userSlice.actions;
+export const { signIn, signOut, updateUser } = userSlice.actions;
 export default userSlice.reducer;
