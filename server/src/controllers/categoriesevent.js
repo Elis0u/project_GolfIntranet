@@ -38,23 +38,6 @@ export const all = async (req, res) => {
     }
 }
 
-export const one = async (req, res) => {
-    try {
-        const query = "SELECT category_event.id, label FROM category_event WHERE id = ?";
-        const category = await Query.findOne(query, req.user.id);
-
-        if (!category.length) {
-            const msg = "This event category does not exist in database";
-            res.status(200).json(success(msg));
-        } else {
-            const msg = "Recovery of event category : " + category_event[0].label;
-            res.status(200).json(success(msg, category));
-        }
-    } catch (err) {
-        res.status(500).json({ err: 'An error occurred while processing your request.' });
-    }
-}
-
 // Update
 export const update = async (req, res) => {
     try {

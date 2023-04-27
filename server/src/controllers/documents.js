@@ -37,22 +37,6 @@ export const all = async (req, res) => {
     }
 }
 
-export const one = async (req, res) => {
-    try {
-        const queryDocument = "SELECT document.id, title, content, createdAt, updatedAt, category_id, user_id FROM document WHERE id = ?";
-        const document = await Query.findByValue(queryDocument, req.params.val);
-        if (!document.length) {
-            const msg = "This document doesn't exist in database";
-            res.status(200).json(success(msg));
-        } else {
-            const msg = "Recovery of document :" + document[0].title;
-            res.status(200).json(success(msg, document));
-        }
-    } catch (err) {
-        res.status(500).json({ err: 'An error occurred while processing your request.' });
-    }
-}
-
 // Update
 export const update = async (req, res) => {
     try {

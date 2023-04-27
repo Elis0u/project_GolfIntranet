@@ -37,23 +37,6 @@ export const all = async (req, res) => {
     }
 }
 
-export const one = async (req, res) => {
-    try {
-        const queryEvent = "SELECT event.id, title, location, startEvent, endEvent, createdAt, category_id FROM event WHERE id = ?";
-        const event = await Query.findByValue(queryEvent, req.params.val);
-
-        if (!event.length) {
-            const msg = "This event doesn't exist in databse";
-            res.status(200).json(success(msg));
-        } else {
-            const msg = "Recovery of event : " + event[0].title;
-            res.status(200).json(success(msg, event));
-        }
-    } catch (err) {
-        res.status(500).json({ err: 'An error occurred while processing your request.' });
-    }
-}
-
 // Update
 export const update = async (req, res) => {
     try {
