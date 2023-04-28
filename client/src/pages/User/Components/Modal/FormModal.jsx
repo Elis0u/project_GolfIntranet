@@ -5,9 +5,10 @@ import style from '../../accountPage.module.css';
 import UserEditForm from '../Form/InformationForm';
 import UpdateAvatar from '../Form/UpdateAvatar';
 
-function FormModal({ formModalIsOpen, closeFormModal, isEditMode, initialData, handleFormSubmitSuccess }) {
+const FormModal = ({ formModalIsOpen, closeFormModal, isEditMode, initialData, handleFormSubmitSuccess }) => {
   const user = useSelector((state) => state.user.infos);
   const key = user.id;
+  
   return (
     <Modal
       isOpen={formModalIsOpen}

@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 
 Modal.setAppElement('#root');
 
-function Documents() {
+const Documents = () => {
 
   const [documents, setDocuments] = useState(null);
   const [pageNumber, setPageNumber] = useState(0);
@@ -50,8 +50,10 @@ function Documents() {
         return style['mental'];
       case 'Routine':
         return style['routine'];
+      case 'Exercice':
+        return style['exercice'];
       default:
-        return '';
+        return style['other'];
     }
   }
 

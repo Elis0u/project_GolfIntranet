@@ -3,7 +3,7 @@ import { getDatas } from '../../../services/api.js';
 import style from '../home.module.css';
 import loader from "../../../assets/img/loader.svg";
 
-function Activities() {
+const Activities = () => {
   const [activities, setActivities] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 

@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import style from '../../admin.module.css';
 import DynamicForm from '../Form';
 
-function FormModal({ formModalIsOpen, closeFormModal, activeNavItem, isEditMode, initialData, handleFormSubmitSuccess }) {
+const FormModal = ({ formModalIsOpen, closeFormModal, activeNavItem, isEditMode, initialData, handleFormSubmitSuccess }) => {
   return (
     <Modal
       isOpen={formModalIsOpen}

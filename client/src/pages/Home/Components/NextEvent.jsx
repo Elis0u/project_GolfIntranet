@@ -6,7 +6,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { IoGolfOutline } from "react-icons/io5";
 import loader from "../../../assets/img/loader.svg";
 
-function NextEvent() {
+const NextEvent = () => {
   const [nextEvent, setNextEvent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 

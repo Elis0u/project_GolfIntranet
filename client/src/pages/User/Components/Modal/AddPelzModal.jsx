@@ -1,12 +1,10 @@
 import React from 'react';
 import Modal from 'react-modal';
-// import { useSelector } from "react-redux";
 import style from '../../accountPage.module.css';
 import PelzForm from '../Form/AddPelzForm';
 
-function FormPelzModal({ formModalIsOpen, closeFormModal, handleFormSubmitSuccess }) {
-//   const user = useSelector((state) => state.user.infos);
-//   const key = user.id;
+const FormPelzModal = ({ formModalIsOpen, closeFormModal, handleFormSubmitSuccess }) => {
+
   return (
     <Modal
       isOpen={formModalIsOpen}
@@ -17,13 +15,14 @@ function FormPelzModal({ formModalIsOpen, closeFormModal, handleFormSubmitSucces
       role="dialog"
       aria-modal="true"
     >
-      <PelzForm
-        onSubmitSuccess={handleFormSubmitSuccess}
-        // key={key}
-      />
-      <div className={style.modalActions}>
-        <button onClick={closeFormModal}>Annuler</button>
-      </div>
+
+    <PelzForm
+      onSubmitSuccess={handleFormSubmitSuccess}
+    />
+    
+    <div className={style.modalActions}>
+      <button onClick={closeFormModal}>Annuler</button>
+    </div>
     </Modal>
   );
 }

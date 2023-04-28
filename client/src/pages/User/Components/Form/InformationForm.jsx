@@ -4,7 +4,7 @@ import { updateUser } from '../../../../store/slices/user';
 import { editData } from '../../../../services/api.js';
 import style from "../../accountPage.module.css";
 
-function UserEditForm({ initialData, onSubmitSuccess }) {
+const UserEditForm = ({ initialData, onSubmitSuccess }) => {
 
   const user = useSelector((state) => state.user.infos);
   const dispatch = useDispatch();

@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../admin.module.css';
 
+// function for creating the unordered list
 const Navigation = ({ items, activeItem, setActiveItem }) => {
   return (
     <ul className={style.navigation}>

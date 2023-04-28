@@ -4,7 +4,7 @@ import style from "./user.module.css";
 import loader from "../../assets/img/loader.svg";
 import { Helmet } from 'react-helmet';
 
-function Team() {
+const Team = () => {
     const [users, setUsers] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -36,7 +36,7 @@ function Team() {
                 <title>Equipe - Equipe femme de Granville</title>
             </Helmet>
 
-            <main className={style.container}>
+            <main className={style.ctnTeam}>
                 <h2>Membres de l'équipe</h2>
                 <section className={style.cards}>
                     {isLoading ? (
@@ -48,7 +48,7 @@ function Team() {
                                 <article key={u.id}>
                                     <div className={style.cardHeader}>
                                         <figure className={style.avatar}>
-                                            <img src={`/img/avatar_user/${u.avatarName ? u.avatarName : "default.jpg"}`} alt={u.avatarAlt ? u.avatarAlt : 'avatar par defaut'} />
+                                            <img src={`/img/avatar_user/${u.avatarName ? u.avatarName : "default.jpg"}`} alt={`Avatar de l'utilisateur : ${u.firstName} ${u.lastName}`} />
                                         </figure>
                                     </div>
                                     <div className={style.cardBody}>

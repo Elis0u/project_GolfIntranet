@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import style from '../../admin.module.css';
 
-function ViewModal({ viewModalIsOpen, closeViewModal, selectedData }) {
+const ViewModal = ({ viewModalIsOpen, closeViewModal, selectedData }) => {
     return (
         <Modal
             isOpen={viewModalIsOpen}

@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import loader from "../../../assets/img/loader.svg";
 
-function RenderEvents(date, events, isLoading) {
+const RenderEvents = (date, events, isLoading) => {
   if (isLoading) {
     return <div><img src={loader} alt="Loading..." /></div>;
   }

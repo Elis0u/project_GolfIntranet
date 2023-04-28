@@ -5,7 +5,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { IoGolfOutline } from "react-icons/io5";
 import loader from "../../../assets/img/loader.svg";
 
-function Event() {
+const Event = () => {
   const [events, setEvents] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 

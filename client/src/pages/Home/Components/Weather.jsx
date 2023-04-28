@@ -3,7 +3,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import loader from "../../../assets/img/loader.svg";
 import { getWeather } from '../../../services/api';
 
-function Weather({ city }) {
+const Weather = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 

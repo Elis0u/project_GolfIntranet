@@ -11,7 +11,7 @@ import { Helmet } from 'react-helmet';
 
 Modal.setAppElement('#root');
 
-function Admin() {
+const Admin = () => {
   const [data, setData] = useState(null);
   const [columns, setColumns] = useState(null);
   const [activeNavItem, setActiveNavItem] = useState({ name: 'Documents', url: '/documents' });
@@ -60,6 +60,7 @@ function Admin() {
     setData(newData);
   };
 
+  // Modal Management
   const handleView = (data) => {
     openViewModal(data);
   };
@@ -100,6 +101,7 @@ function Admin() {
     setFormModalIsOpen(false);
   };
 
+  // Delete Data
   const handleDelete = async () => {
     try {
       await deleteData(activeNavItem.url, selectedData.id);
@@ -109,6 +111,7 @@ function Admin() {
     }
   };
 
+  // Form submit
   const handleFormSubmitSuccess = () => {
     fetchData();
     closeFormModal();
@@ -120,7 +123,7 @@ function Admin() {
         <title>Admin - Equipe femme de Granville</title>
       </Helmet>
 
-      <main className={style.adminContainer}>
+      <main className={style.ctnAdmin}>
         <h2>Admin Panel</h2>
         <nav>
           <ul className={style.adminNav}>

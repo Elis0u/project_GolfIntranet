@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { addData } from '../../../../services/api.js';
 import style from "../../accountPage.module.css";
 
-function PelzForm({ onSubmitSuccess }) {
+const PelzForm = ({ onSubmitSuccess }) => {
 
   const user = useSelector((state) => state.user.infos);
   const [submitSuccess, setSubmitSuccess] = useState(false);

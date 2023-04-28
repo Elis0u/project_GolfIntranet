@@ -10,7 +10,7 @@ import GenerateCalendar from "./Components/GenerateCalendar.jsx";
 import loader from "../../assets/img/loader.svg";
 import { Helmet } from 'react-helmet';
 
-function Calendar() {
+const Calendar = () => {
   const [events, setEvents] = useState([]);
   const [currentDate, setCurrentDate] = useState(moment());
   const [isLoading, setIsLoading] = useState(true);
@@ -53,7 +53,7 @@ function Calendar() {
 
       <main>
         <section className={style.calendar}>
-          <h2 className={style.header}>Calendrier de l'équipe</h2>
+          <h2 className={style.headerCalendar}>Calendrier de l'équipe</h2>
           <div className={style.navigation}>
             <button onClick={handlePrevMonth} className={style.previous}>
               &lt;

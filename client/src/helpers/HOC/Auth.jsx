@@ -14,6 +14,7 @@ function HOCAuth({ child, auth }) {
   useEffect(() => {
     setIsMounted(true);
 
+    // Function to verify user authentication
     async function checkAuth() {
       if (auth) {
         const TOKEN = localStorage.getItem("auth");
@@ -27,6 +28,7 @@ function HOCAuth({ child, auth }) {
             }
           }
         }
+        // If the user is not authenticated or the token has expired, disconnect the user and redirect to the entry page
         if ((!res || res.status === 401 || !TOKEN) && isMounted) {
           dispatch(signOut());
           localStorage.removeItem("auth");
@@ -45,6 +47,7 @@ function HOCAuth({ child, auth }) {
     };
   }, [auth, dispatch, navigate, isMounted]);
 
+  // Function to make the child component according to the auth state
   const renderChild = () => {
     if (auth === undefined) {
       return <Child />;

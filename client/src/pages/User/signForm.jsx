@@ -7,7 +7,7 @@ import style from "./signForm.module.css";
 import { IoGolfOutline } from "react-icons/io5";
 import { Helmet } from 'react-helmet';
 
-function SignForm() {
+const SignForm = () => {
     const { state } = useLocation();
     const type = state?.type || "se connecter";
     const navigate = useNavigate();

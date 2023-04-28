@@ -23,10 +23,11 @@ const DataRow = ({ data, onView, onUpdate, onDelete, onToggleIsConfirmed, onTogg
       .map(([key, value], index) => {
         let displayValue;
 
+        // Check if a string corresponds to an ISO date
         const iso8601DateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
 
         if (key === 'content') {
-          displayValue =  `${value.slice(0, 100)} ...`;
+          displayValue = `${value.slice(0, 100)} ...`;
         } else if (typeof value === 'string' && iso8601DateRegex.test(value)) {
           displayValue = formatDate(value);
         } else {

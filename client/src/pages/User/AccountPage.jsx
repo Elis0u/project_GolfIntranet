@@ -15,7 +15,7 @@ import { Helmet } from 'react-helmet';
 
 Chart.register(TimeScale);
 
-function AccountPage() {
+const AccountPage = () => {
   const user = useSelector((state) => state.user.infos);
   const [activitiesUser, setActivitiesUser] = useState(null);
   const [pelzScores, setPelzScores] = useState([]);

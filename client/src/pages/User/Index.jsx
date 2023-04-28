@@ -1,7 +1,7 @@
 import SignForm from './signForm';
 import style from "./signForm.module.css";
 
-function Entry() {
+const Entry = () => {
   return (
     <>
       <main className={style.entryContainer}>

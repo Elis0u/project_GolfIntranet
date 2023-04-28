@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import style from '../../admin.module.css';
 
-function DeleteModal({ modalIsOpen, closeModal, handleDelete }) {
+const DeleteModal = ({ modalIsOpen, closeModal, handleDelete }) => {
   return (
     <Modal
       isOpen={modalIsOpen}

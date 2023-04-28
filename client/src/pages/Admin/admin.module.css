@@ -1,4 +1,8 @@
-.adminContainer {
+/* ====================================================== */
+/* ====================== MOBIL First =================== */
+/* ====================================================== */
+
+.ctnAdmin {
   overflow: hidden;
   font-size: 1.4rem;
   padding: 1rem;
@@ -11,7 +15,7 @@
   overflow-y: auto;
   max-height: 85vh;
   background-color: #f1f1f1;
-  border-radius: 4px;
+  border-radius: .4rem;
   padding: 1rem;
 }
 
@@ -31,7 +35,7 @@
 
 .table th,
 .table td {
-  padding: 8px 16px;
+  padding: .8rem 1.6rem;
   text-align: left;
   border-bottom: 1px solid #e0e0e0;
 }
@@ -110,7 +114,7 @@
   cursor: pointer;
 }
 
-/* Modal */
+/* Modal style */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -201,9 +205,12 @@
   background-color: var(--threadGreen);
 }
 
-/* Responsive */
+/* ====================================================== */
+/* ======================== TABLET ====================== */
+/* ====================================================== */
+
 @media screen and (min-width: 768px) {
-  .adminContainer {
+  .ctnAdmin {
     padding: 2rem;
   }
 
@@ -221,12 +228,16 @@
 
   .table th,
   .table td {
-    padding: 12px 24px;
+    padding: 1.2rem 2.4rem;
   }
 }
 
+/* ====================================================== */
+/* ======================= DESKTOP ====================== */
+/* ====================================================== */
+
 @media screen and (min-width: 1024px) {
-  .adminContainer {
+  .ctnAdmin {
     padding: 3rem;
   }
 
@@ -240,6 +251,6 @@
 
   .table th,
   .table td {
-    padding: 16px 32px;
+    padding: 1.6rem 3.2rem;
   }
 }

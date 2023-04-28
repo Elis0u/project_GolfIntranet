@@ -1,18 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { IoHomeOutline, IoPeopleOutline, IoCalendarOutline, IoFolderOpenOutline, IoHammerOutline } from "react-icons/io5";
-// import logo from "../../assets/img/autres/logo.png";
-import style from "./header.module.css";
 import { signOut } from "../../store/slices/user";
-import React from "react";
+import { IoHomeOutline, IoPeopleOutline, IoCalendarOutline, IoFolderOpenOutline, IoHammerOutline } from "react-icons/io5";
+import style from "./header.module.css";
 
-function Header() {
+const Header = () => {
+
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user);
-
     const navigate = useNavigate();
+    const user = useSelector(state => state.user);
+    const [anim, setAnim] = useState(false);
 
     const handleSignOut = () => {
         dispatch(signOut());
@@ -21,7 +20,6 @@ function Header() {
         navigate("/entry");
     }
 
-    const [anim, setAnim] = useState(false);
     const ToggleClass = () => {
         setAnim(!anim);
     };
@@ -42,7 +40,7 @@ function Header() {
 
                 <div className={style.navProfil}>
                     <figure>
-                        <img src={`/img/avatar_user/${user.infos && user.infos.avatarName ? user.infos.avatarName : "default.jpg"}`} alt="avatar de profil" />
+                        <img src={`/img/avatar_user/${user.infos && user.infos.avatarName ? user.infos.avatarName : "default.jpg"}`} alt="Avatar de l'utilisateur" />
                         <figcaption>{user.infos ? `${user.infos.lastName} ${user.infos.firstName}` : ""}</figcaption>
                     </figure>
 

@@ -1,13 +1,13 @@
 import { AiOutlinePushpin } from "react-icons/ai";
+import { useSelector } from "react-redux";
 import style from "./home.module.css";
 import Weather from './Components/Weather';
 import Activities from './Components/Activities';
 import NextEvent from './Components/NextEvent';
 import Event from './Components/Event';
-import { useSelector } from "react-redux";
 import { Helmet } from 'react-helmet';
 
-function Home() {
+const Home = () => {
 
   const user = useSelector(state => state.user);
 

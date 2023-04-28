@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addData, editData } from '../../../../services/api.js';
 import style from "./addForm.module.css";
 
-function CategoriesForm({ isEditMode = false, initialData, onSubmitSuccess, url }) {
+const CategoriesForm = ({ isEditMode = false, initialData, onSubmitSuccess, url }) =>{
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const [inputs, setInputs] = useState({

@@ -7,7 +7,7 @@ import Header from "./Components/Header/Index";
 import { signIn, signOut } from "./store/slices/user";
 import { getUserAuth } from "./services/api.js";
 
-function App() {
+const App = () => {
   const isLogged = useSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
   const navigate = useNavigate();

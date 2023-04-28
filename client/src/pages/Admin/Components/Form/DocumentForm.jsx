@@ -3,9 +3,18 @@ import { useSelector } from 'react-redux';
 import { addData, editData, getDatas } from '../../../../services/api.js';
 import style from "./addForm.module.css";
 
-function DocumentForm({ isEditMode = false, initialData, onSubmitSuccess }) {
+const DocumentForm = ({ isEditMode = false, initialData, onSubmitSuccess }) => {
   const [categories, setCategories] = useState(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const [inputs, setInputs] = useState({
+    title: isEditMode && initialData ? initialData.title : '',
+    content: isEditMode && initialData ? initialData.content : '',
+    categoryId: isEditMode && initialData ? initialData.categoryId : '',
+  });
+
+  const { title, content, categoryId } = inputs;
+  const userId = useSelector((state) => state.user.infos.id);
 
   useEffect(() => {
     async function fetchData() {
@@ -18,15 +27,6 @@ function DocumentForm({ isEditMode = false, initialData, onSubmitSuccess }) {
     }
     fetchData();
   }, []);
-
-  const [inputs, setInputs] = useState({
-    title: isEditMode && initialData ? initialData.title : '',
-    content: isEditMode && initialData ? initialData.content : '',
-    categoryId: isEditMode && initialData ? initialData.categoryId : '',
-  });
-
-  const { title, content, categoryId } = inputs;
-  const userId = useSelector((state) => state.user.infos.id);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -72,7 +72,6 @@ function DocumentForm({ isEditMode = false, initialData, onSubmitSuccess }) {
   const isActive = (field) => {
     return isEditMode && inputs[field] !== "";
   };
-
 
   return (
     <>

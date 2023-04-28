@@ -6,9 +6,20 @@ import DateTime from 'react-datetime';
 import moment from 'moment';
 import 'react-datetime/css/react-datetime.css';
 
-function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
+const EventForm = ({ isEditMode = false, initialData, onSubmitSuccess }) => {
     const [categories, setCategories] = useState(null);
     const [submitSuccess, setSubmitSuccess] = useState(false);
+    const [startDateTime, setStartDateTime] = useState('');
+    const [endDateTime, setEndDateTime] = useState('');
+
+    const [inputs, setInputs] = useState({
+        title: isEditMode && initialData ? initialData.title : '',
+        location: isEditMode && initialData ? initialData.location : '',
+        categoryId: isEditMode && initialData ? initialData.categoryId : ''
+    });
+    
+    const { title, location, categoryId } = inputs;
+    const userId = useSelector((state) => state.user.infos.id);
 
     useEffect(() => {
         async function fetchData() {
@@ -21,18 +32,6 @@ function EventForm({ isEditMode = false, initialData, onSubmitSuccess }) {
         }
         fetchData();
     }, []);
-
-    const [inputs, setInputs] = useState({
-        title: isEditMode && initialData ? initialData.title : '',
-        location: isEditMode && initialData ? initialData.location : '',
-        categoryId: isEditMode && initialData ? initialData.categoryId : ''
-    });
-
-    const [startDateTime, setStartDateTime] = useState('');
-    const [endDateTime, setEndDateTime] = useState('');
-
-    const { title, location, categoryId } = inputs;
-    const userId = useSelector((state) => state.user.infos.id);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
