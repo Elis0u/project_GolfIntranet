@@ -31,7 +31,66 @@ Le but de cette application est de fournir un outil efficace et convivial pour a
 ## Technologies
 ***
 Coté client :
-* [React]
+- [React](https://fr.legacy.reactjs.org/)
+- [Redux](https://www.npmjs.com/package/redux)
+- [Axios](https://www.npmjs.com/package/axios)
+- [ChartJs](https://www.chartjs.org/)
+- [Moment](https://www.npmjs.com/package/moment)
+- [React-datetime](https://www.npmjs.com/package/react-datetime)
+- [React-dom](https://www.npmjs.com/package/react-dom)
+- [React-helmet](https://www.npmjs.com/package/react-helmet)
+- [React-icon](https://www.npmjs.com/package/react-icons)
+- [React-modal](https://www.npmjs.com/package/react-modal)
+- [React-paginate](https://www.npmjs.com/package/react-paginate)
+- [React-router-dom](https://www.npmjs.com/package/react-router-dom)
 
 Coté server :
-* [NodeJs]
+- [NodeJs](https://nodejs.org/en)
+- [axios](https://www.npmjs.com/package/axios)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [cors](https://www.npmjs.com/package/cors)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [express](https://www.npmjs.com/package/express)
+- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+- [multer](https://www.npmjs.com/package/multer)
+- [mysql2](https://www.npmjs.com/package/mysql2)
+
+## Installation
+***
+- Assurez-vous d'avoir installé Node.js version 12.x.x ou ultérieure.
+- Lancez WampServer et assurez-vous d'avoir la base de données. Importez le fichier SQL dans votre base de données, si nécessaire.
+- Voici les étapes à suivre :
+
+1. Cloner le projet à l'emplacement que vous souhaitez :
+```
+$ git clone https://github.com/Elis0u/project_GolfIntranet.git
+```
+2. Rendez-vous dans le dossier client et installez les dépendances :
+```
+$ cd client
+$ npm install
+```
+3. Retournez dans le dossier de base, puis rendez-vous dans le dossier server et installez les dépendances :
+```
+$ cd ..
+$ cd server
+$ npm install
+```
+4. Toujours dans le dossier server, créez un fichier `.env` et ajoutez le code suivant en le complétant :
+```
+LOCAL_PORT = " "
+HOST = " "
+
+DB_HOST = " "
+DB_NAME = " "
+DB_USER = " "
+DB_PWD = 
+
+TOKEN_SECRET = " "
+
+API_WEATHER_KEY = " "
+```
+5. Afin de pouvoir lancer l'application, exécutez cette commande dans les dossiers server et client dans des terminaux séparés :
+```
+$ npm start
+```
