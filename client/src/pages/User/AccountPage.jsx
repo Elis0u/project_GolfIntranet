@@ -172,14 +172,14 @@ const AccountPage = () => {
           </section>
 
           <section className={style.activityUser}>
-            <h3>Vos activités</h3>
+            <h3>Vos actualités</h3>
             {isLoading ? (
               <div className="loader">
                 <img src={Loader} alt="Chargement des activités utilisateur..." />
               </div>
             ) : (
               <ul className={style.activitiesList}>
-                {activitiesUser ? activitiesUser.map((a) => renderUserActivity(a)) : null}
+                {activitiesUser ? activitiesUser.map((a) => renderUserActivity(a)) : "Vous n'avez pas encore d'actualité"}
               </ul>
             )}
           </section>
