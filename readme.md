@@ -17,6 +17,6 @@ L'accès à cette application est restreint. Les utilisateurs doivent se créer 
 Le but de cette application est de fournir un outil efficace et convivial pour aider l'équipe féminine de Granville à rester organisée et à communiquer efficacement entre ses membres, tout en démontrant la maîtrise des compétences de développement web acquises lors de la formation.
 
 ## Table des matières
-1. [Infos Général]
-2. [Technologies]
-3. [Installation]
+1. [Infos Général](#general-info)
+2. [Technologies](#technologies)
+3. [Installation](#installation)
