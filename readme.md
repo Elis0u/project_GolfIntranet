@@ -1,6 +1,6 @@
 # Intranet Equipe Femme de Granville
 ***
-Ce projet a été réalisé à la suite d'une formation en développement web fullstack Javascript et vise à valider les compétences acquises durant cette formation, ainsi qu'à obtenir le titre RNCP niveau 5. L'application intranet a été conçue pour faciliter la communication et la gestion de l'équipe féminine de Granville, fournissant une plateforme centralisée permettant aux membres de l'équipe et aux administrateurs de gérer les documents, les événements et les comptes des joueuses.
+L'application intranet a été conçue pour faciliter la communication et la gestion de l'équipe féminine de Granville, fournissant une plateforme centralisée permettant aux membres de l'équipe et aux administrateurs de gérer les documents, les événements et les comptes des joueuses.
 
 L'intranet offre plusieurs fonctionnalités clés, notamment :
 
@@ -20,3 +20,18 @@ Le but de cette application est de fournir un outil efficace et convivial pour a
 1. [Infos Général](#general-info)
 2. [Technologies](#technologies)
 3. [Installation](#installation)
+
+## Infos Général
+***
+- Ce projet a été développé dans le cadre d'une formation en développement web fullstack Javascript et vise à valider les compétences acquises, ainsi qu'à obtenir le titre RNCP niveau 5.
+- L'application intranet est destinée aux membres et aux administrateurs de l'équipe féminine de Granville.
+- Réalisé et développé par Dadure "Elis0u" Elisa.
+- Statut actuel : Version 1 non déployée.
+
+## Technologies
+***
+Coté client :
+* [React]
+
+Coté server :
+* [NodeJs]
