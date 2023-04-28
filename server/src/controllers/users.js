@@ -36,7 +36,7 @@ export const checkToken = async (req, res) => {
 
 export const all = async (req, res) => {
     try {
-        const query = "SELECT user.id, firstName, lastName, birthDate, phone, handicap, avatarName, avatarAlt, isConfirmed, isAdmin FROM user";
+        const query = "SELECT user.id, firstName, lastName, birthDate, phone, handicap, avatarName, isConfirmed, isAdmin FROM user";
         const [users] = await Query.find(query);
         if (users.length) {
             const msg = "Recovery of all users";
