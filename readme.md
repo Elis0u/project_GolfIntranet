@@ -1,6 +1,6 @@
 # Intranet Equipe Femme de Granville
 ***
-L'application intranet a été conçue pour faciliter la communication et la gestion de l'équipe féminine de Granville, fournissant une plateforme centralisée permettant aux membres de l'équipe et aux administrateurs de gérer les documents, les événements et les comptes des joueuses.
+L'application intranet (fictive) a été conçue pour faciliter la communication et la gestion de l'équipe féminine de Granville, fournissant une plateforme centralisée permettant aux membres de l'équipe et aux administrateurs de gérer les documents, les événements et les comptes des joueuses.
 
 L'intranet offre plusieurs fonctionnalités clés, notamment :
 
