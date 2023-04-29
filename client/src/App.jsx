@@ -30,10 +30,7 @@ const App = () => {
         }
       } else {
         const currentPath = window.location.pathname;
-        if (
-          currentPath !== "/legalmentions" &&
-          currentPath !== "/privacypolicy"
-        ) {
+        if (currentPath !== "/legalmentions" && currentPath !== "/privacypolicy") {
           navigate("/entry");
         }
       }
