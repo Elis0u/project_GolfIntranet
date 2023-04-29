@@ -1,6 +1,8 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 import style from "./othersPage.module.css";
 import { Helmet } from 'react-helmet';
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const LegalMentions = () => {
     return (
@@ -11,6 +13,9 @@ const LegalMentions = () => {
 
             <main className={style.ctnOtherPage}>
                 <section>
+                    
+                    <NavLink to="/entry" className={style.backToEntry}><AiOutlineArrowLeft /> Retour sur la page de connexion</NavLink>
+
                     <h2>Mentions légales</h2>
                     <h3>Éditeur du site</h3>
                     <p>

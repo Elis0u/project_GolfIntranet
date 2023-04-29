@@ -31,6 +31,13 @@
   margin-bottom: 2rem;
 }
 
+.backToEntry {
+  position: absolute;
+  font-size: 1.6rem;
+  color: var(--primaryBlue);
+  text-decoration: none;
+}
+
 /* ====================================================== */
 /* =======================  TABLET ====================== */
 /* ====================================================== */

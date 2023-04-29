@@ -1,6 +1,8 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 import style from "./othersPage.module.css";
 import { Helmet } from 'react-helmet';
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const PrivacyPolicy = () => {
     return (
@@ -11,6 +13,9 @@ const PrivacyPolicy = () => {
 
             <main className={style.ctnOtherPage}>
                 <section>
+
+                    <NavLink to="/entry" className={style.backToEntry}><AiOutlineArrowLeft /> Retour sur la page de connexion</NavLink>
+
                     <h2>Politique de confidentialité</h2>
                     <p>
                         La présente politique de confidentialité a pour objectif d'informer les utilisateurs du site de la manière dont la société // collecte, utilise et protège leurs données personnelles.
