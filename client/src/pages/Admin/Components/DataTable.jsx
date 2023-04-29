@@ -5,13 +5,12 @@ import { editData } from "../../../services/api.js";
 
 const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated }) => {
 
+  // function for updated data for "isConfirmed" when click
   const handleToggleIsConfirmed = async (row) => {
-
     const updatedRow = {
       ...row,
       isConfirmed: row.isConfirmed === 0 ? 1 : 0,
     };
-
     try {
       await editData("/user/update_isConfirmed", updatedRow);
       if (onDataUpdated) {
@@ -21,15 +20,14 @@ const DataTable = ({ columns, data, onView, onUpdate, onDelete, onDataUpdated })
     }
   };
 
+  // function for updated data for "isAdmin" when click
   const handleToggleIsAdmin = async (row) => {
     const updatedRow = {
       ...row,
       isAdmin: row.isAdmin === 0 ? 1 : 0,
     };
-
     try {
       await editData("/user/update_isAdmin", updatedRow);
-
       if (onDataUpdated) {
         onDataUpdated(updatedRow);
       }

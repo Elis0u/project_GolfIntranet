@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getDatas } from '../../../services/api.js';
-// import style from '../home.module.css';
-import { IoLocationOutline } from "react-icons/io5";
+import { IoLocationOutline, IoGolfOutline } from "react-icons/io5";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import { IoGolfOutline } from "react-icons/io5";
 import loader from "../../../assets/img/loader.svg";
 
 const NextEvent = () => {

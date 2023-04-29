@@ -26,6 +26,7 @@ const SignForm = () => {
         handicap: "",
         termsAccepted: false,
     });
+    
     const { email, password, firstName, lastName, birthDate, phone, handicap, termsAccepted } = inputs;
 
     const handleInputChange = (e) => {

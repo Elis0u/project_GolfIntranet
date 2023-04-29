@@ -45,7 +45,9 @@ const Activities = () => {
   return (
     <ul className={style.activitiesList}>
       {isLoading ? (
-        <div className="loader"><img src={loader} alt="" /></div>
+        <div className="loader">
+          <img src={loader} alt="" />
+        </div>
       ) : (
         activities && activities.map((a) => renderActivity(a))
       )}

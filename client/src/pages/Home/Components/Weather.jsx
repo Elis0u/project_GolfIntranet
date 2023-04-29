@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { getWeather } from '../../../services/api';
 import { IoLocationOutline } from "react-icons/io5";
 import loader from "../../../assets/img/loader.svg";
-import { getWeather } from '../../../services/api';
 
 const Weather = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);

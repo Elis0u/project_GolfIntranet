@@ -15,7 +15,7 @@ const Admin = () => {
   const [data, setData] = useState(null);
   const [columns, setColumns] = useState(null);
   const [activeNavItem, setActiveNavItem] = useState({ name: 'Documents', url: '/documents' });
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
   const [viewModalIsOpen, setViewModalIsOpen] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
   const [formModalIsOpen, setFormModalIsOpen] = useState(false);
@@ -31,6 +31,7 @@ const Admin = () => {
     { name: 'Utilisateurs', url: '/user' },
   ];
 
+  // function to create the table columns according to the selected navigation and retrieve data | it will be called each time the user changes navigation item
   const fetchData = useCallback(async () => {
     setIsLoading(true);
     try {
@@ -60,25 +61,17 @@ const Admin = () => {
     setData(newData);
   };
 
-  // Modal Management
-  const handleView = (data) => {
-    openViewModal(data);
-  };
-
-  const handleUpdate = (data) => {
-    setInitialData(data);
-    setIsEditMode(true);
-    openFormModal();
-  };
-
-  const openModal = (data) => {
+  /* ====================================================== */
+  /* =================== MODAL MANAGEMENT ================= */
+  /* ====================================================== */
+  const openDeleteModal = (data) => {
     setSelectedData(data);
-    setModalIsOpen(true);
+    setDeleteModalIsOpen(true);
   };
 
-  const closeModal = () => {
+  const closeDeleteModal = () => {
     setSelectedData(null);
-    setModalIsOpen(false);
+    setDeleteModalIsOpen(false);
   };
 
   const openViewModal = (data) => {
@@ -101,12 +94,21 @@ const Admin = () => {
     setFormModalIsOpen(false);
   };
 
-  // Delete Data
+  const handleView = (data) => {
+    openViewModal(data);
+  };
+
+  const handleUpdate = (data) => {
+    setInitialData(data);
+    setIsEditMode(true);
+    openFormModal();
+  };
+
   const handleDelete = async () => {
     try {
       await deleteData(activeNavItem.url, selectedData.id);
       fetchData();
-      closeModal();
+      closeDeleteModal();
     } catch (error) {
     }
   };
@@ -150,13 +152,13 @@ const Admin = () => {
             data={data}
             onView={handleView}
             onUpdate={handleUpdate}
-            onDelete={openModal}
+            onDelete={openDeleteModal}
             onDataUpdated={handleDataUpdated}
           />
         )}
         <DeleteModal
-          modalIsOpen={modalIsOpen}
-          closeModal={closeModal}
+          deleteModalIsOpen={deleteModalIsOpen}
+          closeDeleteModal={closeDeleteModal}
           handleDelete={handleDelete}
         />
         <ViewModal

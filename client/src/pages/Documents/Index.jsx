@@ -18,7 +18,6 @@ const Documents = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-
     async function fetchData() {
       try {
         const documents = await getDatas("/documents");
