@@ -20,6 +20,7 @@ Le but de cette application est de fournir un outil efficace et convivial pour a
 1. [Infos Général](#general-info)
 2. [Technologies](#technologies)
 3. [Installation](#installation)
+3. [Utilisation](#utilisation)
 
 ## Infos Général
 ***
@@ -93,4 +94,16 @@ API_WEATHER_KEY = " "
 5. Afin de pouvoir lancer l'application, exécutez cette commande dans les dossiers server et client dans des terminaux séparés :
 ```
 $ npm start
+```
+
+## Utilisation
+***
+Voici deux comptes déjà intégrer dans la base de données :
+```
+Email : dadure.elisa@outlook.com
+Mot de passe : admin123
+```
+```
+Email : nathalie.doe@test.com
+Mot de passe : user123
 ```
